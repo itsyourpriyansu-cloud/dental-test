@@ -1,0 +1,30 @@
+<svg width="800" height="342" viewBox="0 0 800 342" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- THE BRACES & CROWNS Official Logo Vector SVG -->
+  <!-- Left Side: Typography -->
+  <!-- "THE" -->
+  <text x="30" y="112" font-family="'Manrope', 'Inter', sans-serif" font-weight="900" font-size="44" fill="#00468B" letter-spacing="1">THE</text>
+  
+  <!-- "BRACES" -->
+  <text x="145" y="118" font-family="'Manrope', 'Inter', sans-serif" font-weight="900" font-size="94" fill="#4BC3F0" letter-spacing="-1">BRACES</text>
+  
+  <!-- "CROWNS" -->
+  <text x="30" y="218" font-family="'Manrope', 'Inter', sans-serif" font-weight="900" font-size="94" fill="#00468B" letter-spacing="-1">CROWNS</text>
+
+  <!-- Right Side: Badge Icon (Tooth in B shape) -->
+  <g transform="translate(520, 20)">
+    <!-- Top Half (Bright Cyan Blue) -->
+    <path d="M 25 25 C 25 10, 40 0, 70 0 L 160 0 C 210 0, 240 25, 240 70 C 240 115, 210 135, 160 135 L 25 135 Z" fill="#4BC3F0" />
+    
+    <!-- Bottom Half (Deep Royal Navy Blue) -->
+    <path d="M 25 145 L 160 145 C 210 145, 240 165, 240 210 C 240 255, 210 280, 160 280 L 70 280 C 40 280, 25 270, 25 255 Z" fill="#00468B" />
+    
+    <!-- Tooth Cutout (White) -->
+    <path d="M 65 50 C 85 40, 135 40, 155 50 C 175 60, 185 100, 175 140 C 168 165, 165 195, 158 240 C 153 260, 142 260, 132 230 C 124 205, 118 205, 110 230 C 100 260, 89 260, 84 240 C 77 195, 74 165, 67 140 C 57 100, 65 60, 65 50 Z" fill="#FFFFFF" />
+    
+    <!-- Sparkle Star in top right -->
+    <path d="M 205 35 Q 205 48 218 48 Q 205 48 205 61 Q 205 48 192 48 Q 205 48 205 35 Z" fill="#FFFFFF" />
+
+    <!-- TM Trademark -->
+    <text x="250" y="24" font-family="sans-serif" font-weight="bold" font-size="18" fill="#00468B">TM</text>
+  </g>
+</svg>
