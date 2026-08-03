@@ -1,0 +1,205 @@
+/* ==========================================================================
+   MOTION SYSTEM — shared tokens, scroll-reveal utilities, overlay & accordion
+   transitions used across every section of the site.
+
+   Pattern: an IntersectionObserver (see js/motion.js) adds `.is-visible` to
+   an element carrying [data-reveal] the first time it crosses the viewport
+   (threshold 0.15, trigger once). Everything here is purely declarative —
+   the JS only ever toggles that one class.
+   ========================================================================== */
+
+:root {
+  --ease-premium: cubic-bezier(.22, .61, .36, 1);
+  --dur-fast: 200ms;
+  --dur-hover: 220ms;
+  --dur-reveal: 700ms;
+  --dur-reveal-lg: 900ms;
+  --stagger-step: 100ms;
+}
+
+/* ---------------------------- Scroll reveal -------------------------------- */
+
+[data-reveal] {
+  opacity: 0;
+  transition: opacity var(--dur-reveal) var(--ease-premium),
+              transform var(--dur-reveal) var(--ease-premium),
+              filter var(--dur-reveal) var(--ease-premium);
+  will-change: transform, opacity;
+}
+
+[data-reveal="up"]        { transform: translateY(28px); }
+[data-reveal="left"]      { transform: translateX(-32px); }
+[data-reveal="right"]     { transform: translateX(32px); }
+[data-reveal="scale"]     { transform: scale(.96); }
+[data-reveal="left-scale"]{ transform: translateX(-32px) scale(.97); }
+[data-reveal="image"]     { transform: scale(1.03); filter: blur(6px); }
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+  filter: blur(0);
+}
+
+[data-reveal="left"].is-visible,
+[data-reveal="right"].is-visible { transition-duration: var(--dur-reveal-lg); }
+
+/* Stagger groups: children reveal 80–120ms apart instead of together.
+   Covers up to 10 direct children — plenty for any grid on this site. */
+[data-reveal-group] > [data-reveal] { transition-delay: 0ms; }
+[data-reveal-group] > [data-reveal]:nth-child(1)  { transition-delay: 0ms; }
+[data-reveal-group] > [data-reveal]:nth-child(2)  { transition-delay: 100ms; }
+[data-reveal-group] > [data-reveal]:nth-child(3)  { transition-delay: 200ms; }
+[data-reveal-group] > [data-reveal]:nth-child(4)  { transition-delay: 300ms; }
+[data-reveal-group] > [data-reveal]:nth-child(5)  { transition-delay: 400ms; }
+[data-reveal-group] > [data-reveal]:nth-child(6)  { transition-delay: 500ms; }
+[data-reveal-group] > [data-reveal]:nth-child(7)  { transition-delay: 600ms; }
+[data-reveal-group] > [data-reveal]:nth-child(8)  { transition-delay: 700ms; }
+[data-reveal-group] > [data-reveal]:nth-child(9)  { transition-delay: 800ms; }
+[data-reveal-group] > [data-reveal]:nth-child(10) { transition-delay: 900ms; }
+
+@media (max-width: 767px) {
+  [data-reveal="up"]    { transform: translateY(16px); }
+  [data-reveal="left"]  { transform: translateX(-16px); }
+  [data-reveal="right"] { transform: translateX(16px); }
+}
+
+/* -------------------------------- Images ----------------------------------- */
+/* Below-the-fold images fade + sharpen in as they enter view. The hero LCP
+   image intentionally never gets [data-reveal] — it must paint immediately. */
+[data-reveal="image"] { transition-duration: var(--dur-reveal-lg); }
+
+/* --------------------------------- Overlays --------------------------------- */
+
+.motion-overlay {
+  opacity: 0;
+  transition: opacity var(--dur-hover) var(--ease-premium);
+}
+.motion-overlay.is-open { opacity: 1; }
+
+.motion-panel {
+  opacity: 0;
+  transform: scale(.96) translateY(8px);
+  transition: opacity var(--dur-hover) var(--ease-premium),
+              transform var(--dur-hover) var(--ease-premium);
+}
+.motion-overlay.is-open .motion-panel {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* ------------------------------ Accordion (FAQ) ----------------------------- */
+
+.faq-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--dur-hover) var(--ease-premium);
+}
+.faq-content__inner {
+  overflow: hidden;
+  min-height: 0;
+  /* Padding/border live here (not as always-on utility classes) because a
+     0fr grid track only collapses content height — fixed padding and a
+     border would keep contributing height even at 0fr, leaving a visible
+     sliver. Animating them shut alongside the track closes it fully. */
+  padding: 0 24px;
+  border-top: 1px solid transparent;
+  transition: padding var(--dur-hover) var(--ease-premium),
+              border-color var(--dur-hover) var(--ease-premium);
+}
+.faq-item.is-open .faq-content {
+  grid-template-rows: 1fr;
+}
+.faq-item.is-open .faq-content__inner {
+  padding: 16px 24px 24px;
+  border-top-color: #EBF4FA;
+}
+.faq-icon { transition: transform var(--dur-hover) var(--ease-premium); }
+.faq-item.is-open .faq-icon { transform: rotate(180deg); }
+
+/* --------------------------------- Mobile menu ------------------------------- */
+
+.hnav__mobile-menu {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--dur-hover) var(--ease-premium);
+}
+.hnav__mobile-menu-inner {
+  overflow: hidden;
+  min-height: 0;
+  /* Padding/border live here, not on the collapsing grid container above —
+     a 0fr row only shrinks content, fixed padding would keep rendering as
+     a visible gap regardless (same fix as the FAQ accordion). */
+  padding: 0 var(--hr-gutter, 24px);
+  border-top: 1px solid transparent;
+  transition: padding var(--dur-hover) var(--ease-premium),
+              border-color var(--dur-hover) var(--ease-premium);
+}
+.hnav__mobile-menu.is-open { grid-template-rows: 1fr; }
+.hnav__mobile-menu.is-open .hnav__mobile-menu-inner {
+  padding: 14px var(--hr-gutter, 24px) 22px;
+  border-top-color: var(--hr-border, #D9EAF4);
+}
+
+/* --------------------------------- Count-up ---------------------------------- */
+
+[data-count-to] { font-variant-numeric: tabular-nums; }
+
+/* ------------------------------ Testimonial carousel -------------------------- */
+
+.testi-carousel { position: relative; }
+.testi-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  cursor: grab;
+  user-select: none;
+}
+.testi-track.is-dragging { cursor: grabbing; scroll-behavior: auto; }
+.testi-track::-webkit-scrollbar { display: none; }
+.testi-slide {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  padding: 2px 4px;
+}
+.testi-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 28px;
+}
+.testi-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--hr-border, #D9EAF4);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background var(--dur-hover) var(--ease-premium),
+              transform var(--dur-hover) var(--ease-premium),
+              width var(--dur-hover) var(--ease-premium);
+}
+.testi-dot:hover { background: var(--hr-sky, #4AC0EE); }
+.testi-dot.is-active { background: var(--hr-deep, #0B4696); width: 24px; }
+
+/* ------------------------------ Reduced motion ------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+  .motion-overlay,
+  .motion-overlay .motion-panel,
+  .faq-content,
+  .hnav__mobile-menu,
+  .testi-track {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

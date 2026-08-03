@@ -222,7 +222,8 @@
         transition:stroke-dashoffset 700ms ease-in-out;
       }
       #patient-journey .pj__card:hover .pj__icon-ring-fill,
-      #patient-journey .pj__card:focus-visible .pj__icon-ring-fill{
+      #patient-journey .pj__card:focus-visible .pj__icon-ring-fill,
+      #patient-journey .pj__card.is-scrolled .pj__icon-ring-fill{
         stroke-dashoffset:0;
       }
       #patient-journey .pj__icon-inner{
@@ -234,7 +235,8 @@
         transition:transform 450ms var(--pj-ease);
       }
       #patient-journey .pj__card:hover .pj__icon-inner,
-      #patient-journey .pj__card:focus-visible .pj__icon-inner{
+      #patient-journey .pj__card:focus-visible .pj__icon-inner,
+      #patient-journey .pj__card.is-scrolled .pj__icon-inner{
         transform:scale(1.08);
       }
  

@@ -216,7 +216,7 @@
   align-items: center;
   justify-content: center;
   color: #475569;
-  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: all 0.22s var(--ease-premium, cubic-bezier(.22,.61,.36,1));
   z-index: 3;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
@@ -225,25 +225,18 @@
   background: #0B4696;
   border-color: #0B4696;
   color: #FFFFFF;
-  transform: translate(2px, -2px) scale(1.1);
+  transform: translate(3px, -3px);
   box-shadow: 0 10px 24px rgba(11, 70, 150, 0.35);
 }
 
 .tf-card__arrow-icon {
   width: 18px;
   height: 18px;
-  transition: transform 0.3s ease;
+  transition: transform 0.22s var(--ease-premium, cubic-bezier(.22,.61,.36,1));
 }
 
 .tf-card:hover .tf-card__arrow-icon {
-  animation: arrowBounce 0.6s ease forwards;
-}
-
-@keyframes arrowBounce {
-  0%   { transform: translate(0, 0); }
-  40%  { transform: translate(2px, -8px); }
-  70%  { transform: translate(1px, -2px); }
-  100% { transform: translate(2px, -4px); }
+  transform: translate(2px, -2px);
 }
 
 /* ---- Mobile Responsive ---- */
