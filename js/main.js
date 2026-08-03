@@ -83,15 +83,37 @@ document.addEventListener('DOMContentLoaded', () => {
   handleScroll();
 
   // 2. Mobile Menu Toggle
+  window.closeMobileMenu = function() {
+    mobileMenu.classList.remove('is-open');
+    mobileMenuBtn.classList.remove('is-open');
+    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+  };
   if (mobileMenuBtn && mobileMenu) {
     mobileMenuBtn.addEventListener('click', () => {
-      const isHidden = mobileMenu.classList.contains('hidden');
-      if (isHidden) {
-        mobileMenu.classList.remove('hidden');
+      const isOpen = mobileMenu.classList.contains('is-open');
+      if (!isOpen) {
+        mobileMenu.classList.add('is-open');
+        mobileMenuBtn.classList.add('is-open');
+        mobileMenuBtn.setAttribute('aria-expanded', 'true');
       } else {
-        mobileMenu.classList.add('hidden');
+        window.closeMobileMenu();
       }
     });
+  }
+
+  // Shared overlay open/close transition (fade backdrop + scale panel).
+  const MODAL_TRANSITION_MS = 220;
+  function openOverlay(el) {
+    el.classList.remove('hidden');
+    el.classList.add('flex');
+    requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add('is-open')));
+  }
+  function closeOverlay(el) {
+    el.classList.remove('is-open');
+    window.setTimeout(() => {
+      el.classList.add('hidden');
+      el.classList.remove('flex');
+    }, MODAL_TRANSITION_MS);
   }
 
   // 3. Booking Modal Functionality
@@ -104,14 +126,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     bookingForm.classList.remove('hidden');
     bookingSuccess.classList.add('hidden');
-    bookingModal.classList.remove('hidden');
-    bookingModal.classList.add('flex');
+    openOverlay(bookingModal);
     document.body.style.overflow = 'hidden';
   };
 
   window.closeBookingModal = function() {
-    bookingModal.classList.add('hidden');
-    bookingModal.classList.remove('flex');
+    closeOverlay(bookingModal);
     document.body.style.overflow = '';
   };
 
@@ -122,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const service = serviceSelect.value || 'Consultation';
       patientNameSpan.textContent = name;
       selectedServiceSpan.textContent = service;
-      whatsappLink.href = `https://wa.me/+919876543210?text=Hi%20Clinic,%20I%20just%20requested%20an%20appointment%20for%20${encodeURIComponent(name)}`;
+      whatsappLink.href = `https://wa.me/+919676328450?text=Hi%20Clinic,%20I%20just%20requested%20an%20appointment%20for%20${encodeURIComponent(name)}`;
       bookingForm.classList.add('hidden');
       bookingSuccess.classList.remove('hidden');
     });
@@ -143,14 +163,12 @@ document.addEventListener('DOMContentLoaded', () => {
       .join('');
 
     serviceModal.setAttribute('data-current-service', service.title);
-    serviceModal.classList.remove('hidden');
-    serviceModal.classList.add('flex');
+    openOverlay(serviceModal);
     document.body.style.overflow = 'hidden';
   };
 
   window.closeServiceModal = function() {
-    serviceModal.classList.add('hidden');
-    serviceModal.classList.remove('flex');
+    closeOverlay(serviceModal);
     document.body.style.overflow = '';
   };
 
@@ -162,16 +180,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 5. FAQ Accordion Toggle
   window.toggleFaq = function(button) {
-    const content = button.nextElementSibling;
-    const icon = button.querySelector('.faq-icon');
-    const isOpen = !content.classList.contains('hidden');
+    const item = button.closest('.faq-item');
+    const isOpen = item.classList.contains('is-open');
 
-    document.querySelectorAll('.faq-content').forEach(c => c.classList.add('hidden'));
-    document.querySelectorAll('.faq-icon').forEach(i => i.classList.remove('rotate-180'));
+    document.querySelectorAll('.faq-item.is-open').forEach((i) => i.classList.remove('is-open'));
 
     if (!isOpen) {
-      content.classList.remove('hidden');
-      if (icon) icon.classList.add('rotate-180');
+      item.classList.add('is-open');
     }
   };
 });

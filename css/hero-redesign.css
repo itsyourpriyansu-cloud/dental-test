@@ -24,14 +24,18 @@ html, body { overflow-anchor: none; }
   width: 100%;
   background: #ffffff;
   border-bottom: 1px solid var(--hr-border);
-  transition: box-shadow .3s ease;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: box-shadow .3s ease, opacity 400ms var(--ease-premium, cubic-bezier(.22,.61,.36,1)),
+              transform 400ms var(--ease-premium, cubic-bezier(.22,.61,.36,1));
 }
+.hnav.is-loaded { opacity: 1; transform: translateY(0); }
 .hnav--scrolled { box-shadow: 0 10px 30px -14px rgba(11, 18, 32, .18); }
 
 .hnav__inner {
-  max-width: 1440px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 14px var(--hr-gutter);
+  padding: 20px 24px;
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
@@ -40,6 +44,18 @@ html, body { overflow-anchor: none; }
 
 .hnav__logo { display: flex; align-items: center; justify-self: start; }
 .hnav__logo-img { height: 34px; width: auto; object-fit: contain; }
+
+@media (min-width: 768px) {
+  .hnav__logo-img { height: 36px; }
+}
+
+@media (min-width: 1024px) {
+  .hnav__inner {
+    height: 88px;
+    padding: 0 32px;
+  }
+  .hnav__logo-img { height: 60px; }
+}
 
 .hnav__links { justify-self: center; align-items: center; gap: 2px; }
 .hnav__links a {
@@ -100,23 +116,47 @@ html, body { overflow-anchor: none; }
 .hnav__cta--sm { padding: 8px 16px; }
 
 .hnav__mobile-actions { align-items: center; gap: 8px; justify-self: end; }
+
+@media (max-width: 767px) {
+  .hnav__cta--sm { display: none; }
+}
+
 .hnav__menu-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 10px;
-  border: 1px solid var(--hr-border);
-  background: var(--hr-surface);
-  color: var(--hr-navy);
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: none;
+  border: none;
+  box-shadow: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: opacity .2s ease;
 }
-.hnav__menu-btn i { width: 20px; height: 20px; }
+.hnav__menu-btn:hover { opacity: .7; }
+
+.hnav__menu-icon { position: relative; width: 24px; height: 24px; flex-shrink: 0; }
+.hnav__menu-icon span {
+  position: absolute;
+  left: 0;
+  width: 24px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--hr-navy);
+  transition: transform .3s ease, opacity .3s ease, top .3s ease;
+}
+.hnav__menu-icon span:nth-child(1) { top: 5px; }
+.hnav__menu-icon span:nth-child(2) { top: 11px; }
+.hnav__menu-icon span:nth-child(3) { top: 17px; }
+
+.hnav__menu-btn.is-open .hnav__menu-icon span:nth-child(1) { top: 11px; transform: rotate(45deg); }
+.hnav__menu-btn.is-open .hnav__menu-icon span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hnav__menu-btn.is-open .hnav__menu-icon span:nth-child(3) { top: 11px; transform: rotate(-45deg); }
 
 .hnav__mobile-menu {
-  border-top: 1px solid var(--hr-border);
   background: #fff;
-  padding: 14px var(--hr-gutter) 22px;
 }
 .hnav__mobile-links { display: flex; flex-direction: column; gap: 2px; }
 .hnav__mobile-links a {
@@ -174,6 +214,55 @@ html, body { overflow-anchor: none; }
   object-fit: cover;
   object-position: 78% center;
   display: block;
+  opacity: 0;
+  transform: scale(1.05);
+  transition: opacity 1200ms var(--ease-premium, cubic-bezier(.22,.61,.36,1)),
+              transform 1200ms var(--ease-premium, cubic-bezier(.22,.61,.36,1));
+}
+.hero2.is-loaded .hero2__bg { opacity: 1; transform: scale(1); }
+
+/* Cinematic entrance sequence — content stages reveal in order, each
+   overlapping the previous by ~100ms so the hero feels fluid rather than
+   like a slow blocking checklist. Background paints immediately (it's the
+   backdrop everything else sits on top of). */
+.hero2__badge,
+.hero2__heading,
+.hero2__desc,
+.hero2__cta,
+.hero2__cta-secondary {
+  opacity: 0;
+  transition: opacity .6s var(--ease-premium, cubic-bezier(.22,.61,.36,1)),
+              transform .6s var(--ease-premium, cubic-bezier(.22,.61,.36,1));
+}
+.hero2__badge   { transform: translateY(16px); }
+.hero2__heading { transform: translateY(40px); transition-duration: .7s; }
+.hero2__desc    { transform: translateY(20px); }
+.hero2__cta     { transform: translateY(16px) scale(.95); }
+.hero2__cta-secondary { transform: translateY(16px); }
+
+.hero2.is-loaded .hero2__badge         { opacity: 1; transform: none; transition-delay: 120ms; }
+.hero2.is-loaded .hero2__heading       { opacity: 1; transform: none; transition-delay: 220ms; }
+.hero2.is-loaded .hero2__desc          { opacity: 1; transform: none; transition-delay: 340ms; }
+.hero2.is-loaded .hero2__cta           { opacity: 1; transform: none; transition-delay: 440ms; }
+.hero2.is-loaded .hero2__cta-secondary { opacity: 1; transform: none; transition-delay: 500ms; }
+
+.hero2__card {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .7s var(--ease-premium, cubic-bezier(.22,.61,.36,1)),
+              transform .7s var(--ease-premium, cubic-bezier(.22,.61,.36,1));
+}
+.hero2__cards.is-loaded .hero2__card:nth-child(1) { opacity: 1; transform: none; transition-delay: 600ms; }
+.hero2__cards.is-loaded .hero2__card:nth-child(2) { opacity: 1; transform: none; transition-delay: 680ms; }
+.hero2__cards.is-loaded .hero2__card:nth-child(3) { opacity: 1; transform: none; transition-delay: 760ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hnav, .hero2__bg, .hero2__badge, .hero2__heading, .hero2__desc,
+  .hero2__cta, .hero2__cta-secondary, .hero2__card {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }
 
 /* Mobile/tablet default: heavier wash (~60% gradient / 40% image) since the
@@ -369,27 +458,65 @@ html, body { overflow-anchor: none; }
 /* Desktop and tablet are approved and untouched above/below — these rules are
    scoped strictly to mobile and never affect the >=768px breakpoints. */
 @media (max-width: 767px) {
-  .hero2 { min-height: 560px; }
+  .hero2 {
+    min-height: 100vh;
+    min-height: 79svh;
+    align-items: flex-end;
+  }
 
+  /* object-fit:cover alone can't crop further — on this crop, the image's
+     own vertical extent already matches the hero's height 1:1, so there's
+     no slack left for object-position to shift vertically. A transform
+     zoom is what actually pulls the doctor's head up and trims the
+     whitespace above it. The entrance animation sets its own resting
+     transform on `.hero2.is-loaded .hero2__bg` (higher specificity), so the
+     zoom has to be overridden there too — kept as a slightly higher pre-load
+     value (1.5 → 1.45) to preserve the same subtle zoom-out-on-load feel. */
+  .hero2__bg {
+    object-position: 72% top;
+    transform: scale(1.5) translateY(-11%);
+  }
+  .hero2.is-loaded .hero2__bg {
+    transform: scale(1.20) translateY(-9%);
+    
+  }
+  .hero2__badge{
+    display:none;
+  }
+
+  /* Bottom-left-only wash — the upper portion (doctor's face) and right side
+     stay fully clear; only the corner behind the heading/CTA text gets
+     enough contrast to read. */
   .hero2__gradient {
-    background: linear-gradient(
-      100deg,
-      rgba(238, 242, 251, .38) 0%,
-      rgba(238, 242, 251, .3) 28%,
-      rgba(238, 242, 251, .16) 52%,
-      rgba(238, 242, 251, .06) 72%,
-      rgba(238, 242, 251, 0) 88%
+    background: radial-gradient(
+      circle at 0% 100%,
+      rgba(238, 242, 251, .95) 0%,
+      rgba(238, 242, 251, .65) 30%,
+      rgba(238, 242, 251, .3) 50%,
+      rgba(238, 242, 251, 0) 70%
     );
   }
 
-  .hero2__inner { padding: 220px 24px 32px; }
+  /* Bottom padding clears the fixed mobile call/book bar (~59px, see
+     .fixed.bottom-0 in index.html) so the CTA never renders underneath it,
+     plus a ~44px gap above that and the iOS home-indicator safe area. */
+  /* .hero2__inner {
+    padding: 0 24px calc(150px + env(safe-area-inset-bottom, 0px)) 24px;
+  } */
 
   .hero2__desc,
   .hero2__cta-secondary { display: none; }
 
+  .hero2__heading-break { display: none; }
+
   .hero2__heading { margin-top: 20px; font-size: 1.9rem; }
 
-  .hero2__cta-row { margin-top: 24px; }
+  .hero2__cta-row { margin-top: 20px; }
+
+  /* Keep cards clear of the first viewport — the hero already fills ~100svh,
+     so a small positive gap (instead of the shared overlap) is enough to
+     ensure they only appear after the user scrolls. */
+  .hero2__cards { margin-top: 40px; }
 }
 
 /* ---------------------------- Tablet (>=768px) ---------------------------- */
@@ -431,7 +558,7 @@ html, body { overflow-anchor: none; }
   }
 
   .hero2__inner { padding: 0 var(--hr-gutter); }
-  .hero2__content { width: 40%; max-width: 560px; }
+  .hero2__content { width: 54%; max-width: 587px; margin-left:-30px;}
 
   .hero2__circle-badge {
     display: flex;
