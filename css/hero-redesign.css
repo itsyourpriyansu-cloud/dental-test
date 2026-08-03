@@ -153,33 +153,53 @@ html, body { overflow-anchor: none; }
 
 /* ------------------------------- Hero ------------------------------------ */
 
+/* Single unified hero: image + gradient are absolute layers, content overlays
+   them on every breakpoint. Only spacing/object-position/widths change via
+   media queries below — the architecture itself never changes. */
 .hero2 {
   position: relative;
   width: 100%;
-  background: #eef2fb;
+  min-height: 620px;
   display: flex;
-  flex-direction: column;
+  align-items: flex-start;
+  overflow: hidden;
+  background: #eef2fb;
 }
 
-/* Mobile/tablet: image is a stacked block below the content, not an overlay */
 .hero2__bg {
-  position: relative;
-  order: 2;
+  position: absolute;
+  inset: 0;
   width: 100%;
-  height: 300px;
+  height: 100%;
   object-fit: cover;
   object-position: 78% center;
   display: block;
 }
 
+/* Mobile/tablet default: heavier wash (~60% gradient / 40% image) since the
+   narrow viewport crops the image tighter and text runs closer to full width. */
+.hero2__gradient {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    100deg,
+    rgba(238, 242, 251, .98) 0%,
+    rgba(238, 242, 251, .96) 40%,
+    rgba(238, 242, 251, .85) 60%,
+    rgba(238, 242, 251, .55) 75%,
+    rgba(238, 242, 251, .2) 90%,
+    rgba(238, 242, 251, 0) 100%
+  );
+}
+
 .hero2__inner {
   position: relative;
   z-index: 2;
-  order: 1;
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 40px 24px 32px;
+  padding: 56px 24px 40px;
 }
 
 .hero2__content {
@@ -279,7 +299,7 @@ html, body { overflow-anchor: none; }
   position: relative;
   z-index: 3;
   max-width: 1280px;
-  margin: -24px auto 0;
+  margin: -32px auto 0;
   padding: 0 24px;
   display: flex;
   flex-direction: column;
@@ -345,15 +365,44 @@ html, body { overflow-anchor: none; }
 .hero2__card--quote p { margin-top: 10px; font-size: 13px; line-height: 1.5; color: var(--hr-navy); font-style: italic; }
 .hero2__card--quote span { display: block; margin-top: 10px; font-size: 12px; font-weight: 700; color: var(--hr-muted); }
 
+/* ---------------------------- Mobile (<768px) ------------------------------ */
+/* Desktop and tablet are approved and untouched above/below — these rules are
+   scoped strictly to mobile and never affect the >=768px breakpoints. */
+@media (max-width: 767px) {
+  .hero2 { min-height: 560px; }
+
+  .hero2__gradient {
+    background: linear-gradient(
+      100deg,
+      rgba(238, 242, 251, .38) 0%,
+      rgba(238, 242, 251, .3) 28%,
+      rgba(238, 242, 251, .16) 52%,
+      rgba(238, 242, 251, .06) 72%,
+      rgba(238, 242, 251, 0) 88%
+    );
+  }
+
+  .hero2__inner { padding: 220px 24px 32px; }
+
+  .hero2__desc,
+  .hero2__cta-secondary { display: none; }
+
+  .hero2__heading { margin-top: 20px; font-size: 1.9rem; }
+
+  .hero2__cta-row { margin-top: 24px; }
+}
+
 /* ---------------------------- Tablet (>=768px) ---------------------------- */
 @media (min-width: 768px) {
-  .hero2__inner { padding: 56px 48px 40px; }
-  .hero2__bg { height: 420px; }
+  .hero2 { min-height: 700px; }
+  .hero2__bg { object-position: 70% center; }
+  .hero2__inner { padding: 64px 48px 40px; }
+  .hero2__content { width: 55%; }
 
   .hero2__cards {
     flex-direction: row;
     flex-wrap: wrap;
-    margin-top: -48px;
+    margin-top: -50px;
   }
   .hero2__card--wide { flex: 1 1 calc(50% - 12px); }
   .hero2__card--stat { flex: 1 1 calc(50% - 12px); }
@@ -362,25 +411,27 @@ html, body { overflow-anchor: none; }
 }
 
 /* ---------------------------- Desktop (>=1024px) --------------------------- */
-/* Switch from stacked mobile/tablet layout to the full-bleed image overlay */
 @media (min-width: 1024px) {
   .hero2 {
-    flex-direction: row;
     align-items: center;
     min-height: 700px;
   }
 
-  .hero2__bg {
-    position: absolute;
-    inset: 0;
-    order: 0;
-    width: 100%;
-    height: 100%;
-    object-position: center;
+  .hero2__bg { object-position: center; }
+
+  .hero2__gradient {
+    background: linear-gradient(
+      90deg,
+      rgba(238, 242, 251, .97) 0%,
+      rgba(238, 242, 251, .9) 25%,
+      rgba(238, 242, 251, .6) 42%,
+      rgba(238, 242, 251, .25) 58%,
+      rgba(238, 242, 251, 0) 72%
+    );
   }
 
-  .hero2__inner { order: 1; padding: 0 var(--hr-gutter); }
-  .hero2__content { max-width: 560px; }
+  .hero2__inner { padding: 0 var(--hr-gutter); }
+  .hero2__content { width: 40%; max-width: 560px; }
 
   .hero2__circle-badge {
     display: flex;
