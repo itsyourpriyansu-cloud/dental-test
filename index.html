@@ -9,12 +9,14 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
   <!-- Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/services-fix.css">
   <link rel="stylesheet" href="css/tech-journey.css">
+  <link rel="stylesheet" href="css/hero-redesign.css">
+  <link rel="stylesheet" href="css/transformations.css">
 
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
@@ -22,75 +24,64 @@
 <body class="min-h-screen bg-brand-ice text-brand-dark flex flex-col font-body selection:bg-brand-sky selection:text-brand-dark">
 
   <!-- ==================== HEADER ==================== -->
-  <header id="main-header" class="fixed z-50 transition-all duration-500 ease-out top-3 sm:top-4 lg:top-5 inset-x-3 sm:inset-x-5 lg:inset-x-6 max-w-[1392px] mx-auto rounded-full border bg-slate-950/80 backdrop-blur-md border-white/20 py-2 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.4)]">
-    <div class="mx-auto px-3 sm:px-6 max-w-full lg:px-5">
-      <div class="flex items-center justify-between">
-        
-        <!-- Logo -->
-        <a href="#hero" class="flex items-center gap-2.5 group py-0.5">
-          <div class="bg-white/95 backdrop-blur px-2.5 py-1 rounded-xl shadow-soft-sm border border-slate-200/80 flex items-center gap-2 group-hover:scale-[1.02] transition-transform duration-300">
-            <img src="images/logo-transparent.png" alt="THE BRACES & CROWNS" class="h-8 w-auto object-contain">
-            <div class="hidden sm:flex flex-col border-l border-slate-200 pl-2 py-0.5">
-              <span class="text-[9px] font-extrabold text-brand-sky uppercase tracking-widest leading-none">AMEERPET</span>
-              <span class="text-[8px] font-semibold text-slate-500 uppercase tracking-tight leading-tight mt-0.5">DENTAL CLINIC</span>
-            </div>
-          </div>
+  <header id="main-header" class="hnav">
+    <div class="hnav__inner">
+
+      <!-- Logo -->
+      <a href="#hero" class="hnav__logo">
+        <img src="images/logo-transparent.png" alt="THE BRACES & CROWNS" class="hnav__logo-img">
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hnav__links hidden lg:flex">
+        <a href="#hero">Home</a>
+        <a href="#about">About</a>
+        <a href="#treatments">Treatments</a>
+        <a href="#doctor">Doctor</a>
+        <a href="#technology">Technology</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <!-- Right Action Button -->
+      <div class="hnav__actions hidden lg:flex">
+        <a href="tel:+919876543210" class="hnav__icon-btn" aria-label="Call Us">
+          <i data-lucide="phone"></i>
         </a>
-
-        <!-- Desktop Navigation -->
-        <nav class="hidden lg:flex items-center space-x-1 xl:space-x-2 px-4 py-1.5 rounded-full border bg-white/10 border-white/20 transition-colors">
-          <a href="#hero" class="px-3.5 py-1.5 text-xs xl:text-sm font-medium rounded-full text-white/85 hover:text-white hover:bg-white/15 transition-all">Home</a>
-          <a href="#about" class="px-3.5 py-1.5 text-xs xl:text-sm font-medium rounded-full text-white/85 hover:text-white hover:bg-white/15 transition-all">About</a>
-          <a href="#treatments" class="px-3.5 py-1.5 text-xs xl:text-sm font-medium rounded-full text-white/85 hover:text-white hover:bg-white/15 transition-all">Treatments</a>
-          <a href="#doctor" class="px-3.5 py-1.5 text-xs xl:text-sm font-medium rounded-full text-white/85 hover:text-white hover:bg-white/15 transition-all">Doctor</a>
-          <a href="#technology" class="px-3.5 py-1.5 text-xs xl:text-sm font-medium rounded-full text-white/85 hover:text-white hover:bg-white/15 transition-all">Technology</a>
-          <a href="#testimonials" class="px-3.5 py-1.5 text-xs xl:text-sm font-medium rounded-full text-white/85 hover:text-white hover:bg-white/15 transition-all">Testimonials</a>
-          <a href="#contact" class="px-3.5 py-1.5 text-xs xl:text-sm font-medium rounded-full text-white/85 hover:text-white hover:bg-white/15 transition-all">Contact</a>
-        </nav>
-
-        <!-- Right Action Button -->
-        <div class="hidden sm:flex items-center gap-3">
-          <a href="tel:+919876543210" class="px-3.5 py-2 text-xs font-semibold rounded-button border text-white border-white/30 hover:bg-white/10 transition-all flex items-center gap-1.5">
-            <i data-lucide="phone" class="w-3.5 h-3.5 text-white"></i>
-            <span>Call Us</span>
-          </a>
-          <button onclick="openBookingModal()" class="px-5 py-2.5 bg-brand-deep text-white text-xs font-semibold rounded-button hover:bg-opacity-95 shadow-soft-sm hover:shadow-soft-md transition-all flex items-center gap-2 group">
-            <i data-lucide="calendar" class="w-3.5 h-3.5 text-brand-sky group-hover:rotate-12 transition-transform"></i>
-            <span>Book Consultation</span>
-          </button>
-        </div>
-
-        <!-- Mobile Right Menu -->
-        <div class="flex items-center gap-2 sm:hidden">
-          <button onclick="openBookingModal()" class="px-3 py-1.5 bg-brand-deep text-white text-xs font-semibold rounded-lg flex items-center gap-1 shadow-soft-sm">
-            <span>Book</span>
-          </button>
-          <button id="mobile-menu-btn" class="p-2 rounded-lg border text-white bg-white/10 border-white/25 transition-colors" aria-label="Toggle Menu">
-            <i data-lucide="menu" class="w-5 h-5"></i>
-          </button>
-        </div>
-
+        <button onclick="openBookingModal()" class="hnav__cta">
+          <span>Book Consultation</span>
+          <span class="hnav__cta-icon"><i data-lucide="arrow-up-right"></i></span>
+        </button>
       </div>
+
+      <!-- Mobile Right Menu -->
+      <div class="hnav__mobile-actions flex lg:hidden">
+        <button onclick="openBookingModal()" class="hnav__cta hnav__cta--sm">Book</button>
+        <button id="mobile-menu-btn" class="hnav__menu-btn" aria-label="Toggle Menu">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+
     </div>
 
     <!-- Mobile Drawer Menu -->
-    <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-brand-border px-4 pt-3 pb-6 space-y-3 mt-3 rounded-2xl mx-2 shadow-soft-lg">
-      <div class="flex flex-col space-y-1">
-        <a href="#hero" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="px-4 py-2.5 text-sm font-medium text-brand-dark hover:bg-brand-surface rounded-xl transition-colors">Home</a>
-        <a href="#about" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="px-4 py-2.5 text-sm font-medium text-brand-dark hover:bg-brand-surface rounded-xl transition-colors">About</a>
-        <a href="#treatments" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="px-4 py-2.5 text-sm font-medium text-brand-dark hover:bg-brand-surface rounded-xl transition-colors">Treatments</a>
-        <a href="#doctor" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="px-4 py-2.5 text-sm font-medium text-brand-dark hover:bg-brand-surface rounded-xl transition-colors">Doctor</a>
-        <a href="#technology" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="px-4 py-2.5 text-sm font-medium text-brand-dark hover:bg-brand-surface rounded-xl transition-colors">Technology</a>
-        <a href="#testimonials" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="px-4 py-2.5 text-sm font-medium text-brand-dark hover:bg-brand-surface rounded-xl transition-colors">Testimonials</a>
-        <a href="#contact" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="px-4 py-2.5 text-sm font-medium text-brand-dark hover:bg-brand-surface rounded-xl transition-colors">Contact</a>
+    <div id="mobile-menu" class="hidden lg:hidden hnav__mobile-menu">
+      <div class="hnav__mobile-links">
+        <a href="#hero" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Home</a>
+        <a href="#about" onclick="document.getElementById('mobile-menu').classList.add('hidden')">About</a>
+        <a href="#treatments" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Treatments</a>
+        <a href="#doctor" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Doctor</a>
+        <a href="#technology" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Technology</a>
+        <a href="#testimonials" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Testimonials</a>
+        <a href="#contact" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Contact</a>
       </div>
-      <div class="pt-2 border-t border-brand-border flex flex-col gap-2">
-        <a href="tel:+919876543210" class="w-full py-2.5 text-center text-xs font-semibold text-brand-deep bg-brand-surface border border-brand-border rounded-xl flex items-center justify-center gap-2">
-          <i data-lucide="phone" class="w-3.5 h-3.5 text-brand-sky"></i>
+      <div class="hnav__mobile-footer">
+        <a href="tel:+919876543210" class="hnav__mobile-call">
+          <i data-lucide="phone"></i>
           Call +91 98765 43210
         </a>
-        <button onclick="document.getElementById('mobile-menu').classList.add('hidden'); openBookingModal();" class="w-full py-3 bg-brand-deep text-white text-xs font-bold rounded-xl flex items-center justify-center gap-2 shadow-soft-sm">
-          <i data-lucide="sparkles" class="w-4 h-4 text-brand-sky"></i>
+        <button onclick="document.getElementById('mobile-menu').classList.add('hidden'); openBookingModal();" class="hnav__mobile-book">
+          <i data-lucide="sparkles"></i>
           Book Consultation Now
         </button>
       </div>
@@ -101,137 +92,85 @@
   <main class="flex-grow">
 
     <!-- 1. HERO SECTION -->
-    <section id="hero" class="relative px-4 sm:px-5 lg:px-6 pt-4 sm:pt-5 lg:pt-6">
-      <div class="relative max-w-[1440px] mx-auto rounded-[26px] sm:rounded-[30px] lg:rounded-[34px] overflow-hidden min-h-[600px] sm:min-h-[680px] lg:min-h-[740px] xl:min-h-[780px] bg-brand-dark shadow-soft-lg">
-        
-        <!-- Hero Background Image -->
-        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1920&q=80" alt="Dr. S. Prudhvi Das Reddy consulting with a patient" class="absolute inset-0 w-full h-full object-cover object-[center_38%]">
+    <section id="hero" class="hero2">
 
-        <!-- Readability Gradients -->
-        <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-brand-dark/25 to-transparent"></div>
-        <div class="absolute inset-0 bg-gradient-to-r from-brand-dark/55 via-transparent to-transparent"></div>
-        <div class="absolute inset-0 bg-gradient-to-b from-black/45 via-transparent to-transparent"></div>
+      <img
+        src="images/dentist-hero.png"
+        alt="Dr. S. Prudhvi Das Reddy treating a patient"
+        class="hero2__bg"
+        fetchpriority="high"
+      >
+      <div class="hero2__gradient" aria-hidden="true"></div>
 
-        <!-- Content Layer -->
-        <div class="relative z-10 flex flex-col justify-between min-h-[600px] sm:min-h-[680px] lg:min-h-[740px] xl:min-h-[780px] px-6 sm:px-8 lg:px-11 xl:px-13 pt-24 sm:pt-28 lg:pt-32 pb-8 sm:pb-12 lg:pb-14 xl:pb-16">
-          
-          <!-- Top Trust Badge -->
-          <div class="inline-flex w-fit items-center gap-2.5 pl-2 pr-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.3)]">
-            <span class="w-7 h-7 rounded-full bg-brand-sky/90 flex items-center justify-center shrink-0">
-              <i data-lucide="shield-check" class="w-3.5 h-3.5 text-white"></i>
-            </span>
-            <span class="text-[11px] sm:text-xs font-semibold text-white tracking-wide">
-              Orthodontist-Led Clinic • 12+ Years Clinical Excellence
-            </span>
-          </div>
+      <div class="hero2__inner">
+        <div class="hero2__content">
+          <span class="hero2__badge">
+            <i data-lucide="shield-check"></i>
+            Orthodontist-Led Clinic · 12+ Years Experience
+          </span>
 
-          <!-- Bottom Headline & CTAs -->
-          <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 lg:gap-6">
-            <div class="max-w-xl">
-              <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-[64px] font-extrabold font-heading text-white tracking-tight leading-[1.08]">
-                Confident smiles, <span class="bg-gradient-to-r from-brand-sky to-white bg-clip-text text-transparent">precisely engineered.</span>
-              </h1>
-              <p class="mt-5 text-sm sm:text-base text-white/80 max-w-md leading-relaxed">
-                Orthodontic and complete dental care led by Dr. S. Prudhvi Das Reddy, MDS — blending digital treatment planning with a calm, patient-first experience in Ameerpet, Hyderabad.
-              </p>
-              <div class="mt-7 flex flex-wrap items-center gap-3.5">
-                <button onclick="openBookingModal()" class="px-6 sm:px-7 py-3.5 sm:py-4 bg-white text-brand-dark font-semibold rounded-button hover:bg-white/90 shadow-soft-md hover:shadow-floating transition-all flex items-center gap-2.5 text-sm sm:text-base group">
-                  <span>Book a Consultation</span>
-                  <i data-lucide="arrow-right" class="w-4 h-4 text-brand-deep group-hover:translate-x-1 transition-transform"></i>
-                </button>
-                <a href="#treatments" class="px-6 sm:px-7 py-3.5 sm:py-4 bg-white/10 text-white font-semibold rounded-button border border-white/30 backdrop-blur-md hover:bg-white/20 transition-all text-sm sm:text-base">
-                  Explore Treatments
-                </a>
-              </div>
-            </div>
+          <h1 class="hero2__heading">
+            Confident smiles with<br class="hero2__heading-break">
+            <em>precisely engineered care.</em>
+          </h1>
 
-            <!-- Floating Info Cards -->
-            <div class="hidden sm:flex flex-col gap-3.5 w-full sm:w-[280px] lg:w-[260px] xl:w-[280px] shrink-0 lg:mb-1">
-              <div class="glass-card bg-white/95 p-4 rounded-2xl shadow-floating flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-brand-surface border border-brand-sky/30 flex items-center justify-center text-brand-deep shrink-0">
-                  <i data-lucide="stethoscope" class="w-5 h-5 text-brand-sky"></i>
-                </div>
-                <div class="text-left">
-                  <h5 class="text-xs font-bold font-heading text-brand-dark leading-tight">Dr. S. Prudhvi Das Reddy, MDS</h5>
-                  <p class="text-[11px] text-brand-muted leading-snug mt-0.5">Orthodontist & Dentofacial Specialist</p>
-                </div>
-              </div>
+          <p class="hero2__desc">
+            Orthodontic and complete dental care led by Dr. S. Prudhvi Das Reddy, MDS — blending digital treatment planning with a calm, patient-first experience in Ameerpet, Hyderabad.
+          </p>
 
-              <div class="glass-card bg-white/95 p-4 rounded-2xl shadow-floating">
-                <div class="flex items-center gap-1.5 mb-2.5">
-                  <i data-lucide="sparkles" class="w-3.5 h-3.5 text-brand-sky"></i>
-                  <span class="text-[10px] font-bold uppercase tracking-wider text-brand-muted">Specialised In</span>
-                </div>
-                <div class="flex flex-wrap gap-1.5">
-                  <span class="px-2.5 py-1 rounded-full text-[10px] font-semibold bg-brand-surface text-brand-dark border border-brand-border">Fixed Braces</span>
-                  <span class="px-2.5 py-1 rounded-full text-[10px] font-semibold bg-brand-deep text-white">Clear Aligners</span>
-                  <span class="px-2.5 py-1 rounded-full text-[10px] font-semibold bg-brand-surface text-brand-dark border border-brand-border">Digital Planning</span>
-                  <span class="px-2.5 py-1 rounded-full text-[10px] font-semibold bg-brand-surface text-brand-dark border border-brand-border">Dentofacial Care</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Mobile Trust Row -->
-          <div class="flex sm:hidden items-center gap-2 mt-6 -mb-1">
-            <div class="flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl px-3 py-2">
-              <i data-lucide="stethoscope" class="w-3.5 h-3.5 text-brand-sky shrink-0"></i>
-              <span class="text-[11px] font-semibold text-white leading-tight">Dr. Prudhvi, MDS · Orthodontist</span>
-            </div>
-            <div class="flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl px-3 py-2">
-              <i data-lucide="award" class="w-3.5 h-3.5 text-brand-sky shrink-0"></i>
-              <span class="text-[11px] font-semibold text-white leading-tight">Digital Planning</span>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- 2. TRUST STRIP -->
-    <section class="bg-white border-b border-brand-border py-7 sm:py-8 overflow-hidden">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-4 lg:hidden">
-          <p class="text-[11px] font-bold uppercase tracking-widest text-brand-muted">Clinical Standards & Patient Commitments</p>
-        </div>
-        <div class="flex flex-wrap items-center justify-center lg:justify-between gap-3 sm:gap-4">
-          <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-brand-ice/80 border border-brand-lightBorder hover:border-brand-sky/40 hover:bg-brand-surface transition-all group">
-            <div class="w-8 h-8 rounded-lg bg-brand-surface flex items-center justify-center text-brand-deep group-hover:scale-110 transition-transform">
-              <i data-lucide="shield-check" class="w-4 h-4 text-brand-sky"></i>
-            </div>
-            <span class="text-xs sm:text-sm font-semibold text-brand-dark group-hover:text-brand-deep transition-colors whitespace-nowrap">Orthodontics & General Dentistry</span>
-          </div>
-
-          <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-brand-ice/80 border border-brand-lightBorder hover:border-brand-sky/40 hover:bg-brand-surface transition-all group">
-            <div class="w-8 h-8 rounded-lg bg-brand-surface flex items-center justify-center text-brand-deep group-hover:scale-110 transition-transform">
-              <i data-lucide="sparkles" class="w-4 h-4 text-brand-sky"></i>
-            </div>
-            <span class="text-xs sm:text-sm font-semibold text-brand-dark group-hover:text-brand-deep transition-colors whitespace-nowrap">Clear Treatment Guidance</span>
-          </div>
-
-          <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-brand-ice/80 border border-brand-lightBorder hover:border-brand-sky/40 hover:bg-brand-surface transition-all group">
-            <div class="w-8 h-8 rounded-lg bg-brand-surface flex items-center justify-center text-brand-deep group-hover:scale-110 transition-transform">
-              <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-sky"></i>
-            </div>
-            <span class="text-xs sm:text-sm font-semibold text-brand-dark group-hover:text-brand-deep transition-colors whitespace-nowrap">Digital Workflows</span>
-          </div>
-
-          <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-brand-ice/80 border border-brand-lightBorder hover:border-brand-sky/40 hover:bg-brand-surface transition-all group">
-            <div class="w-8 h-8 rounded-lg bg-brand-surface flex items-center justify-center text-brand-deep group-hover:scale-110 transition-transform">
-              <i data-lucide="award" class="w-4 h-4 text-brand-sky"></i>
-            </div>
-            <span class="text-xs sm:text-sm font-semibold text-brand-dark group-hover:text-brand-deep transition-colors whitespace-nowrap">Comprehensive Smile Care</span>
-          </div>
-
-          <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-brand-ice/80 border border-brand-lightBorder hover:border-brand-sky/40 hover:bg-brand-surface transition-all group">
-            <div class="w-8 h-8 rounded-lg bg-brand-surface flex items-center justify-center text-brand-deep group-hover:scale-110 transition-transform">
-              <i data-lucide="users" class="w-4 h-4 text-brand-sky"></i>
-            </div>
-            <span class="text-xs sm:text-sm font-semibold text-brand-dark group-hover:text-brand-deep transition-colors whitespace-nowrap">Teens & Adults Welcome</span>
+          <div class="hero2__cta-row">
+            <button onclick="openBookingModal()" class="hero2__cta">
+              <span>Schedule Your Visit</span>
+              <span class="hero2__cta-icon"><i data-lucide="arrow-up-right"></i></span>
+            </button>
+            <a href="#treatments" class="hero2__cta-secondary">Explore Treatments</a>
           </div>
         </div>
       </div>
+
     </section>
+
+    <!-- Floating Info Cards -->
+    <div class="hero2__cards">
+
+        <div class="hero2__card hero2__card--wide">
+          <h3>Doctor-Led Care</h3>
+          <p>Every treatment plan is personally guided by Dr. Prudhvi, an orthodontic &amp; dentofacial specialist.</p>
+          <a href="#doctor" class="hero2__card-link">
+            Meet the Doctor
+            <i data-lucide="arrow-up-right"></i>
+          </a>
+        </div>
+
+        <div class="hero2__card hero2__card--stat">
+          <span class="hero2__card-stat-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" width="22" height="22">
+              <path d="M12 3c-2.4 0-4.2 1.7-4.9 3.3-.5 1.2-.5 2.5-.4 3.9.1 1.7.5 3.4 1 5 .4 1.2.9 2.7 2 2.8.9.1 1.2-.9 1.5-1.7.3-.8.6-1.6 1.3-1.6s1 .8 1.3 1.6c.3.8.6 1.8 1.5 1.7 1.1-.1 1.6-1.6 2-2.8.5-1.6.9-3.3 1-5 .1-1.4.1-2.7-.4-3.9C16.2 4.7 14.4 3 12 3Z" stroke="#4AC0EE" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span>
+            <span class="hero2__card-stat-value">12+ Years</span>
+            <span class="hero2__card-stat-label">Clinical Experience</span>
+          </span>
+        </div>
+
+       
+
+        <div class="hero2__card hero2__card--trust">
+          <div class="hero2__card-trust-text">
+            <span class="hero2__card-trust-label">Trusted care for</span>
+            <span class="hero2__card-trust-value">Teens &amp; Adults</span>
+          </div>
+          <div class="hero2__avatar-stack">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Patient">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Patient">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" alt="Patient">
+          </div>
+        </div>
+
+
+
+    </div>
 
     <!-- 3. BENTO BENEFITS -->
     <section class="py-20 bg-brand-ice relative overflow-hidden">
@@ -781,6 +720,74 @@
  
       </div>
     </section>
+
+    <!-- 7B. SMILE TRANSFORMATIONS (Before / After) -->
+    <section id="transformations" class="ba-section py-20 relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="text-center max-w-3xl mx-auto mb-14 space-y-4">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-brand-sky text-xs font-bold uppercase tracking-wider">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+            <span>REAL SMILE TRANSFORMATIONS</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-heading text-white tracking-tight">
+            Before &amp; after <span class="text-brand-sky">results that speak for themselves.</span>
+          </h2>
+          <p class="text-base sm:text-lg text-slate-300 leading-relaxed">
+            A glimpse at the kind of transformation precise orthodontic and cosmetic treatment can achieve.
+          </p>
+        </div>
+
+        <div class="ba-grid">
+
+          <!-- Card 1 -->
+          <div class="ba-card">
+            <div class="ba-card__frame">
+              <div class="ba-card__photo ba-card__photo--before">
+                <img src="https://images.unsplash.com/photo-1663182234283-28941e7612da?auto=format&fit=crop&w=800&q=80" alt="Before orthodontic treatment - close-up of teeth" loading="lazy">
+                <span class="ba-card__tag ba-card__tag--before">Before</span>
+              </div>
+              <div class="ba-card__photo ba-card__photo--after">
+                <img src="https://images.unsplash.com/photo-1654373535457-383a0a4d00f9?auto=format&fit=crop&w=800&q=80" alt="After orthodontic treatment - aligned white smile" loading="lazy">
+                <span class="ba-card__tag ba-card__tag--after">After</span>
+              </div>
+            </div>
+            <p class="ba-card__caption">Clear Aligners <em>|</em> Full Arch Alignment</p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="ba-card">
+            <div class="ba-card__frame">
+              <div class="ba-card__photo ba-card__photo--before">
+                <img src="https://images.unsplash.com/photo-1663182245833-7dd667277043?auto=format&fit=crop&w=800&q=80" alt="Before teeth whitening - close-up of teeth" loading="lazy">
+                <span class="ba-card__tag ba-card__tag--before">Before</span>
+              </div>
+              <div class="ba-card__photo ba-card__photo--after">
+                <img src="https://images.unsplash.com/photo-1677026010083-78ec7f1b84ed?auto=format&fit=crop&w=800&q=80" alt="After teeth whitening - bright white smile" loading="lazy">
+                <span class="ba-card__tag ba-card__tag--after">After</span>
+              </div>
+            </div>
+            <p class="ba-card__caption">Professional Whitening <em>|</em> In-Clinic Session</p>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="ba-card">
+            <div class="ba-card__frame">
+              <div class="ba-card__photo ba-card__photo--before">
+                <img src="https://images.unsplash.com/photo-1567516364473-233c4b6fcfbe?auto=format&fit=crop&w=800&q=80" alt="Before cosmetic dental treatment - close-up smile" loading="lazy">
+                <span class="ba-card__tag ba-card__tag--before">Before</span>
+              </div>
+              <div class="ba-card__photo ba-card__photo--after">
+                <img src="https://plus.unsplash.com/premium_photo-1723874705687-a2b999a37994?auto=format&fit=crop&w=800&q=80" alt="After cosmetic dental treatment - refined smile" loading="lazy">
+                <span class="ba-card__tag ba-card__tag--after">After</span>
+              </div>
+            </div>
+            <p class="ba-card__caption">Ceramic Veneers <em>|</em> Complete Smile Makeover</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
     <!-- 8. TECHNOLOGY SECTION — Technology Journey -->
     <section id="technology" class="tech-journey py-20 bg-white relative overflow-hidden">
       <div class="tech-journey__bg" aria-hidden="true"></div>
@@ -994,71 +1001,53 @@
           <p class="text-base sm:text-lg text-brand-muted">See clinical outcomes achieved through orthodontic alignment, clear aligners, and aesthetic restorations.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
           <!-- Case 1 -->
-          <div class="bg-white rounded-card-lg border border-brand-border overflow-hidden shadow-soft-md">
-            <div class="grid grid-cols-2 gap-1 p-2 bg-brand-surface">
-              <div class="relative rounded-lg overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=600&q=80" alt="Before" class="w-full h-36 object-cover">
-                <span class="absolute bottom-2 left-2 bg-black/70 text-white text-[10px] font-bold px-2 py-0.5 rounded">Before</span>
-              </div>
-              <div class="relative rounded-lg overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="After" class="w-full h-36 object-cover">
-                <span class="absolute bottom-2 left-2 bg-brand-deep text-white text-[10px] font-bold px-2 py-0.5 rounded">After</span>
-              </div>
+          <div class="group bg-white rounded-card-lg border border-brand-border shadow-soft-sm p-5 flex flex-col hover:shadow-soft-md transition-all">
+            <div class="flex items-center justify-between mb-2">
+              <span class="px-2.5 py-0.5 bg-brand-surface text-brand-deep text-[10px] font-bold rounded-full">Braces</span>
+              <span class="text-[11px] text-brand-muted font-semibold">14 Months</span>
             </div>
-            <div class="p-6 space-y-2">
-              <div class="flex items-center justify-between">
-                <span class="px-2.5 py-0.5 bg-brand-surface text-brand-deep text-xs font-bold rounded-full">Braces</span>
-                <span class="text-xs text-brand-muted font-semibold">14 Months</span>
-              </div>
-              <h3 class="text-lg font-bold font-heading text-brand-dark pt-1">Orthodontic Crowding Correction</h3>
-              <p class="text-xs text-brand-muted leading-relaxed">Fixed orthodontic alignment resolving severe lower anterior crowding and deep bite overlap.</p>
+            <h3 class="text-lg font-bold font-heading text-brand-dark">Orthodontic Crowding<br>Correction</h3>
+            <p class="text-xs text-brand-muted leading-relaxed mt-1 mb-4 flex-1">Resolving severe lower anterior crowding and deep bite overlap.</p>
+            <div class="relative rounded-card overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Orthodontic crowding correction result" class="w-full h-48 object-cover" loading="lazy">
+              <button onclick="openBookingModal('Orthodontic Crowding Correction')" aria-label="Book consultation" class="absolute bottom-2 right-2 w-10 h-10 rounded-full bg-white/90 backdrop-blur border border-brand-border flex items-center justify-center shadow-soft-sm text-brand-deep group-hover:scale-110 transition-transform">
+                <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+              </button>
             </div>
           </div>
 
           <!-- Case 2 -->
-          <div class="bg-white rounded-card-lg border border-brand-border overflow-hidden shadow-soft-md">
-            <div class="grid grid-cols-2 gap-1 p-2 bg-brand-surface">
-              <div class="relative rounded-lg overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=600&q=80" alt="Before" class="w-full h-36 object-cover">
-                <span class="absolute bottom-2 left-2 bg-black/70 text-white text-[10px] font-bold px-2 py-0.5 rounded">Before</span>
-              </div>
-              <div class="relative rounded-lg overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=600&q=80" alt="After" class="w-full h-36 object-cover">
-                <span class="absolute bottom-2 left-2 bg-brand-deep text-white text-[10px] font-bold px-2 py-0.5 rounded">After</span>
-              </div>
+          <div class="group bg-white rounded-card-lg border border-brand-border shadow-soft-sm p-5 flex flex-col hover:shadow-soft-md transition-all">
+            <div class="flex items-center justify-between mb-2">
+              <span class="px-2.5 py-0.5 bg-brand-surface text-brand-deep text-[10px] font-bold rounded-full">Clear Aligners</span>
+              <span class="text-[11px] text-brand-muted font-semibold">9 Months</span>
             </div>
-            <div class="p-6 space-y-2">
-              <div class="flex items-center justify-between">
-                <span class="px-2.5 py-0.5 bg-brand-surface text-brand-deep text-xs font-bold rounded-full">Clear Aligners</span>
-                <span class="text-xs text-brand-muted font-semibold">9 Months</span>
-              </div>
-              <h3 class="text-lg font-bold font-heading text-brand-dark pt-1">Clear Aligner Space Closure</h3>
-              <p class="text-xs text-brand-muted leading-relaxed">Invisible clear aligner sequence closing upper central incisor diastema (gap) with digital planning.</p>
+            <h3 class="text-lg font-bold font-heading text-brand-dark">Clear Aligner<br>Space Closure</h3>
+            <p class="text-xs text-brand-muted leading-relaxed mt-1 mb-4 flex-1">Closing an upper central incisor gap with digital planning.</p>
+            <div class="relative rounded-card overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=600&q=80" alt="Clear aligner space closure result" class="w-full h-48 object-cover" loading="lazy">
+              <button onclick="openBookingModal('Clear Aligner Space Closure')" aria-label="Book consultation" class="absolute bottom-2 right-2 w-10 h-10 rounded-full bg-white/90 backdrop-blur border border-brand-border flex items-center justify-center shadow-soft-sm text-brand-deep group-hover:scale-110 transition-transform">
+                <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+              </button>
             </div>
           </div>
 
           <!-- Case 3 -->
-          <div class="bg-white rounded-card-lg border border-brand-border overflow-hidden shadow-soft-md">
-            <div class="grid grid-cols-2 gap-1 p-2 bg-brand-surface">
-              <div class="relative rounded-lg overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&w=600&q=80" alt="Before" class="w-full h-36 object-cover">
-                <span class="absolute bottom-2 left-2 bg-black/70 text-white text-[10px] font-bold px-2 py-0.5 rounded">Before</span>
-              </div>
-              <div class="relative rounded-lg overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="After" class="w-full h-36 object-cover">
-                <span class="absolute bottom-2 left-2 bg-brand-deep text-white text-[10px] font-bold px-2 py-0.5 rounded">After</span>
-              </div>
+          <div class="group bg-white rounded-card-lg border border-brand-border shadow-soft-sm p-5 flex flex-col hover:shadow-soft-md transition-all">
+            <div class="flex items-center justify-between mb-2">
+              <span class="px-2.5 py-0.5 bg-brand-surface text-brand-deep text-[10px] font-bold rounded-full">Smile Makeovers</span>
+              <span class="text-[11px] text-brand-muted font-semibold">2 Weeks</span>
             </div>
-            <div class="p-6 space-y-2">
-              <div class="flex items-center justify-between">
-                <span class="px-2.5 py-0.5 bg-brand-surface text-brand-deep text-xs font-bold rounded-full">Smile Makeovers</span>
-                <span class="text-xs text-brand-muted font-semibold">2 Weeks</span>
-              </div>
-              <h3 class="text-lg font-bold font-heading text-brand-dark pt-1">Smile Rejuvenation & Crowns</h3>
-              <p class="text-xs text-brand-muted leading-relaxed">Aesthetic ceramic crown placement restoring discolored, worn front teeth to natural vitality.</p>
+            <h3 class="text-lg font-bold font-heading text-brand-dark">Smile Rejuvenation<br>& Crowns</h3>
+            <p class="text-xs text-brand-muted leading-relaxed mt-1 mb-4 flex-1">Ceramic crowns restoring discolored, worn front teeth to natural vitality.</p>
+            <div class="relative rounded-card overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Smile rejuvenation and crowns result" class="w-full h-48 object-cover" loading="lazy">
+              <button onclick="openBookingModal('Smile Rejuvenation & Crowns')" aria-label="Book consultation" class="absolute bottom-2 right-2 w-10 h-10 rounded-full bg-white/90 backdrop-blur border border-brand-border flex items-center justify-center shadow-soft-sm text-brand-deep group-hover:scale-110 transition-transform">
+                <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+              </button>
             </div>
           </div>
 

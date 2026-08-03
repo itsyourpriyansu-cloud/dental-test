@@ -73,12 +73,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 1. Header Scroll Behavior
   const handleScroll = () => {
-    if (window.scrollY > 420) {
-      header.classList.remove('top-3', 'sm:top-4', 'lg:top-5', 'inset-x-3', 'sm:inset-x-5', 'lg:inset-x-6', 'max-w-[1392px]', 'rounded-full', 'bg-slate-950/80', 'border-white/20', 'py-2');
-      header.classList.add('top-0', 'inset-x-0', 'rounded-none', 'border-b', 'bg-white/95', 'border-brand-border', 'py-2.5');
+    if (window.scrollY > 20) {
+      header.classList.add('hnav--scrolled');
     } else {
-      header.classList.add('top-3', 'sm:top-4', 'lg:top-5', 'inset-x-3', 'sm:inset-x-5', 'lg:inset-x-6', 'max-w-[1392px]', 'rounded-full', 'bg-slate-950/80', 'border-white/20', 'py-2');
-      header.classList.remove('top-0', 'inset-x-0', 'rounded-none', 'border-b', 'bg-white/95', 'border-brand-border', 'py-2.5');
+      header.classList.remove('hnav--scrolled');
     }
   };
   window.addEventListener('scroll', handleScroll);

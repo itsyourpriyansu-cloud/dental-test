@@ -99,10 +99,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const activeBtn = stepButtons[index];
     if (activeBtn && scroller) {
-      activeBtn.scrollIntoView({
-        behavior: prefersReducedMotion ? 'auto' : 'smooth',
-        inline: 'center',
-        block: 'nearest'
+      // Scroll only the horizontal step scroller into position — never use
+      // scrollIntoView here, as its block:'nearest' also drags the whole
+      // page's vertical scroll back to this section whenever the active
+      // step changes (e.g. via autoplay while the user has scrolled away).
+      const targetLeft = activeBtn.offsetLeft - (scroller.clientWidth - activeBtn.clientWidth) / 2;
+      scroller.scrollTo({
+        left: Math.max(0, targetLeft),
+        behavior: prefersReducedMotion ? 'auto' : 'smooth'
       });
     }
 
