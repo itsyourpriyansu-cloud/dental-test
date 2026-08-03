@@ -1,20 +1,290 @@
 /* ==========================================================================
-   Smile Transformations — Before / After gallery
-   Layout: stacked Before/After photo pair per card, 3-up grid on desktop.
-   Colors reuse the existing brand tokens (brand-deep / brand-dark / brand-sky).
+   REAL SMILE TRANSFORMATIONS — MODERN 5-CARD GRID SYSTEM
+   Inspired by contemporary luxury healthcare & wellness UI design
+   Reference: floating cutout product-style imagery on clean white cards
    ========================================================================== */
+
+.tf-section {
+  padding: 90px 0;
+  background-color: #F7FBFE;
+}
+
+.tf-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ---- Grid Row Definitions ---- */
+
+.tf-row-top {
+  display: grid;
+  grid-template-columns: 5fr 4fr 3fr;
+  gap: 24px;
+}
+
+.tf-row-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 1023px) and (min-width: 640px) {
+  .tf-row-top {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .tf-row-top > .tf-card:nth-child(3) {
+    grid-column: span 2;
+  }
+  .tf-row-bottom {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 639px) {
+  .tf-row-top,
+  .tf-row-bottom {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---- Card Component ---- */
+
+.tf-card {
+  position: relative;
+  background: #FFFFFF;
+  border-radius: 24px;
+  border: 1px solid #E8ECF1;
+  padding: 30px 28px 28px;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: hidden;
+  box-shadow: 0 2px 12px -2px rgba(11, 18, 32, 0.04);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  isolation: isolate;
+}
+
+.tf-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 48px -12px rgba(11, 70, 150, 0.12), 0 8px 16px -4px rgba(11, 18, 32, 0.04);
+  border-color: #CBD5E1;
+}
+
+/* ---- Text Content (top-left) ---- */
+
+.tf-card__body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 2;
+  max-width: 60%;
+}
+
+.tf-card__badges {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tf-card__badge-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 14px;
+  border-radius: 9999px;
+  background: #EEF8FD;
+  color: #0B4696;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.tf-card__duration {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 14px;
+  border-radius: 9999px;
+  background: #F1F5F9;
+  color: #64748B;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.tf-card__title {
+  font-family: 'Manrope', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: #0B1220;
+  line-height: 1.25;
+  margin: 6px 0 0;
+  letter-spacing: -0.02em;
+  transition: color 0.25s ease;
+}
+
+.tf-card:hover .tf-card__title {
+  color: #0B4696;
+}
+
+.tf-card__desc {
+  font-size: 13.5px;
+  color: #64748B;
+  line-height: 1.6;
+  margin: 4px 0 0;
+  font-weight: 400;
+}
+
+/* ---- Floating Image (bottom-right, seamless blend) ---- */
+
+.tf-card__visual {
+  position: absolute;
+  right: -10px;
+  bottom: -10px;
+  width: 48%;
+  height: 88%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  pointer-events: none;
+  z-index: 1;
+  background: #FFFFFF;
+}
+
+.tf-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom right;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  /* Fade all edges so the image melts into the white card */
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0%, black 35%, black 100%),
+    linear-gradient(to bottom, transparent 0%, black 20%, black 100%);
+  -webkit-mask-composite: destination-in;
+  mask-image:
+    linear-gradient(to right, transparent 0%, black 35%, black 100%),
+    linear-gradient(to bottom, transparent 0%, black 20%, black 100%);
+  mask-composite: intersect;
+}
+
+.tf-card:hover .tf-card__img {
+  transform: scale(1.04) translateY(-3px);
+}
+
+/* Card-specific visual sizing adjustments */
+
+/* Card 1 (wide) — portrait-style person */
+.tf-row-top > .tf-card:nth-child(1) .tf-card__visual {
+  width: 44%;
+  height: 92%;
+}
+
+/* Card 2 (medium) — gloved hand/product */
+.tf-row-top > .tf-card:nth-child(2) .tf-card__visual {
+  width: 48%;
+  height: 80%;
+  right: -4px;
+}
+
+/* Card 3 (narrow) — small product */
+.tf-row-top > .tf-card:nth-child(3) .tf-card__visual {
+  width: 50%;
+  height: 80%;
+}
+
+/* Bottom row cards — wider layout */
+.tf-row-bottom > .tf-card .tf-card__visual {
+  width: 40%;
+  height: 88%;
+}
+
+/* ---- Circular Arrow CTA Button ---- */
+
+.tf-card__arrow-btn {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #475569;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 3;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.tf-card:hover .tf-card__arrow-btn {
+  background: #0B4696;
+  border-color: #0B4696;
+  color: #FFFFFF;
+  transform: translate(2px, -2px) scale(1.1);
+  box-shadow: 0 10px 24px rgba(11, 70, 150, 0.35);
+}
+
+.tf-card__arrow-icon {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s ease;
+}
+
+.tf-card:hover .tf-card__arrow-icon {
+  animation: arrowBounce 0.6s ease forwards;
+}
+
+@keyframes arrowBounce {
+  0%   { transform: translate(0, 0); }
+  40%  { transform: translate(2px, -8px); }
+  70%  { transform: translate(1px, -2px); }
+  100% { transform: translate(2px, -4px); }
+}
+
+/* ---- Mobile Responsive ---- */
+
+@media (max-width: 639px) {
+  .tf-card {
+    min-height: 260px;
+    padding: 24px 20px 24px;
+  }
+
+  .tf-card__body {
+    max-width: 58%;
+  }
+
+  .tf-card__visual {
+    width: 42%;
+    height: 80%;
+  }
+
+  .tf-card__title {
+    font-size: 18px;
+  }
+
+  .tf-card__desc {
+    font-size: 12px;
+  }
+}
+
+
 
 .ba-section {
   background: linear-gradient(135deg, #0B4696 0%, #0E2F63 45%, #0B1220 100%);
 }
-
+ 
 .ba-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 2rem;
 }
-
+ 
 .ba-card {
   display: flex;
   flex-direction: column;
@@ -22,19 +292,19 @@
   width: 100%;
   max-width: 380px;
 }
-
+ 
 @media (min-width: 640px) {
   .ba-card {
     width: calc(50% - 1rem);
   }
 }
-
+ 
 @media (min-width: 1024px) {
   .ba-card {
     width: calc(33.333% - 1.334rem);
   }
 }
-
+ 
 .ba-card__frame {
   border-radius: 1.5rem;
   overflow: hidden;
@@ -42,17 +312,17 @@
   background: rgba(255, 255, 255, 0.04);
   box-shadow: 0 24px 50px -22px rgba(3, 10, 24, 0.65);
 }
-
+ 
 .ba-card__photo {
   position: relative;
   aspect-ratio: 5 / 4;
   overflow: hidden;
 }
-
+ 
 .ba-card__photo + .ba-card__photo {
   border-top: 2px solid rgba(255, 255, 255, 0.16);
 }
-
+ 
 .ba-card__photo img {
   width: 100%;
   height: 100%;
@@ -61,17 +331,17 @@
   display: block;
   transition: transform 0.6s ease;
 }
-
+ 
 .ba-card:hover .ba-card__photo img {
   transform: scale(1.04);
 }
-
+ 
 /* Mute the "before" shot and let "after" read bright and vivid —
    reinforces the transformation without needing matched source photos */
 .ba-card__photo--before img {
   filter: grayscale(30%) sepia(6%) brightness(0.95) contrast(0.97);
 }
-
+ 
 .ba-card__tag {
   position: absolute;
   top: 0.85rem;
@@ -85,29 +355,29 @@
   backdrop-filter: blur(6px);
   box-shadow: 0 4px 12px -4px rgba(3, 10, 24, 0.4);
 }
-
+ 
 .ba-card__tag--before {
   background: rgba(247, 251, 254, 0.95);
   color: #0B1220;
 }
-
+ 
 .ba-card__tag--after {
   background: rgba(74, 192, 238, 0.95);
   color: #0B1220;
 }
-
+ 
 .ba-card__caption {
   padding-left: 0.15rem;
   font-size: 0.95rem;
   font-weight: 600;
   color: #F7FBFE;
 }
-
+ 
 .ba-card__caption em {
   font-style: normal;
   color: #4AC0EE;
 }
-
+ 
 @media (max-width: 639px) {
   .ba-card__photo {
     aspect-ratio: 1 / 1;

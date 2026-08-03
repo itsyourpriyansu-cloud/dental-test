@@ -1,0 +1,464 @@
+/* ==========================================================================
+   FOOTER — Matches reference: full-width solid navy footer,
+   1280px content, white contact card, 4-up top grid.
+   ========================================================================== */
+
+:root {
+  --footer-bg: #16215A;
+  --footer-bg-2: #101a4a;
+  --footer-border: rgba(255, 255, 255, 0.08);
+  --footer-blue: #2563EB;
+  --footer-text-main: #F1F5F9;
+  --footer-text-muted: #A9B3D6;
+  --footer-transition-fast: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  --footer-transition-bounce: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Base Container & Section */
+.app-footer-wrapper {
+  width: 100%;
+  background: linear-gradient(160deg, var(--footer-bg) 0%, var(--footer-bg-2) 100%);
+  position: relative;
+  box-sizing: border-box;
+}
+
+.app-footer {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+  color: var(--footer-text-main);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  padding: 90px 24px 60px;
+  box-sizing: border-box;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.app-footer.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 1024px) {
+  .app-footer {
+    padding: 64px 24px 40px;
+  }
+}
+
+@media (max-width: 640px) {
+  .app-footer {
+    padding: 48px 20px 32px;
+  }
+}
+
+/* ==========================================================================
+   TOP SECTION: 4-UP GRID
+   ========================================================================== */
+
+.app-footer__top {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 0.9fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+@media (max-width: 1024px) {
+  .app-footer__top {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 48px;
+  }
+}
+
+@media (max-width: 640px) {
+  .app-footer__top {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Column 1: Brand */
+.app-footer__brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 22px;
+}
+
+.app-footer__logo-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.app-footer__logo-img {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.app-footer__logo-tag {
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid rgba(255, 255, 255, 0.25);
+  padding-left: 10px;
+}
+
+.app-footer__logo-tag-primary {
+  font-size: 10px;
+  font-weight: 800;
+  color: #FFFFFF;
+  letter-spacing: 0.1em;
+  line-height: 1;
+}
+
+.app-footer__logo-tag-secondary {
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--footer-text-muted);
+  letter-spacing: 0.05em;
+  margin-top: 3px;
+  line-height: 1;
+}
+
+.app-footer__address {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--footer-text-muted);
+  margin: 0;
+  font-weight: 400;
+}
+
+.app-footer__copyright {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--footer-text-muted);
+  margin: 0;
+  font-weight: 400;
+}
+
+/* Column 2: White Contact Card */
+.app-footer__contact-card {
+  background: #FFFFFF;
+  border-radius: 24px;
+  padding: 28px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.35);
+}
+
+.app-footer__contact-card-desc {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--footer-bg);
+  margin: 0;
+  font-weight: 500;
+}
+
+.app-footer__contact-card-hours {
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: #64748B;
+  margin: 0;
+}
+
+.app-footer__contact-card-hours strong {
+  color: var(--footer-bg);
+  font-weight: 700;
+}
+
+.app-footer__contact-card-phone,
+.app-footer__contact-card-email {
+  display: block;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--footer-bg);
+  text-decoration: none;
+  transition: color var(--footer-transition-fast);
+}
+
+.app-footer__contact-card-email {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.app-footer__contact-card-phone:hover,
+.app-footer__contact-card-email:hover {
+  color: var(--footer-blue);
+}
+
+/* Column 3: Quick Links */
+.app-footer__nav-title {
+  font-family: 'Manrope', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin: 0 0 20px;
+}
+
+.app-footer__nav-links {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 14px 32px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.app-footer__nav-item {
+  display: inline-flex;
+}
+
+.app-footer__nav-link {
+  position: relative;
+  font-size: 14.5px;
+  font-weight: 500;
+  color: var(--footer-text-muted);
+  text-decoration: none;
+  padding: 2px 0;
+  display: inline-flex;
+  align-items: center;
+  transition: color var(--footer-transition-fast), transform var(--footer-transition-fast);
+}
+
+.app-footer__nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0%;
+  height: 1.5px;
+  background: #FFFFFF;
+  transition: width var(--footer-transition-fast);
+}
+
+.app-footer__nav-link:hover {
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+.app-footer__nav-link:hover::after {
+  width: 100%;
+}
+
+.app-footer__nav-link:focus-visible {
+  outline: 2px solid #FFFFFF;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* Column 4: Newsletter */
+.app-footer__newsletter-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.app-footer__newsletter-title {
+  font-family: 'Manrope', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.app-footer__newsletter-form {
+  width: 100%;
+}
+
+.app-footer__input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 9999px;
+  padding: 5px 5px 5px 20px;
+  transition: all var(--footer-transition-fast);
+}
+
+.app-footer__input-group:focus-within {
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.08);
+}
+
+.app-footer__email-input {
+  flex: 1;
+  min-width: 0;
+  padding: 12px 8px;
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  color: #FFFFFF;
+  font-family: inherit;
+  outline: none;
+}
+
+.app-footer__email-input::placeholder {
+  color: var(--footer-text-muted);
+}
+
+.app-footer__submit-btn {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  border: none;
+  color: #FFFFFF;
+  cursor: pointer;
+  outline: none;
+  transition: all var(--footer-transition-fast);
+}
+
+.app-footer__submit-btn:hover {
+  background: var(--footer-blue);
+  transform: translateX(2px);
+}
+
+.app-footer__submit-btn-icon {
+  width: 16px;
+  height: 16px;
+  transition: transform var(--footer-transition-fast);
+}
+
+.app-footer__submit-btn:hover .app-footer__submit-btn-icon {
+  transform: translateX(2px);
+}
+
+.app-footer__newsletter-status {
+  font-size: 13px;
+  display: none;
+  font-weight: 500;
+}
+
+.app-footer__newsletter-status.is-success {
+  display: block;
+  color: #34D399;
+}
+
+.app-footer__newsletter-status.is-error {
+  display: block;
+  color: #F87171;
+}
+
+/* Social Buttons */
+.app-footer__socials {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.app-footer__social-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #FFFFFF;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all var(--footer-transition-bounce);
+  outline: none;
+}
+
+.app-footer__social-btn svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+  transition: fill var(--footer-transition-fast), transform var(--footer-transition-bounce);
+}
+
+.app-footer__social-btn:hover {
+  transform: scale(1.08) rotate(8deg);
+  background: var(--footer-blue);
+  border-color: var(--footer-blue);
+}
+
+.app-footer__social-btn:focus-visible {
+  outline: 2px solid #FFFFFF;
+  outline-offset: 3px;
+}
+
+/* ==========================================================================
+   BOTTOM SECTION
+   ========================================================================== */
+
+.app-footer__bottom {
+  margin-top: 60px;
+  padding-top: 24px;
+  border-top: 1px solid var(--footer-border);
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 640px) {
+  .app-footer__bottom {
+    justify-content: center;
+  }
+}
+
+.app-footer__note {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--footer-text-muted);
+  white-space: nowrap;
+}
+
+.app-footer__heart-icon {
+  width: 14px;
+  height: 14px;
+  color: #EF4444;
+  display: inline-block;
+  animation: footerHeartbeat 2s ease-in-out infinite;
+}
+
+@keyframes footerHeartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+/* ==========================================================================
+   FOCUS ACCESSIBILITY & REVEAL ANIMATION
+   ========================================================================== */
+
+.app-footer a:focus-visible,
+.app-footer button:focus-visible,
+.app-footer input:focus-visible {
+  outline: 2px solid #FFFFFF !important;
+  outline-offset: 3px !important;
+}
+
+.app-footer.is-visible .app-footer__top {
+  animation: footerFadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.1s;
+}
+
+.app-footer.is-visible .app-footer__bottom {
+  animation: footerFadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.3s;
+}
+
+@keyframes footerFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
