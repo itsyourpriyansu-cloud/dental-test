@@ -593,60 +593,194 @@
       </div>
     </section>
 
-    <!-- 7. TREATMENT JOURNEY -->
-    <section class="py-20 bg-brand-ice">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-surface border border-brand-border text-brand-deep text-xs font-bold uppercase tracking-wider">
-            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-brand-sky"></i>
+   <!-- 7. TREATMENT JOURNEY -->
+    <!-- ==================== PATIENT JOURNEY (premium) ==================== -->
+    <section id="patient-journey" class="pj">
+      <div class="pj__container">
+ 
+        <!-- Intro -->
+        <div class="pj__intro">
+          <div class="pj__badge">
+            <svg class="pj__badge-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 21s-6.716-4.35-9.428-8.34C.86 9.94 1.61 6.2 4.7 4.8c2.1-.95 4.36-.24 5.7 1.42a.7.7 0 0 0 1.1 0c1.34-1.66 3.6-2.37 5.7-1.42 3.09 1.4 3.84 5.14 2.13 7.86C18.716 16.65 12 21 12 21Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+              <path d="M6.5 12h2.2l1.3-2.6 1.8 4.6 1.3-2H17.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
             <span>STRUCTURED PATIENT PATHWAY</span>
           </div>
-          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-heading text-brand-dark tracking-tight">
-            Your journey to a <span class="bg-gradient-to-r from-brand-deep to-brand-sky bg-clip-text text-transparent">confident smile.</span>
+ 
+          <h2 class="pj__heading">
+            Your journey to a <span class="pj__heading-gradient">confident smile.</span>
           </h2>
-          <p class="text-base sm:text-lg text-brand-muted">Four transparent, guided steps designed to make your dental care straightforward and stress-free.</p>
+ 
+          <p class="pj__subtitle">
+            Four transparent, guided steps designed to make your dental care straightforward and stress-free.
+          </p>
         </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div class="bg-white rounded-card-lg border border-brand-border p-6 shadow-soft-md relative flex flex-col justify-between">
-            <div class="flex items-center justify-between mb-4">
-              <span class="text-3xl font-extrabold font-heading text-brand-sky">01</span>
-              <span class="px-2.5 py-1 bg-brand-surface text-brand-deep text-[11px] font-bold rounded-full">30 Mins</span>
+ 
+        <!-- Timeline -->
+        <ol class="pj__timeline" role="list">
+ 
+          <!-- Card 1 -->
+          <li class="pj__item">
+            <div class="pj__card" tabindex="0" aria-label="Step 1: Consultation, 30 minutes. Understand your concerns, aesthetic goals, and medical history in a relaxed, friendly setting.">
+              <div class="pj__icon" aria-hidden="true">
+                <svg class="pj__icon-ring" viewBox="0 0 110 110">
+                  <circle class="pj__icon-ring-track" cx="55" cy="55" r="49"/>
+                  <circle class="pj__icon-ring-fill" cx="55" cy="55" r="49"/>
+                </svg>
+                <div class="pj__icon-inner">
+                  <svg viewBox="0 0 24 24" fill="none" width="34" height="34">
+                    <path d="M8 8.5V6a4 4 0 1 1 8 0v2.5" stroke="#2563EB" stroke-width="1.6" stroke-linecap="round"/>
+                    <path d="M5 9h14v4.2C19 17.5 15.6 21 12 21s-7-3.5-7-7.8V9Z" stroke="#2563EB" stroke-width="1.6" stroke-linejoin="round"/>
+                    <circle cx="12" cy="13.5" r="1.4" stroke="#2563EB" stroke-width="1.5"/>
+                    <path d="M12 14.9V17" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                </div>
+              </div>
+ 
+              <div class="pj__card-body">
+                <div class="pj__card-top">
+                  <span class="pj__number">01</span>
+                  <span class="pj__badge-pill">30 Mins</span>
+                </div>
+                <h3 class="pj__title">Consultation</h3>
+                <span class="pj__divider"></span>
+                <p class="pj__desc">Understand your concerns, aesthetic goals, and medical history in a relaxed, friendly setting.</p>
+                <span class="pj__accent"></span>
+              </div>
             </div>
-            <h3 class="text-xl font-bold font-heading text-brand-dark mb-2">Consultation</h3>
-            <p class="text-xs sm:text-sm text-brand-muted leading-relaxed">Understand your concerns, aesthetic goals, and medical history in a relaxed, friendly setting.</p>
+          </li>
+ 
+          <li class="pj__connector" aria-hidden="true"><span class="pj__connector-line"></span><span class="pj__connector-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></li>
+ 
+          <!-- Card 2 -->
+          <li class="pj__item">
+            <div class="pj__card" tabindex="0" aria-label="Step 2: Clinical Evaluation, comprehensive. Assess teeth positioning, jaw relation, and facial aesthetics using modern digital diagnostic tools.">
+              <div class="pj__icon" aria-hidden="true">
+                <svg class="pj__icon-ring" viewBox="0 0 110 110">
+                  <circle class="pj__icon-ring-track" cx="55" cy="55" r="49"/>
+                  <circle class="pj__icon-ring-fill" cx="55" cy="55" r="49"/>
+                </svg>
+                <div class="pj__icon-inner">
+                  <svg viewBox="0 0 24 24" fill="none" width="34" height="34">
+                    <circle cx="11" cy="11" r="6.2" stroke="#2563EB" stroke-width="1.6"/>
+                    <path d="M15.7 15.7 20 20" stroke="#2563EB" stroke-width="1.6" stroke-linecap="round"/>
+                    <path d="M8.2 11h2m2.6 0h-1M11 8.2v1.4m0 2.8v1" stroke="#2563EB" stroke-width="1.3" stroke-linecap="round"/>
+                  </svg>
+                </div>
+              </div>
+ 
+              <div class="pj__card-body">
+                <div class="pj__card-top">
+                  <span class="pj__number">02</span>
+                  <span class="pj__badge-pill">Comprehensive</span>
+                </div>
+                <h3 class="pj__title">Clinical Evaluation</h3>
+                <span class="pj__divider"></span>
+                <p class="pj__desc">Assess teeth positioning, jaw relation, and facial aesthetics using modern digital diagnostic tools.</p>
+                <span class="pj__accent"></span>
+              </div>
+            </div>
+          </li>
+ 
+          <li class="pj__connector" aria-hidden="true"><span class="pj__connector-line"></span><span class="pj__connector-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></li>
+ 
+          <!-- Card 3 -->
+          <li class="pj__item">
+            <div class="pj__card" tabindex="0" aria-label="Step 3: Personalised Plan, clear roadmap. Review custom treatment options, expected timeline, transparent fees, and 3D simulation.">
+              <div class="pj__icon" aria-hidden="true">
+                <svg class="pj__icon-ring" viewBox="0 0 110 110">
+                  <circle class="pj__icon-ring-track" cx="55" cy="55" r="49"/>
+                  <circle class="pj__icon-ring-fill" cx="55" cy="55" r="49"/>
+                </svg>
+                <div class="pj__icon-inner">
+                  <svg viewBox="0 0 24 24" fill="none" width="34" height="34">
+                    <rect x="5" y="4.5" width="14" height="15" rx="2.2" stroke="#2563EB" stroke-width="1.6"/>
+                    <path d="M8.5 9h7M8.5 12.2h7M8.5 15.4h4.2" stroke="#2563EB" stroke-width="1.4" stroke-linecap="round"/>
+                  </svg>
+                </div>
+              </div>
+ 
+              <div class="pj__card-body">
+                <div class="pj__card-top">
+                  <span class="pj__number">03</span>
+                  <span class="pj__badge-pill">Clear Roadmap</span>
+                </div>
+                <h3 class="pj__title">Personalised Plan</h3>
+                <span class="pj__divider"></span>
+                <p class="pj__desc">Review custom treatment options, expected timeline, transparent fees, and 3D simulation.</p>
+                <span class="pj__accent"></span>
+              </div>
+            </div>
+          </li>
+ 
+          <li class="pj__connector" aria-hidden="true"><span class="pj__connector-line"></span><span class="pj__connector-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></li>
+ 
+          <!-- Card 4 -->
+          <li class="pj__item">
+            <div class="pj__card" tabindex="0" aria-label="Step 4: Guided Treatment, monitored progress. Move forward with structured care, regular monitoring visits, and dedicated post-care support.">
+              <div class="pj__icon" aria-hidden="true">
+                <svg class="pj__icon-ring" viewBox="0 0 110 110">
+                  <circle class="pj__icon-ring-track" cx="55" cy="55" r="49"/>
+                  <circle class="pj__icon-ring-fill" cx="55" cy="55" r="49"/>
+                </svg>
+                <div class="pj__icon-inner">
+                  <svg viewBox="0 0 24 24" fill="none" width="34" height="34">
+                    <path d="M12 21s-6.4-4-8.4-8c-1.5-3 .3-6.4 3.6-6.9 1.8-.3 3.5.5 4.5 1.9.8-1.4 2.6-2.2 4.4-1.9 3.3.5 5.1 3.9 3.6 6.9-2 4-8 8-8 8Z" stroke="#2563EB" stroke-width="1.6" stroke-linejoin="round"/>
+                    <path d="M9 12.5h1.6l1-1.8 1.4 3 .9-1.2H16" stroke="#2563EB" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+ 
+              <div class="pj__card-body">
+                <div class="pj__card-top">
+                  <span class="pj__number">04</span>
+                  <span class="pj__badge-pill">Monitored Progress</span>
+                </div>
+                <h3 class="pj__title">Guided Treatment</h3>
+                <span class="pj__divider"></span>
+                <p class="pj__desc">Move forward with structured care, regular monitoring visits, and dedicated post-care support.</p>
+                <span class="pj__accent"></span>
+              </div>
+            </div>
+          </li>
+ 
+        </ol>
+ 
+        <!-- Feature strip -->
+        <div class="pj__strip">
+          <div class="pj__feature">
+            <span class="pj__feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" width="22" height="22"><path d="M12 3 4 6.5v5c0 4.6 3.2 8.4 8 9.5 4.8-1.1 8-4.9 8-9.5v-5L12 3Z" stroke="#2563EB" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 12.3l2 2 4-4.2" stroke="#2563EB" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <h4 class="pj__feature-title">Transparent</h4>
+            <p class="pj__feature-desc">Clear information at every step.</p>
           </div>
-
-          <div class="bg-white rounded-card-lg border border-brand-border p-6 shadow-soft-md relative flex flex-col justify-between">
-            <div class="flex items-center justify-between mb-4">
-              <span class="text-3xl font-extrabold font-heading text-brand-sky">02</span>
-              <span class="px-2.5 py-1 bg-brand-surface text-brand-deep text-[11px] font-bold rounded-full">Comprehensive</span>
-            </div>
-            <h3 class="text-xl font-bold font-heading text-brand-dark mb-2">Clinical Evaluation</h3>
-            <p class="text-xs sm:text-sm text-brand-muted leading-relaxed">Assess teeth positioning, jaw relation, and facial aesthetics using modern digital diagnostic tools.</p>
+          <div class="pj__feature">
+            <span class="pj__feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" width="22" height="22"><path d="M12 21s-6.4-4-8.4-8c-1.5-3 .3-6.4 3.6-6.9 1.8-.3 3.5.5 4.5 1.9.8-1.4 2.6-2.2 4.4-1.9 3.3.5 5.1 3.9 3.6 6.9-2 4-8 8-8 8Z" stroke="#2563EB" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            </span>
+            <h4 class="pj__feature-title">Guided</h4>
+            <p class="pj__feature-desc">Expert guidance you can trust.</p>
           </div>
-
-          <div class="bg-white rounded-card-lg border border-brand-border p-6 shadow-soft-md relative flex flex-col justify-between">
-            <div class="flex items-center justify-between mb-4">
-              <span class="text-3xl font-extrabold font-heading text-brand-sky">03</span>
-              <span class="px-2.5 py-1 bg-brand-surface text-brand-deep text-[11px] font-bold rounded-full">Clear Roadmaps</span>
-            </div>
-            <h3 class="text-xl font-bold font-heading text-brand-dark mb-2">Personalised Plan</h3>
-            <p class="text-xs sm:text-sm text-brand-muted leading-relaxed">Review custom treatment options, expected timeline, transparent fees, and 3D simulation.</p>
+          <div class="pj__feature">
+            <span class="pj__feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" width="22" height="22"><circle cx="12" cy="12" r="8.5" stroke="#2563EB" stroke-width="1.6"/><path d="M9 12.3l2 2 4-4.2" stroke="#2563EB" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <h4 class="pj__feature-title">Comfort First</h4>
+            <p class="pj__feature-desc">A stress-free, patient-first approach.</p>
           </div>
-
-          <div class="bg-white rounded-card-lg border border-brand-border p-6 shadow-soft-md relative flex flex-col justify-between">
-            <div class="flex items-center justify-between mb-4">
-              <span class="text-3xl font-extrabold font-heading text-brand-sky">04</span>
-              <span class="px-2.5 py-1 bg-brand-surface text-brand-deep text-[11px] font-bold rounded-full">Monitored Progress</span>
-            </div>
-            <h3 class="text-xl font-bold font-heading text-brand-dark mb-2">Guided Treatment</h3>
-            <p class="text-xs sm:text-sm text-brand-muted leading-relaxed">Move forward with structured care, regular monitoring visits, and dedicated post-care support.</p>
+          <div class="pj__feature">
+            <span class="pj__feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" width="22" height="22"><path d="M4 19V9.5M9.5 19V5M15 19v-7M20 19V11" stroke="#2563EB" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </span>
+            <h4 class="pj__feature-title">Better Outcomes</h4>
+            <p class="pj__feature-desc">Planned care for lasting results.</p>
           </div>
         </div>
+ 
       </div>
     </section>
-
     <!-- 8. TECHNOLOGY SECTION — Technology Journey -->
     <section id="technology" class="tech-journey py-20 bg-white relative overflow-hidden">
       <div class="tech-journey__bg" aria-hidden="true"></div>
