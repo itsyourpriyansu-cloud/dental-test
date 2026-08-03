@@ -13,7 +13,9 @@
   
   <!-- Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
-  
+  <link rel="stylesheet" href="css/services-fix.css">
+  <link rel="stylesheet" href="css/tech-journey.css">
+
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
@@ -408,11 +410,11 @@
           </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          
+        <div class="services-grid">
+
           <!-- Orthodontics Card -->
-          <div class="bg-white rounded-card-lg border border-brand-border overflow-hidden shadow-soft-md hover:shadow-soft-lg transition-all group flex flex-col justify-between">
-            <div class="relative h-52 overflow-hidden">
+          <div class="service-card bg-white rounded-card-lg border border-brand-border overflow-hidden shadow-soft-md hover:shadow-soft-lg transition-all group">
+            <div class="service-card__image">
               <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80" alt="Orthodontics" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
               <div class="absolute top-4 left-4">
                 <span class="px-3 py-1 bg-white/90 backdrop-blur-md text-brand-deep text-xs font-bold rounded-full shadow-soft-sm">Specialized Care</span>
@@ -421,7 +423,7 @@
             <div class="p-6 space-y-3 flex-1 flex flex-col justify-between">
               <div>
                 <h3 class="text-xl font-bold font-heading text-brand-dark group-hover:text-brand-deep transition-colors">Orthodontics</h3>
-                <p class="text-xs sm:text-sm text-brand-muted mt-2 leading-relaxed">Fixed ceramic, self-ligating & metal braces for precise bite alignment and long-term dental health.</p>
+                <p class="service-card__desc text-xs sm:text-sm text-brand-muted mt-2 leading-relaxed">Fixed ceramic, self-ligating & metal braces for precise bite alignment and long-term dental health.</p>
               </div>
               <div class="pt-4 border-t border-brand-border flex items-center justify-between">
                 <button onclick="openServiceModal('orthodontics')" class="text-xs font-bold text-brand-deep hover:text-brand-sky transition-colors">View Details →</button>
@@ -431,8 +433,8 @@
           </div>
 
           <!-- Clear Aligners Card -->
-          <div class="bg-white rounded-card-lg border border-brand-border overflow-hidden shadow-soft-md hover:shadow-soft-lg transition-all group flex flex-col justify-between">
-            <div class="relative h-52 overflow-hidden">
+          <div class="service-card bg-white rounded-card-lg border border-brand-border overflow-hidden shadow-soft-md hover:shadow-soft-lg transition-all group">
+            <div class="service-card__image">
               <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=800&q=80" alt="Clear Aligners" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
               <div class="absolute top-4 left-4">
                 <span class="px-3 py-1 bg-white/90 backdrop-blur-md text-brand-deep text-xs font-bold rounded-full shadow-soft-sm">Invisible Braces</span>
@@ -441,7 +443,7 @@
             <div class="p-6 space-y-3 flex-1 flex flex-col justify-between">
               <div>
                 <h3 class="text-xl font-bold font-heading text-brand-dark group-hover:text-brand-deep transition-colors">Clear Aligners</h3>
-                <p class="text-xs sm:text-sm text-brand-muted mt-2 leading-relaxed">Discreet, custom-molded clear tray aligners that systematically move your teeth without metal wires.</p>
+                <p class="service-card__desc text-xs sm:text-sm text-brand-muted mt-2 leading-relaxed">Discreet, custom-molded clear tray aligners that systematically move your teeth without metal wires.</p>
               </div>
               <div class="pt-4 border-t border-brand-border flex items-center justify-between">
                 <button onclick="openServiceModal('aligners')" class="text-xs font-bold text-brand-deep hover:text-brand-sky transition-colors">View Details →</button>
@@ -451,8 +453,8 @@
           </div>
 
           <!-- Dental Implants Card -->
-          <div class="bg-white rounded-card-lg border border-brand-border overflow-hidden shadow-soft-md hover:shadow-soft-lg transition-all group flex flex-col justify-between">
-            <div class="relative h-52 overflow-hidden">
+          <div class="service-card bg-white rounded-card-lg border border-brand-border overflow-hidden shadow-soft-md hover:shadow-soft-lg transition-all group">
+            <div class="service-card__image">
               <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80" alt="Dental Implants" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
               <div class="absolute top-4 left-4">
                 <span class="px-3 py-1 bg-white/90 backdrop-blur-md text-brand-deep text-xs font-bold rounded-full shadow-soft-sm">Restorative</span>
@@ -461,7 +463,7 @@
             <div class="p-6 space-y-3 flex-1 flex flex-col justify-between">
               <div>
                 <h3 class="text-xl font-bold font-heading text-brand-dark group-hover:text-brand-deep transition-colors">Dental Implants</h3>
-                <p class="text-xs sm:text-sm text-brand-muted mt-2 leading-relaxed">Permanent titanium implant posts and natural-looking crowns to restore missing teeth seamlessly.</p>
+                <p class="service-card__desc text-xs sm:text-sm text-brand-muted mt-2 leading-relaxed">Permanent titanium implant posts and natural-looking crowns to restore missing teeth seamlessly.</p>
               </div>
               <div class="pt-4 border-t border-brand-border flex items-center justify-between">
                 <button onclick="openServiceModal('implants')" class="text-xs font-bold text-brand-deep hover:text-brand-sky transition-colors">View Details →</button>
@@ -471,8 +473,8 @@
           </div>
 
           <!-- Cosmetic Dentistry Card -->
-          <div class="bg-white rounded-card-lg border border-brand-border overflow-hidden shadow-soft-md hover:shadow-soft-lg transition-all group flex flex-col justify-between">
-            <div class="relative h-52 overflow-hidden">
+          <div class="service-card bg-white rounded-card-lg border border-brand-border overflow-hidden shadow-soft-md hover:shadow-soft-lg transition-all group">
+            <div class="service-card__image">
               <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" alt="Cosmetic Dentistry" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
               <div class="absolute top-4 left-4">
                 <span class="px-3 py-1 bg-white/90 backdrop-blur-md text-brand-deep text-xs font-bold rounded-full shadow-soft-sm">Smile Enhancement</span>
@@ -481,7 +483,7 @@
             <div class="p-6 space-y-3 flex-1 flex flex-col justify-between">
               <div>
                 <h3 class="text-xl font-bold font-heading text-brand-dark group-hover:text-brand-deep transition-colors">Cosmetic Dentistry</h3>
-                <p class="text-xs sm:text-sm text-brand-muted mt-2 leading-relaxed">Porcelain veneers, tooth whitening, composite bonding, and gum contouring for radiant confidence.</p>
+                <p class="service-card__desc text-xs sm:text-sm text-brand-muted mt-2 leading-relaxed">Porcelain veneers, tooth whitening, composite bonding, and gum contouring for radiant confidence.</p>
               </div>
               <div class="pt-4 border-t border-brand-border flex items-center justify-between">
                 <button onclick="openServiceModal('cosmetic')" class="text-xs font-bold text-brand-deep hover:text-brand-sky transition-colors">View Details →</button>
@@ -491,8 +493,8 @@
           </div>
 
           <!-- General Dentistry Card -->
-          <div class="bg-white rounded-card-lg border border-brand-border overflow-hidden shadow-soft-md hover:shadow-soft-lg transition-all group flex flex-col justify-between">
-            <div class="relative h-52 overflow-hidden">
+          <div class="service-card bg-white rounded-card-lg border border-brand-border overflow-hidden shadow-soft-md hover:shadow-soft-lg transition-all group">
+            <div class="service-card__image">
               <img src="https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&w=800&q=80" alt="General Dentistry" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
               <div class="absolute top-4 left-4">
                 <span class="px-3 py-1 bg-white/90 backdrop-blur-md text-brand-deep text-xs font-bold rounded-full shadow-soft-sm">Preventative & Core</span>
@@ -501,7 +503,7 @@
             <div class="p-6 space-y-3 flex-1 flex flex-col justify-between">
               <div>
                 <h3 class="text-xl font-bold font-heading text-brand-dark group-hover:text-brand-deep transition-colors">General Dentistry</h3>
-                <p class="text-xs sm:text-sm text-brand-muted mt-2 leading-relaxed">Preventative checkups, tooth-colored restorations, root canal therapy, and ultrasonic scaling.</p>
+                <p class="service-card__desc text-xs sm:text-sm text-brand-muted mt-2 leading-relaxed">Preventative checkups, tooth-colored restorations, root canal therapy, and ultrasonic scaling.</p>
               </div>
               <div class="pt-4 border-t border-brand-border flex items-center justify-between">
                 <button onclick="openServiceModal('general')" class="text-xs font-bold text-brand-deep hover:text-brand-sky transition-colors">View Details →</button>
@@ -511,8 +513,8 @@
           </div>
 
           <!-- Smile Makeover Card -->
-          <div class="bg-white rounded-card-lg border border-brand-border overflow-hidden shadow-soft-md hover:shadow-soft-lg transition-all group flex flex-col justify-between">
-            <div class="relative h-52 overflow-hidden">
+          <div class="service-card bg-white rounded-card-lg border border-brand-border overflow-hidden shadow-soft-md hover:shadow-soft-lg transition-all group">
+            <div class="service-card__image">
               <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80" alt="Smile Makeovers" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
               <div class="absolute top-4 left-4">
                 <span class="px-3 py-1 bg-white/90 backdrop-blur-md text-brand-deep text-xs font-bold rounded-full shadow-soft-sm">Complete Transformation</span>
@@ -521,7 +523,7 @@
             <div class="p-6 space-y-3 flex-1 flex flex-col justify-between">
               <div>
                 <h3 class="text-xl font-bold font-heading text-brand-dark group-hover:text-brand-deep transition-colors">Smile Makeovers</h3>
-                <p class="text-xs sm:text-sm text-brand-muted mt-2 leading-relaxed">Integrated multi-treatment plans combining orthodontics, crowns, and aesthetic enhancements.</p>
+                <p class="service-card__desc text-xs sm:text-sm text-brand-muted mt-2 leading-relaxed">Integrated multi-treatment plans combining orthodontics, crowns, and aesthetic enhancements.</p>
               </div>
               <div class="pt-4 border-t border-brand-border flex items-center justify-between">
                 <button onclick="openServiceModal('smile-makeover')" class="text-xs font-bold text-brand-deep hover:text-brand-sky transition-colors">View Details →</button>
@@ -645,51 +647,202 @@
       </div>
     </section>
 
-    <!-- 8. TECHNOLOGY SECTION -->
-    <section id="technology" class="py-20 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+    <!-- 8. TECHNOLOGY SECTION — Technology Journey -->
+    <section id="technology" class="tech-journey py-20 bg-white relative overflow-hidden">
+      <div class="tech-journey__bg" aria-hidden="true"></div>
+      <div class="tech-journey__grid" aria-hidden="true"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+        <!-- Section Intro -->
+        <div class="text-center max-w-3xl mx-auto mb-14 space-y-4">
           <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-surface border border-brand-border text-brand-deep text-xs font-bold uppercase tracking-wider">
             <i data-lucide="sparkles" class="w-3.5 h-3.5 text-brand-sky"></i>
-            <span>DIGITAL INFRASTRUCTURE</span>
+            <span>ADVANCED DENTAL TECHNOLOGY</span>
           </div>
           <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-heading text-brand-dark tracking-tight">
             Advanced dental technology <span class="bg-gradient-to-r from-brand-deep to-brand-sky bg-clip-text text-transparent">in action.</span>
           </h2>
-          <p class="text-base sm:text-lg text-brand-muted">Cutting-edge diagnostic equipment delivering greater accuracy, comfort, and predictability.</p>
+          <p class="text-base sm:text-lg text-brand-muted leading-relaxed">
+            Follow how digital technology guides every step of your smile transformation — from first scan to final result — with greater precision, comfort, and predictability.
+          </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div class="bg-brand-ice rounded-card-lg border border-brand-border p-6 shadow-soft-sm hover:shadow-soft-md transition-all">
-            <span class="px-3 py-1 bg-white text-brand-deep text-xs font-bold rounded-full border border-brand-border">3D Scanning</span>
-            <h3 class="text-xl font-bold font-heading text-brand-dark mt-4 mb-2">Intraoral Digital Scanning</h3>
-            <p class="text-xs sm:text-sm text-brand-muted leading-relaxed">Replaces messy traditional impression putty with fast, comfortable 3D optical scanning camera precision.</p>
+        <!-- Desktop / Tablet Interactive Journey -->
+        <div class="tj-wrap" data-tech-journey>
+
+          <!-- Timeline -->
+          <div class="tj-timeline-outer">
+            <div class="tj-timeline-scroller">
+              <div class="tj-timeline" role="tablist" aria-label="Technology journey steps">
+                <div class="tj-track"><div class="tj-track-fill" data-tj-fill></div></div>
+
+                <button type="button" class="tj-step is-active" data-tj-step="0" role="tab" aria-selected="true" aria-controls="tj-panel" id="tj-tab-0">
+                  <span class="tj-step__circle"><span class="tj-step__pulse"></span><i data-lucide="scan"></i></span>
+                  <span class="tj-step__num">01</span>
+                  <span class="tj-step__title">Digital Scan</span>
+                </button>
+
+                <button type="button" class="tj-step" data-tj-step="1" role="tab" aria-selected="false" aria-controls="tj-panel" id="tj-tab-1" tabindex="-1">
+                  <span class="tj-step__circle"><span class="tj-step__pulse"></span><i data-lucide="scan-face"></i></span>
+                  <span class="tj-step__num">02</span>
+                  <span class="tj-step__title">Smile Analysis</span>
+                </button>
+
+                <button type="button" class="tj-step" data-tj-step="2" role="tab" aria-selected="false" aria-controls="tj-panel" id="tj-tab-2" tabindex="-1">
+                  <span class="tj-step__circle"><span class="tj-step__pulse"></span><i data-lucide="clipboard-list"></i></span>
+                  <span class="tj-step__num">03</span>
+                  <span class="tj-step__title">Treatment Planning</span>
+                </button>
+
+                <button type="button" class="tj-step" data-tj-step="3" role="tab" aria-selected="false" aria-controls="tj-panel" id="tj-tab-3" tabindex="-1">
+                  <span class="tj-step__circle"><span class="tj-step__pulse"></span><i data-lucide="target"></i></span>
+                  <span class="tj-step__num">04</span>
+                  <span class="tj-step__title">Precision Treatment</span>
+                </button>
+
+                <button type="button" class="tj-step" data-tj-step="4" role="tab" aria-selected="false" aria-controls="tj-panel" id="tj-tab-4" tabindex="-1">
+                  <span class="tj-step__circle"><span class="tj-step__pulse"></span><i data-lucide="smile"></i></span>
+                  <span class="tj-step__num">05</span>
+                  <span class="tj-step__title">Perfect Smile</span>
+                </button>
+              </div>
+            </div>
           </div>
 
-          <div class="bg-brand-ice rounded-card-lg border border-brand-border p-6 shadow-soft-sm hover:shadow-soft-md transition-all">
-            <span class="px-3 py-1 bg-white text-brand-deep text-xs font-bold rounded-full border border-brand-border">Simulation</span>
-            <h3 class="text-xl font-bold font-heading text-brand-dark mt-4 mb-2">Digital Orthodontic Planning</h3>
-            <p class="text-xs sm:text-sm text-brand-muted leading-relaxed">Simulates exact tooth movements step-by-step before bracket placement or clear aligner fabrication.</p>
-          </div>
-
-          <div class="bg-brand-ice rounded-card-lg border border-brand-border p-6 shadow-soft-sm hover:shadow-soft-md transition-all">
-            <span class="px-3 py-1 bg-white text-brand-deep text-xs font-bold rounded-full border border-brand-border">Aligner Tech</span>
-            <h3 class="text-xl font-bold font-heading text-brand-dark mt-4 mb-2">Clear Aligner Workflow</h3>
-            <p class="text-xs sm:text-sm text-brand-muted leading-relaxed">End-to-end digital clear tray design for optimized force delivery and comfortable tooth movement.</p>
-          </div>
-
-          <div class="bg-brand-ice rounded-card-lg border border-brand-border p-6 shadow-soft-sm hover:shadow-soft-md transition-all">
-            <span class="px-3 py-1 bg-white text-brand-deep text-xs font-bold rounded-full border border-brand-border">Aesthetics</span>
-            <h3 class="text-xl font-bold font-heading text-brand-dark mt-4 mb-2">Digital Smile Assessment</h3>
-            <p class="text-xs sm:text-sm text-brand-muted leading-relaxed">Compares facial symmetry and smile dynamics to design teeth shape and proportions that match your smile line.</p>
-          </div>
-
-          <div class="bg-brand-ice rounded-card-lg border border-brand-border p-6 shadow-soft-sm hover:shadow-soft-md transition-all lg:col-span-2">
-            <span class="px-3 py-1 bg-white text-brand-deep text-xs font-bold rounded-full border border-brand-border">Gentle Mechanics</span>
-            <h3 class="text-xl font-bold font-heading text-brand-dark mt-4 mb-2">Advanced Orthodontic Techniques</h3>
-            <p class="text-xs sm:text-sm text-brand-muted leading-relaxed">Uses low-friction bracket wires and gentle arch mechanics for faster tooth positioning with minimal soreness.</p>
+          <!-- Dynamic Content Panel (single panel, content swapped by JS) -->
+          <div class="tj-panel">
+            <div class="tj-panel-inner" id="tj-panel" role="tabpanel" aria-labelledby="tj-tab-0" data-tj-panel>
+              <div class="tj-media">
+                <span class="tj-media__badge" data-tj-badge>3D Scanner</span>
+                <img data-tj-image src="https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&w=1200&q=80" alt="Modern intraoral digital scanner used for a comfortable, mold-free dental scan" fetchpriority="high">
+              </div>
+              <div class="tj-text">
+                <span class="tj-eyebrow" data-tj-eyebrow>Step 01</span>
+                <h3 class="tj-title" data-tj-title>Digital Scan</h3>
+                <p class="tj-desc" data-tj-desc>High-resolution digital scanning captures every detail of your smile with exceptional comfort and precision—eliminating the need for traditional impressions.</p>
+                <ul class="tj-highlights" data-tj-highlights>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>High Precision</li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Comfortable</li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Fast</li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>No Traditional Molds</li>
+                </ul>
+                <button type="button" class="tj-cta px-6 py-3 bg-brand-deep text-white font-semibold rounded-button hover:bg-opacity-95 shadow-soft-sm hover:shadow-soft-md transition-all flex items-center gap-2 text-sm group" data-tj-cta>
+                  <span data-tj-cta-label>Explore Scanning Technology</span>
+                  <i data-lucide="arrow-right" class="w-4 h-4 text-brand-sky group-hover:translate-x-1 transition-transform"></i>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
+
+        <!-- Mobile Vertical Journey -->
+        <div class="tj-mobile">
+          <div class="tj-mobile-list">
+
+            <article class="tj-mobile-step">
+              <span class="tj-mobile-step__marker">01</span>
+              <span class="tj-mobile-step__eyebrow">Digital Scan</span>
+              <h3 class="tj-mobile-step__title">Digital Scan</h3>
+              <div class="tj-mobile-step__media">
+                <img src="https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&w=900&q=80" alt="Modern intraoral digital scanner used for a comfortable, mold-free dental scan">
+              </div>
+              <p class="tj-mobile-step__desc">High-resolution digital scanning captures every detail of your smile with exceptional comfort and precision—eliminating the need for traditional impressions.</p>
+              <ul class="tj-mobile-step__highlights">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>High Precision</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Comfortable</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Fast</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>No Traditional Molds</li>
+              </ul>
+              <button onclick="openBookingModal('Digital Scan')" class="px-5 py-2.5 bg-brand-deep text-white text-xs font-bold rounded-button shadow-soft-sm flex items-center gap-2">
+                Explore Scanning Technology
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-brand-sky"></i>
+              </button>
+            </article>
+
+            <article class="tj-mobile-step">
+              <span class="tj-mobile-step__marker">02</span>
+              <span class="tj-mobile-step__eyebrow">Smile Analysis</span>
+              <h3 class="tj-mobile-step__title">Smile Analysis</h3>
+              <div class="tj-mobile-step__media">
+                <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=900&q=80" alt="Digital smile design and simulation session with a patient" loading="lazy">
+              </div>
+              <p class="tj-mobile-step__desc">We map your facial proportions, lip line, and bite relationship, then simulate your new smile digitally—so you can preview realistic results before treatment begins.</p>
+              <ul class="tj-mobile-step__highlights">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Facial Analysis</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Bite Mapping</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Smile Preview</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>AI Simulation</li>
+              </ul>
+              <button onclick="openBookingModal('Smile Analysis')" class="px-5 py-2.5 bg-brand-deep text-white text-xs font-bold rounded-button shadow-soft-sm flex items-center gap-2">
+                See Smile Simulation
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-brand-sky"></i>
+              </button>
+            </article>
+
+            <article class="tj-mobile-step">
+              <span class="tj-mobile-step__marker">03</span>
+              <span class="tj-mobile-step__eyebrow">Treatment Planning</span>
+              <h3 class="tj-mobile-step__title">Treatment Planning</h3>
+              <div class="tj-mobile-step__media">
+                <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=900&q=80" alt="Dentist reviewing a digital orthodontic treatment plan" loading="lazy">
+              </div>
+              <p class="tj-mobile-step__desc">Dr. Prudhvi reviews your 3D scan and simulation to build a personalised, sequenced treatment plan with predictable timelines and transparent milestones.</p>
+              <ul class="tj-mobile-step__highlights">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>AI Planning</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Custom Treatment</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Predictable Results</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Precision Workflow</li>
+              </ul>
+              <button onclick="openBookingModal('Treatment Planning')" class="px-5 py-2.5 bg-brand-deep text-white text-xs font-bold rounded-button shadow-soft-sm flex items-center gap-2">
+                View Treatment Planning
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-brand-sky"></i>
+              </button>
+            </article>
+
+            <article class="tj-mobile-step">
+              <span class="tj-mobile-step__marker">04</span>
+              <span class="tj-mobile-step__eyebrow">Precision Treatment</span>
+              <h3 class="tj-mobile-step__title">Precision Treatment</h3>
+              <div class="tj-mobile-step__media">
+                <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=900&q=80" alt="Clear aligners and precision orthodontic appliances" loading="lazy">
+              </div>
+              <p class="tj-mobile-step__desc">Guided by your digital plan, treatment is delivered through gentle, low-friction mechanics and precise appliance fabrication for faster, more comfortable movement.</p>
+              <ul class="tj-mobile-step__highlights">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Comfortable</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Less Pain</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Faster Healing</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Precise Movement</li>
+              </ul>
+              <button onclick="openBookingModal('Precision Treatment')" class="px-5 py-2.5 bg-brand-deep text-white text-xs font-bold rounded-button shadow-soft-sm flex items-center gap-2">
+                Explore Treatment Options
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-brand-sky"></i>
+              </button>
+            </article>
+
+            <article class="tj-mobile-step">
+              <span class="tj-mobile-step__marker">05</span>
+              <span class="tj-mobile-step__eyebrow">Perfect Smile</span>
+              <h3 class="tj-mobile-step__title">Perfect Smile</h3>
+              <div class="tj-mobile-step__media">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=900&q=80" alt="Happy patient with a confident, healthy smile" loading="lazy">
+              </div>
+              <p class="tj-mobile-step__desc">Every stage is monitored against your original simulation, so the final result matches what was planned—a healthy, confident, long-lasting smile.</p>
+              <ul class="tj-mobile-step__highlights">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Healthy Smile</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Better Confidence</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Long-term Results</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Beautiful Finish</li>
+              </ul>
+              <button onclick="openBookingModal('Perfect Smile')" class="px-5 py-2.5 bg-brand-deep text-white text-xs font-bold rounded-button shadow-soft-sm flex items-center gap-2">
+                Book Consultation
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-brand-sky"></i>
+              </button>
+            </article>
+
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -1085,9 +1238,9 @@
 
   <!-- ==================== SERVICE DETAIL MODAL ==================== -->
   <div id="service-modal" class="hidden fixed inset-0 z-[100] items-center justify-center p-4 bg-brand-dark/60 backdrop-blur-md">
-    <div class="relative w-full max-w-2xl bg-white rounded-card-lg shadow-floating border border-brand-border overflow-hidden max-h-[90vh] flex flex-col">
-      
-      <div class="bg-brand-surface border-b border-brand-border p-6 flex items-center justify-between shrink-0">
+    <div class="service-modal__panel relative w-full max-w-2xl bg-white rounded-card-lg shadow-floating border border-brand-border overflow-hidden flex flex-col">
+
+      <div class="service-modal__header bg-brand-surface border-b border-brand-border flex items-center justify-between shrink-0">
         <div>
           <span id="service-modal-category" class="px-2.5 py-0.5 bg-brand-deep text-white text-[11px] font-bold rounded-full uppercase tracking-wider">Category</span>
           <h3 id="service-modal-title" class="text-2xl font-bold font-heading text-brand-dark mt-1">Service Title</h3>
@@ -1097,19 +1250,19 @@
         </button>
       </div>
 
-      <div class="p-6 overflow-y-auto space-y-6">
-        <img id="service-modal-img" src="" alt="Service" class="w-full h-56 object-cover rounded-xl border border-brand-border">
+      <div class="service-modal__body overflow-y-auto">
+        <img id="service-modal-img" src="" alt="Service" class="service-modal__image w-full object-cover rounded-xl border border-brand-border">
         <div>
           <h4 class="text-sm font-bold uppercase tracking-wider text-brand-muted mb-2">Overview</h4>
           <p id="service-modal-desc" class="text-sm text-brand-dark leading-relaxed"></p>
         </div>
         <div>
           <h4 class="text-sm font-bold uppercase tracking-wider text-brand-muted mb-2">Treatment Highlights</h4>
-          <ul id="service-modal-highlights" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></ul>
+          <ul id="service-modal-highlights" class="service-modal__highlights"></ul>
         </div>
       </div>
 
-      <div class="bg-brand-ice border-t border-brand-border p-4 sm:p-6 flex items-center justify-between shrink-0">
+      <div class="service-modal__footer bg-brand-ice border-t border-brand-border flex items-center justify-between shrink-0">
         <button onclick="closeServiceModal()" class="px-5 py-2.5 text-xs font-semibold text-brand-muted hover:text-brand-dark">Close</button>
         <button onclick="bookCurrentModalService()" class="px-6 py-2.5 bg-brand-deep text-white text-xs font-bold rounded-button hover:bg-opacity-95 shadow-soft-sm">Book Consultation for This Treatment</button>
       </div>
@@ -1122,5 +1275,6 @@
   </script>
   <!-- Main Script -->
   <script src="js/main.js"></script>
+  <script src="js/tech-journey.js"></script>
 </body>
 </html>
