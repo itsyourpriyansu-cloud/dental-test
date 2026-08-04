@@ -1,0 +1,492 @@
+/* ==========================================================================
+   ABOUT SECTION REDESIGN — Clinical Editorial Layout for The Braces & Crowns
+   ========================================================================== */
+
+.about-section {
+  position: relative;
+  min-height: 100vh;
+  padding: clamp(32px, 5vh, 60px) 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  background:
+    radial-gradient(
+      circle at 5% 45%,
+      rgba(72, 185, 232, 0.08),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 92% 20%,
+      rgba(23, 79, 159, 0.05),
+      transparent 28%
+    ),
+    #ffffff;
+  overflow: hidden;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.02fr) minmax(400px, 0.98fr);
+  gap: clamp(32px, 4vw, 64px);
+  align-items: center;
+  width: 100%;
+}
+
+/* ---------------- Left Editorial Image Panel ---------------- */
+.about-image-panel {
+  position: relative;
+  height: 100%;
+  min-height: 480px;
+  max-height: 540px;
+  overflow: hidden;
+  border-radius: 28px;
+  background: #eef4fa;
+  border: 1px solid rgba(23, 79, 159, 0.08);
+  box-shadow: 0 24px 60px rgba(26, 61, 108, 0.1);
+}
+
+.about-image-panel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.about-image-panel:hover img {
+  transform: scale(1.025);
+}
+
+.about-image-panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(4, 18, 42, 0.72) 0%,
+    rgba(4, 18, 42, 0.15) 35%,
+    transparent 62%
+  );
+  pointer-events: none;
+}
+
+/* Location Badge */
+.about-location-badge {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 15px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  box-shadow: 0 10px 25px rgba(12, 36, 70, 0.1);
+}
+
+.about-location-badge__icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: rgba(23, 79, 159, 0.1);
+  color: #174f9f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.about-location-badge__icon i,
+.about-location-badge__icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.about-location-badge__title {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: #09162d;
+  line-height: 1.2;
+}
+
+.about-location-badge__sub {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  color: #56677e;
+  line-height: 1.2;
+  margin-top: 1px;
+}
+
+/* Doctor Identity Overlay */
+.doctor-overlay {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  z-index: 10;
+  padding: 16px 20px;
+  border-radius: 18px;
+  color: #ffffff;
+  background: linear-gradient(
+    135deg,
+    rgba(8, 28, 58, 0.82),
+    rgba(17, 79, 159, 0.65)
+  );
+  backdrop-filter: blur(16px) saturate(130%);
+  -webkit-backdrop-filter: blur(16px) saturate(130%);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 16px 40px rgba(3, 18, 42, 0.24);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.doctor-overlay__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.doctor-overlay__name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.25;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.doctor-overlay__title {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.88);
+  margin: 2px 0 0 0;
+}
+
+.doctor-overlay__exp-badge {
+  font-size: 11px;
+  font-weight: 700;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 3px 10px;
+  border-radius: 9999px;
+  white-space: nowrap;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  flex-shrink: 0;
+}
+
+.doctor-overlay__micro {
+  font-size: 11.5px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.78);
+  margin: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  padding-top: 6px;
+}
+
+/* ---------------- Right Content Column ---------------- */
+.about-content-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Eyebrow */
+.about-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #174f9f;
+  background: rgba(72, 185, 232, 0.10);
+  border: 1px solid rgba(72, 185, 232, 0.22);
+  border-radius: 9999px;
+  padding: 5px 12px;
+  width: fit-content;
+  margin-bottom: 14px;
+}
+
+.about-eyebrow i,
+.about-eyebrow svg {
+  width: 14px;
+  height: 14px;
+  color: #174f9f;
+}
+
+/* Heading */
+.about-heading {
+  font-size: 48px;
+  font-weight: 760;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+  color: #09162d;
+  max-width: 720px;
+  margin: 0 0 20px 0;
+}
+
+.about-heading .heading-serif {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: #174f9f;
+  font-size: 1.08em;
+}
+
+/* Stacked Information Cards */
+.about-value-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.about-value-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 14px;
+  padding: 14px 18px;
+  border-radius: 18px;
+  background: rgba(248, 251, 255, 0.96);
+  border: 1px solid rgba(23, 79, 159, 0.09);
+  box-shadow: 0 8px 24px rgba(23, 61, 108, 0.05);
+  transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 300ms cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 300ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.about-value-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(23, 79, 159, 0.22);
+  box-shadow: 0 14px 32px rgba(23, 61, 108, 0.08);
+}
+
+.about-value-card__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: rgba(72, 185, 232, 0.11);
+  color: #174f9f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1),
+              background-color 300ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.about-value-card__icon i,
+.about-value-card__icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.about-value-card:hover .about-value-card__icon {
+  transform: translateY(-1px);
+  background: rgba(72, 185, 232, 0.2);
+}
+
+.about-value-card__title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #101c33;
+  letter-spacing: -0.015em;
+  margin: 0 0 2px 0;
+}
+
+.about-value-card__desc {
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: #617087;
+  margin: 0;
+}
+
+/* CTA Group */
+.about-cta-group {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.about-primary-cta {
+  height: 50px;
+  padding: 0 8px 0 24px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.about-doctor-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #174f9f;
+  text-decoration: none;
+  transition: color 200ms ease, gap 200ms ease;
+  padding: 6px 4px;
+}
+
+.about-doctor-link:hover {
+  color: #103d7d;
+  gap: 8px;
+}
+
+.about-doctor-link i,
+.about-doctor-link svg {
+  width: 15px;
+  height: 15px;
+}
+
+/* ---------------- Responsive Styling ---------------- */
+
+/* Tablet (between 960px and 1199px) */
+@media (max-width: 1199px) and (min-width: 960px) {
+  .about-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .about-image-panel {
+    min-height: 440px;
+    max-height: 480px;
+  }
+  .about-heading {
+    font-size: 40px;
+  }
+  .about-value-card {
+    padding: 12px 16px;
+    gap: 12px;
+  }
+}
+
+/* Below 960px: Stack image and content */
+@media (max-width: 959px) {
+  .about-section {
+    min-height: auto;
+    padding: 64px 0;
+  }
+  .about-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .about-content-col {
+    display: contents;
+  }
+  .about-content-intro {
+    order: 1;
+  }
+  .about-image-panel {
+    order: 2;
+    min-height: 440px;
+    max-height: 480px;
+  }
+  .about-content-body {
+    order: 3;
+  }
+}
+
+/* Mobile (< 700px) */
+@media (max-width: 699px) {
+  .about-section {
+    padding: 56px 0;
+  }
+  .about-heading {
+    font-size: clamp(30px, 7.5vw, 40px);
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  .about-image-panel {
+    min-height: 400px;
+    height: 400px;
+    border-radius: 22px;
+  }
+  .about-location-badge {
+    top: 14px;
+    left: 14px;
+    padding: 8px 12px;
+    border-radius: 14px;
+  }
+  .about-location-badge__icon {
+    width: 28px;
+    height: 28px;
+  }
+  .about-location-badge__title {
+    font-size: 12px;
+  }
+  .about-location-badge__sub {
+    font-size: 10.5px;
+  }
+  .doctor-overlay {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    padding: 14px 16px;
+    border-radius: 16px;
+  }
+  .doctor-overlay__name {
+    font-size: 15px;
+  }
+  .doctor-overlay__title {
+    font-size: 11.5px;
+  }
+  .doctor-overlay__exp-badge {
+    font-size: 10.5px;
+    padding: 2px 8px;
+  }
+  .doctor-overlay__micro {
+    font-size: 11px;
+  }
+  .about-value-card {
+    padding: 14px 16px;
+    border-radius: 16px;
+    gap: 12px;
+  }
+  .about-value-card__icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+  }
+  .about-value-card__title {
+    font-size: 15.5px;
+  }
+  .about-value-card__desc {
+    font-size: 13px;
+  }
+  .about-cta-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+  .about-primary-cta {
+    width: 100%;
+    justify-content: center;
+  }
+  .about-doctor-link {
+    justify-content: center;
+  }
+}
+
+/* Motion & Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .about-image-panel img,
+  .about-value-card,
+  .about-value-card__icon,
+  .about-doctor-link {
+    transition: none !important;
+    transform: none !important;
+  }
+}

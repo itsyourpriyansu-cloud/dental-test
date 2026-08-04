@@ -24,6 +24,7 @@
   <link rel="stylesheet" href="css/button-system.css">
   <link rel="stylesheet" href="css/floating-buttons.css">
   <link rel="stylesheet" href="css/testimonials-redesign.css">
+  <link rel="stylesheet" href="css/about-redesign.css">
 
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
@@ -319,62 +320,108 @@
     </section>
 
     <!-- 4. ABOUT SECTION -->
-    <section id="about" class="py-20 bg-white relative overflow-hidden">
+    <section id="about" class="about-section">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          <div class="lg:col-span-6 relative" data-reveal="left">
-            <div class="relative mx-auto max-w-md lg:max-w-none">
-              <div class="rounded-card-lg overflow-hidden border border-brand-border shadow-soft-lg bg-white relative">
-                <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80" alt="Patient Consultation at THE BRACES & CROWNS" class="w-full h-[360px] sm:h-[420px] object-cover">
+        <div class="about-grid">
+
+          <!-- Left Editorial Image Panel -->
+          <div class="about-image-panel" data-reveal="left">
+            <!-- Location Badge -->
+            <div class="about-location-badge">
+              <div class="about-location-badge__icon">
+                <i data-lucide="shield-check"></i>
               </div>
-              <div class="absolute -bottom-8 -right-4 sm:-right-8 w-2/3 rounded-card border-4 border-white shadow-floating overflow-hidden bg-white hidden sm:block">
-                <img src="https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&w=600&q=80" alt="Modern Dental Clinic Operatory" class="w-full h-44 object-cover">
+              <div class="about-location-badge__text">
+                <span class="about-location-badge__title">Ameerpet Clinic</span>
+                <span class="about-location-badge__sub">Opp. Metro Pillar 1042</span>
               </div>
-              <div class="absolute top-6 -left-4 sm:-left-6 glass-card p-4 rounded-2xl shadow-floating border border-brand-border flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-brand-deep text-white flex items-center justify-center font-bold">
-                  <i data-lucide="shield-check" class="w-5 h-5 text-brand-sky"></i>
-                </div>
+            </div>
+
+            <!-- Main Consultation Image -->
+            <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1200&q=80" alt="Dr. S. Prudhvi Das Reddy examining dental scans at The Braces & Crowns">
+
+            <!-- Doctor Identity Overlay -->
+            <div class="doctor-overlay">
+              <div class="doctor-overlay__header">
                 <div>
-                  <h5 class="text-xs font-bold text-brand-dark">Ameerpet Clinic</h5>
-                  <p class="text-[11px] text-brand-muted">Opp Metro Pillar 1042</p>
+                  <h3 class="doctor-overlay__name">Dr. S. Prudhvi Das Reddy, MDS.</h3>
+                  <p class="doctor-overlay__title">Orthodontic &amp; Dentofacial Specialist</p>
                 </div>
+                <span class="doctor-overlay__exp-badge">12+ Years</span>
               </div>
+              <p class="doctor-overlay__micro">Personalised care from diagnosis to long-term results.</p>
             </div>
           </div>
 
-          <div class="lg:col-span-6 space-y-6 text-left" data-reveal="right">
-            <h2 class="text-3xl sm:text-4xl xl:text-5xl font-extrabold font-heading text-brand-dark tracking-tight leading-tight">
-              Where clinical excellence meets a<br>
-              <em class="heading-serif">patient-first experience.</em>
-            </h2>
-            <p class="text-base sm:text-lg text-brand-muted leading-relaxed">
-              At <strong class="text-brand-dark">THE BRACES & CROWNS</strong>, every smile is approached with careful diagnosis, personalised planning, and long-term oral health in mind. We combine modern dentistry with a supportive treatment experience.
-            </p>
-            <div class="space-y-3 pt-2">
-              <div class="flex items-start gap-3 text-sm text-brand-dark">
-                <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-sky shrink-0 mt-0.5"></i>
-                <span><strong>Evidence-based orthodontics:</strong> Guided by specialist Dr. S. Prudhvi Das Reddy, MDS.</span>
+          <!-- Right Content Column -->
+          <div class="about-content-col" data-reveal="right">
+            
+            <!-- Header & Intro Copy -->
+            <div class="about-content-intro">
+              <!-- Section Heading -->
+              <h2 class="about-heading">
+                Specialist care for<br>
+                <em class="heading-serif">healthier, confident smiles.</em>
+              </h2>
+            </div>
+
+            <!-- Information Cards & CTA -->
+            <div class="about-content-body">
+              <!-- Three Stacked Information Cards -->
+              <div class="about-value-cards" data-reveal-group>
+                
+                <!-- Card 1: Specialist-led care -->
+                <div class="about-value-card" data-reveal="up">
+                  <div class="about-value-card__icon">
+                    <i data-lucide="shield-check"></i>
+                  </div>
+                  <div class="about-value-card__body">
+                    <h3 class="about-value-card__title">Specialist-led care</h3>
+                    <p class="about-value-card__desc">Every treatment plan is guided by Dr. S. Prudhvi Das Reddy, MDS., using careful diagnosis and evidence-based orthodontic care.</p>
+                  </div>
+                </div>
+
+                <!-- Card 2: Complete smile care -->
+                <div class="about-value-card" data-reveal="up">
+                  <div class="about-value-card__icon">
+                    <i data-lucide="scan-line"></i>
+                  </div>
+                  <div class="about-value-card__body">
+                    <h3 class="about-value-card__title">Complete smile care</h3>
+                    <p class="about-value-card__desc">Braces, clear aligners, ceramic crowns, implants, and supporting dental care—all planned around your needs.</p>
+                  </div>
+                </div>
+
+                <!-- Card 3: A clear treatment journey -->
+                <div class="about-value-card" data-reveal="up">
+                  <div class="about-value-card__icon">
+                    <i data-lucide="route"></i>
+                  </div>
+                  <div class="about-value-card__body">
+                    <h3 class="about-value-card__title">A clear treatment journey</h3>
+                    <p class="about-value-card__desc">Understand your options, treatment stages, expected timelines, and costs before care begins.</p>
+                  </div>
+                </div>
+
               </div>
-              <div class="flex items-start gap-3 text-sm text-brand-dark">
-                <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-sky shrink-0 mt-0.5"></i>
-                <span><strong>Comprehensive dental care:</strong> From clear aligners and braces to ceramic crowns and implants.</span>
-              </div>
-              <div class="flex items-start gap-3 text-sm text-brand-dark">
-                <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-sky shrink-0 mt-0.5"></i>
-                <span><strong>Transparent treatment pathways:</strong> Clear explanations of procedures, schedules, and costs upfront.</span>
+
+              <!-- CTA Group -->
+              <div class="about-cta-group" data-reveal="up">
+                <button onclick="openBookingModal()" class="hnav__cta-pill about-primary-cta">
+                  <span>Book Consultation</span>
+                  <span class="hnav__cta-circle">
+                    <i data-lucide="arrow-up-right"></i>
+                  </span>
+                </button>
+                <a href="#doctor" class="about-doctor-link">
+                  <span>Meet Dr. Prudhvi</span>
+                  <i data-lucide="arrow-right"></i>
+                </a>
               </div>
             </div>
-            <div class="flex flex-wrap items-center gap-4 pt-4">
-              <button onclick="openBookingModal()" class="btn btn-md btn-primary">
-                <span>Book Consultation</span>
-                <span class="btn-arrow"><i data-lucide="arrow-up-right" class="btn-arrow-icon"></i></span>
-              </button>
-              <a href="#doctor" class="btn btn-md btn-secondary">
-                <span>Learn More </span>
-                <span class="btn-arrow"><i data-lucide="arrow-up-right" class="btn-arrow-icon"></i></span>
-              </a>
-            </div>
+
           </div>
+
         </div>
       </div>
     </section>
