@@ -137,7 +137,14 @@ document.addEventListener('DOMContentLoaded', () => {
   function startAutoplay() {
     stopAutoplay();
     if (prefersReducedMotion) return;
-    autoplayTimer = window.setInterval(() => goTo(active + 1), 6000);
+    // Autoplay only drives 1 -> 5, never wraps back to 1 — once the last
+    // stage is reached it freezes there until the user scrolls back up
+    // (which re-engages the pin and explicitly resets it, see engagePin).
+    if (active >= steps.length - 1) return;
+    autoplayTimer = window.setInterval(() => {
+      if (active >= steps.length - 1) { stopAutoplay(); return; }
+      goTo(active + 1);
+    }, 6000);
   }
   function scheduleResume() {
     if (resumeTimer) window.clearTimeout(resumeTimer);
@@ -213,21 +220,29 @@ document.addEventListener('DOMContentLoaded', () => {
     mobileSteps.forEach((el) => mio.observe(el));
   }
 
-  // Scroll-driven pinned progression — temporarily "locks" the section while
-  // wheel/touch input steps through stages 1-5, releasing to normal page
-  // scroll once either end of the sequence is reached. Skipped entirely for
-  // prefers-reduced-motion, matching the rest of this component's motion gating.
+  // Scroll-pinned progression — freezes page scroll (via Lenis, the site's
+  // smooth-scroll engine, plus a wheel/touch capture fallback) once the top
+  // of the section reaches the top of the viewport, and lets wheel/touch
+  // input step through stages 1-5 one at a time. Released back to normal
+  // scroll only once Stage 5 (scrolling down) or Stage 1 (scrolling up,
+  // re-entering from below) is reached. Desktop/tablet only — mobile keeps
+  // plain scrolling — and skipped entirely for prefers-reduced-motion.
   if (!prefersReducedMotion) {
     const pinSection = wrap.closest('section') || wrap;
+    // Only the section intro (badge + heading + description) and the
+    // timeline/progress bar are pinned — the content card (image + text)
+    // stays in normal flow and simply keeps swapping content per stage.
+    const introEl = wrap.previousElementSibling;
+    const timelineOuter = wrap.querySelector('.tj-timeline-outer');
     const WHEEL_THRESHOLD = 45;
     const TOUCH_THRESHOLD = 40;
     const TRANSITION_LOCK_MS = 650;
-    const REENGAGE_LOCK_MS = 700;
+    const REENGAGE_LOCK_MS = 650;
 
     let pinned = false;
+    let nearSection = false;
     let releasedUntil = 0;
     let isTransitioning = false;
-    let lastRectTop = null;
     let wheelAccum = 0;
     let touchStartY = null;
 
@@ -287,10 +302,29 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
+    function pinHeader() {
+      if (introEl) {
+        introEl.classList.add('is-pinned');
+        introEl.style.top = '0px';
+      }
+      if (timelineOuter) {
+        timelineOuter.classList.add('is-pinned');
+        // Stack directly beneath the sticky intro instead of overlapping it.
+        timelineOuter.style.top = (introEl ? introEl.getBoundingClientRect().height : 0) + 'px';
+      }
+    }
+
+    function unpinHeader() {
+      if (introEl) { introEl.classList.remove('is-pinned'); introEl.style.top = ''; }
+      if (timelineOuter) { timelineOuter.classList.remove('is-pinned'); timelineOuter.style.top = ''; }
+    }
+
     function engagePin(fromBelow) {
       if (pinned || !desktopMedia.matches) return;
       pinned = true;
+      pinHeader();
       goTo(fromBelow ? steps.length - 1 : 0, false);
+      if (typeof lenis !== 'undefined' && lenis) lenis.stop();
       window.addEventListener('wheel', onWheel, { passive: false });
       window.addEventListener('touchstart', onTouchStart, { passive: true });
       window.addEventListener('touchmove', onTouchMove, { passive: false });
@@ -300,32 +334,52 @@ document.addEventListener('DOMContentLoaded', () => {
     function releasePin() {
       if (!pinned) return;
       pinned = false;
+      unpinHeader();
       releasedUntil = Date.now() + REENGAGE_LOCK_MS;
+      if (typeof lenis !== 'undefined' && lenis) lenis.start();
       window.removeEventListener('wheel', onWheel, { passive: false });
       window.removeEventListener('touchstart', onTouchStart, { passive: true });
       window.removeEventListener('touchmove', onTouchMove, { passive: false });
       window.removeEventListener('touchend', onTouchEnd, { passive: true });
     }
 
-    const pinIo = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        const top = entry.boundingClientRect.top;
-        const scrollingDown = lastRectTop === null ? true : top < lastRectTop;
-        lastRectTop = top;
+    // Fires once per scroll frame with a direction, so we can catch the exact
+    // moment the section's leading edge (top when heading down, bottom when
+    // heading up) reaches its matching viewport edge — same trigger point
+    // native `position: sticky` uses, just computed ourselves since the
+    // multi-stage hold can't be expressed as a fixed sticky scroll distance.
+    function checkEngage(direction) {
+      if (pinned || !nearSection || !desktopMedia.matches || !direction) return;
+      if (Date.now() < releasedUntil) return;
+      const rect = pinSection.getBoundingClientRect();
+      if (direction > 0 && rect.top <= 0) {
+        engagePin(false);
+      } else if (direction < 0 && rect.bottom <= window.innerHeight) {
+        engagePin(true);
+      }
+    }
 
-        if (!desktopMedia.matches) {
-          if (pinned) releasePin();
-          return;
-        }
+    const nearIo = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => { nearSection = entry.isIntersecting; });
+    }, { rootMargin: '50% 0px 50% 0px', threshold: 0 });
+    nearIo.observe(pinSection);
 
-        if (entry.isIntersecting && entry.intersectionRatio >= 0.6 && !pinned && Date.now() >= releasedUntil) {
-          engagePin(!scrollingDown);
-        } else if (!entry.isIntersecting && pinned) {
-          releasePin();
-        }
-      });
-    }, { threshold: [0, 0.2, 0.4, 0.6, 0.8, 1] });
-    pinIo.observe(pinSection);
+    if (typeof lenis !== 'undefined' && lenis && typeof lenis.on === 'function') {
+      lenis.on('scroll', (e) => checkEngage(e && e.direction ? e.direction : 0));
+    } else {
+      let lastY = window.scrollY;
+      let ticking = false;
+      window.addEventListener('scroll', () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+          const y = window.scrollY;
+          checkEngage(y > lastY ? 1 : y < lastY ? -1 : 0);
+          lastY = y;
+          ticking = false;
+        });
+      }, { passive: true });
+    }
 
     desktopMedia.addEventListener('change', (e) => {
       if (!e.matches) releasePin();
