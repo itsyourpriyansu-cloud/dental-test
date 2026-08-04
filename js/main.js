@@ -272,8 +272,16 @@ document.addEventListener('DOMContentLoaded', () => {
     updateScrollProgress();
 
     backToTopBtn.addEventListener('click', () => {
+      // Release the Advanced Dental Technology section's scroll pin/lock
+      // (if engaged) before scrolling, so its wheel/touch interception and
+      // lenis.stop() state never intercept or truncate this scroll-to-top.
+      if (typeof window.techJourneyReleasePin === 'function') {
+        window.techJourneyReleasePin(2000);
+      }
+
       if (typeof lenis !== 'undefined' && lenis) {
-        lenis.scrollTo(0, { duration: 1.2 });
+        lenis.start();
+        lenis.scrollTo(0, { immediate: false, duration: 1.2 });
       } else {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
