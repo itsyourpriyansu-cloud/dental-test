@@ -94,6 +94,63 @@
   height: 0.5rem;
 }
 
+/* --- Clinical Services cards: compact CTA buttons (scoped to #treatments) ---
+   Overrides the global .btn-sm.btn-primary / .btn-ghost look ONLY inside
+   these service cards. Selector specificity (id + service-card ancestor)
+   does the overriding — the shared button-system.css classes/rules are
+   untouched, so every other button on the site is unaffected. */
+
+#treatments .service-card > .p-6 > .pt-4.border-t {
+  padding-top: 20px;
+}
+
+#treatments .service-card .btn-sm.btn-primary {
+  height: 36px;
+  min-width: 110px;
+  padding: 0 18px;
+  border-radius: 12px;
+  background: #EEF6FF;
+  border: 1px solid #D8E8FB;
+  color: #0B4696;
+  font-size: 15px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 250ms ease, color 250ms ease, border-color 250ms ease,
+              box-shadow 250ms ease, transform 250ms ease;
+}
+
+#treatments .service-card .btn-sm.btn-primary .btn-arrow {
+  display: none;
+}
+
+#treatments .service-card .btn-sm.btn-primary:hover {
+  background: #0B4696;
+  color: #FFFFFF;
+  border-color: #0B4696;
+  box-shadow: 0 10px 24px rgba(11, 70, 150, .16);
+  transform: translateY(-2px);
+}
+
+#treatments .service-card .btn-sm.btn-primary:active,
+#treatments .service-card .btn-sm.btn-primary:hover:active {
+  transform: scale(.98);
+}
+
+#treatments .service-card .btn-ghost {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+@media (max-width: 767px) {
+  #treatments .service-card > .p-6 > .pt-4.border-t {
+    flex-wrap: wrap;
+    row-gap: 12px;
+  }
+}
+
 
 
     #patient-journey.pj{

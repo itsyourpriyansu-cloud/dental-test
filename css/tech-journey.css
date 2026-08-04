@@ -350,6 +350,20 @@
 @media (min-width: 768px) {
   .tj-wrap { display: block; }
   .tj-mobile { display: none; }
+
+  /* Scroll-pin (js/tech-journey.js): only the section intro (badge/heading/
+     description) and the timeline/progress bar stick to the top while a
+     stage change is in progress — the content card below is intentionally
+     left out so it keeps updating in normal flow, not as a frozen block.
+     `top` is set inline per-element by the script (timeline stacks under
+     the intro's measured height). The scroll freeze that actually holds
+     stages from skipping is separate (Lenis stop + wheel/touch capture);
+     this sticky layer is the visual/native-behavior half of that. */
+  .tech-journey .is-pinned {
+    position: sticky;
+    z-index: 6;
+    background: #fff;
+  }
 }
 
 /* ============================== MOBILE (<768px) — vertical journey ============================== */

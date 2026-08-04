@@ -137,7 +137,14 @@ document.addEventListener('DOMContentLoaded', () => {
   function startAutoplay() {
     stopAutoplay();
     if (prefersReducedMotion) return;
-    autoplayTimer = window.setInterval(() => goTo(active + 1), 6000);
+    // Autoplay only drives 1 -> 5, never wraps back to 1 — once the last
+    // stage is reached it freezes there until the user scrolls back up
+    // (which re-engages the pin and explicitly resets it, see engagePin).
+    if (active >= steps.length - 1) return;
+    autoplayTimer = window.setInterval(() => {
+      if (active >= steps.length - 1) { stopAutoplay(); return; }
+      goTo(active + 1);
+    }, 6000);
   }
   function scheduleResume() {
     if (resumeTimer) window.clearTimeout(resumeTimer);
@@ -211,5 +218,192 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }, { threshold: 0.2, rootMargin: '0px 0px -60px 0px' });
     mobileSteps.forEach((el) => mio.observe(el));
+  }
+
+  // Scroll-pinned progression — freezes page scroll (via Lenis, the site's
+  // smooth-scroll engine, plus a wheel/touch capture fallback) once the top
+  // of .tj-timeline-outer (NOT the section) reaches the top of the viewport,
+  // and lets wheel/touch input step through stages 1-5 one at a time.
+  // Released back to normal scroll only once Stage 5 (scrolling down) or
+  // Stage 1 (scrolling up, re-entering from below) is reached. Desktop/
+  // tablet only — mobile keeps plain scrolling — and skipped entirely for
+  // prefers-reduced-motion.
+  if (!prefersReducedMotion) {
+    // Used only as a coarse "are we anywhere near this component" gate for
+    // the IntersectionObserver below — the actual pin trigger is always
+    // timelineOuter's own position, never this element's.
+    const pinSection = wrap.closest('section') || wrap;
+    // Only the section intro (badge + heading + description) and the
+    // timeline/progress bar are pinned — the content card (image + text)
+    // stays in normal flow and simply keeps swapping content per stage.
+    const introEl = wrap.previousElementSibling;
+    const timelineOuter = wrap.querySelector('.tj-timeline-outer');
+    const WHEEL_THRESHOLD = 45;
+    const TOUCH_THRESHOLD = 40;
+    const TRANSITION_LOCK_MS = 650;
+    const REENGAGE_LOCK_MS = 650;
+
+    let pinned = false;
+    let nearSection = false;
+    let releasedUntil = 0;
+    let isTransitioning = false;
+    let wheelAccum = 0;
+    let touchStartY = null;
+    // Last observed timelineOuter.top, used to detect the exact frame it
+    // crosses the viewport top — NOT just whether it's currently <= 0.
+    // Without this, top stays <= 0 for the entire rest of the scroll
+    // through (and past) the component, so a naive "top <= 0" check would
+    // re-fire engagePin() on every scroll tick after release, snapping the
+    // timeline back to Stage 1 forever. Crossing-detection makes engage a
+    // one-shot event per approach, from either direction.
+    let lastTimelineTop = null;
+
+    function lockTransition() {
+      isTransitioning = true;
+      window.setTimeout(() => { isTransitioning = false; }, TRANSITION_LOCK_MS);
+    }
+
+    function onWheel(e) {
+      if (!pinned) return;
+      e.preventDefault();
+      if (isTransitioning) return;
+      wheelAccum += e.deltaY;
+      if (Math.abs(wheelAccum) < WHEEL_THRESHOLD) return;
+      const direction = wheelAccum > 0 ? 1 : -1;
+      wheelAccum = 0;
+      advance(direction);
+    }
+
+    function onTouchStart(e) {
+      if (!pinned) return;
+      touchStartY = e.touches[0].clientY;
+    }
+
+    function onTouchMove(e) {
+      if (!pinned || touchStartY === null) return;
+      const currentY = e.touches[0].clientY;
+      const delta = touchStartY - currentY;
+      e.preventDefault();
+      if (isTransitioning) return;
+      if (Math.abs(delta) < TOUCH_THRESHOLD) return;
+      const direction = delta > 0 ? 1 : -1;
+      touchStartY = currentY;
+      advance(direction);
+    }
+
+    function onTouchEnd() {
+      touchStartY = null;
+    }
+
+    function advance(direction) {
+      if (isTransitioning) return;
+      if (direction > 0) {
+        if (active < steps.length - 1) {
+          goTo(active + 1);
+          pauseForInteraction();
+          lockTransition();
+        } else {
+          releasePin();
+        }
+      } else if (active > 0) {
+        goTo(active - 1);
+        pauseForInteraction();
+        lockTransition();
+      } else {
+        releasePin();
+      }
+    }
+
+    function pinHeader() {
+      if (introEl) {
+        introEl.classList.add('is-pinned');
+        introEl.style.top = '0px';
+      }
+      if (timelineOuter) {
+        timelineOuter.classList.add('is-pinned');
+        // Stack directly beneath the sticky intro instead of overlapping it.
+        timelineOuter.style.top = (introEl ? introEl.getBoundingClientRect().height : 0) + 'px';
+      }
+    }
+
+    function unpinHeader() {
+      if (introEl) { introEl.classList.remove('is-pinned'); introEl.style.top = ''; }
+      if (timelineOuter) { timelineOuter.classList.remove('is-pinned'); timelineOuter.style.top = ''; }
+    }
+
+    function engagePin(fromBelow) {
+      if (pinned || !desktopMedia.matches) return;
+      pinned = true;
+      pinHeader();
+      goTo(fromBelow ? steps.length - 1 : 0, false);
+      if (typeof lenis !== 'undefined' && lenis) lenis.stop();
+      window.addEventListener('wheel', onWheel, { passive: false });
+      window.addEventListener('touchstart', onTouchStart, { passive: true });
+      window.addEventListener('touchmove', onTouchMove, { passive: false });
+      window.addEventListener('touchend', onTouchEnd, { passive: true });
+    }
+
+    function releasePin() {
+      if (!pinned) return;
+      pinned = false;
+      unpinHeader();
+      releasedUntil = Date.now() + REENGAGE_LOCK_MS;
+      if (typeof lenis !== 'undefined' && lenis) lenis.start();
+      window.removeEventListener('wheel', onWheel, { passive: false });
+      window.removeEventListener('touchstart', onTouchStart, { passive: true });
+      window.removeEventListener('touchmove', onTouchMove, { passive: false });
+      window.removeEventListener('touchend', onTouchEnd, { passive: true });
+    }
+
+    // Fires once per scroll frame with a direction, so we can catch the exact
+    // moment .tj-timeline-outer's top edge crosses the viewport top — same
+    // trigger point native `position: sticky` uses, just computed ourselves
+    // since the multi-stage hold can't be expressed as a fixed sticky scroll
+    // distance. Engage is edge-triggered (crossing detection against
+    // lastTimelineTop), not level-triggered, so it fires exactly once per
+    // approach instead of on every tick that top happens to be <= 0 — see
+    // lastTimelineTop comment above for why that distinction matters.
+    function checkEngage(direction) {
+      if (!nearSection || !desktopMedia.matches) return;
+      const top = timelineOuter.getBoundingClientRect().top;
+      if (pinned || !direction || Date.now() < releasedUntil) {
+        lastTimelineTop = top;
+        return;
+      }
+      const wasAbove = lastTimelineTop === null || lastTimelineTop > 0;
+      const wasBelow = lastTimelineTop === null || lastTimelineTop < 0;
+      if (direction > 0 && wasAbove && top <= 0) {
+        engagePin(false);
+      } else if (direction < 0 && wasBelow && top >= 0) {
+        engagePin(true);
+      }
+      lastTimelineTop = top;
+    }
+
+    const nearIo = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => { nearSection = entry.isIntersecting; });
+    }, { rootMargin: '50% 0px 50% 0px', threshold: 0 });
+    nearIo.observe(pinSection);
+
+    if (typeof lenis !== 'undefined' && lenis && typeof lenis.on === 'function') {
+      lenis.on('scroll', (e) => checkEngage(e && e.direction ? e.direction : 0));
+    } else {
+      let lastY = window.scrollY;
+      let ticking = false;
+      window.addEventListener('scroll', () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+          const y = window.scrollY;
+          checkEngage(y > lastY ? 1 : y < lastY ? -1 : 0);
+          lastY = y;
+          ticking = false;
+        });
+      }, { passive: true });
+    }
+
+    desktopMedia.addEventListener('change', (e) => {
+      if (!e.matches) releasePin();
+    });
   }
 });
