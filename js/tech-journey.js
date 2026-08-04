@@ -233,15 +233,28 @@ document.addEventListener('DOMContentLoaded', () => {
     // the IntersectionObserver below — the actual pin trigger is always
     // timelineOuter's own position, never this element's.
     const pinSection = wrap.closest('section') || wrap;
-    // Only the section intro (badge + heading + description) and the
-    // timeline/progress bar are pinned — the content card (image + text)
-    // stays in normal flow and simply keeps swapping content per stage.
-    const introEl = wrap.previousElementSibling;
+    // Only the timeline/progress bar (line + circles + labels) is pinned —
+    // the section intro (badge/heading/description) and the content card
+    // (image + text) stay in normal flow and scroll away/keep swapping as
+    // usual.
     const timelineOuter = wrap.querySelector('.tj-timeline-outer');
     const WHEEL_THRESHOLD = 45;
     const TOUCH_THRESHOLD = 40;
     const TRANSITION_LOCK_MS = 650;
     const REENGAGE_LOCK_MS = 650;
+
+    // The site header is itself sticky (top: 0), so the timeline must stick
+    // just below it — not at top: 0 — or it scrolls in underneath the header
+    // and gets visually clipped. Height is remeasured on load/resize/
+    // orientation change since the header's height varies responsively.
+    const headerEl = document.querySelector('#main-header') || document.querySelector('.hnav');
+    let headerHeight = 0;
+    function updateHeaderHeight() {
+      headerHeight = headerEl ? headerEl.offsetHeight : 0;
+    }
+    updateHeaderHeight();
+    window.addEventListener('resize', updateHeaderHeight);
+    window.addEventListener('orientationchange', updateHeaderHeight);
 
     let pinned = false;
     let nearSection = false;
@@ -250,12 +263,13 @@ document.addEventListener('DOMContentLoaded', () => {
     let wheelAccum = 0;
     let touchStartY = null;
     // Last observed timelineOuter.top, used to detect the exact frame it
-    // crosses the viewport top — NOT just whether it's currently <= 0.
-    // Without this, top stays <= 0 for the entire rest of the scroll
-    // through (and past) the component, so a naive "top <= 0" check would
-    // re-fire engagePin() on every scroll tick after release, snapping the
-    // timeline back to Stage 1 forever. Crossing-detection makes engage a
-    // one-shot event per approach, from either direction.
+    // crosses the sticky offset (headerHeight) — NOT just whether it's
+    // currently past that point. Without this, top stays past the threshold
+    // for the entire rest of the scroll through (and past) the component,
+    // so a naive "top <= headerHeight" check would re-fire engagePin() on
+    // every scroll tick after release, snapping the timeline back to Stage 1
+    // forever. Crossing-detection makes engage a one-shot event per
+    // approach, from either direction.
     let lastTimelineTop = null;
 
     function lockTransition() {
@@ -315,19 +329,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function pinHeader() {
-      if (introEl) {
-        introEl.classList.add('is-pinned');
-        introEl.style.top = '0px';
-      }
       if (timelineOuter) {
+        updateHeaderHeight();
         timelineOuter.classList.add('is-pinned');
-        // Stack directly beneath the sticky intro instead of overlapping it.
-        timelineOuter.style.top = (introEl ? introEl.getBoundingClientRect().height : 0) + 'px';
+        // Stick directly beneath the site nav so it's never clipped under it.
+        timelineOuter.style.top = headerHeight + 'px';
       }
     }
 
     function unpinHeader() {
-      if (introEl) { introEl.classList.remove('is-pinned'); introEl.style.top = ''; }
       if (timelineOuter) { timelineOuter.classList.remove('is-pinned'); timelineOuter.style.top = ''; }
     }
 
@@ -376,12 +386,16 @@ document.addEventListener('DOMContentLoaded', () => {
     window.techJourneyReleasePin = forceRelease;
 
     // Fires once per scroll frame with a direction, so we can catch the exact
-    // moment .tj-timeline-outer's top edge crosses the viewport top — same
-    // trigger point native `position: sticky` uses, just computed ourselves
-    // since the multi-stage hold can't be expressed as a fixed sticky scroll
-    // distance. Engage is edge-triggered (crossing detection against
-    // lastTimelineTop), not level-triggered, so it fires exactly once per
-    // approach instead of on every tick that top happens to be <= 0 — see
+    // moment .tj-timeline-outer's top edge crosses the sticky offset (just
+    // below the site header) — same trigger point native `position: sticky;
+    // top: headerHeight` uses, just computed ourselves since the multi-stage
+    // hold can't be expressed as a fixed sticky scroll distance. The
+    // threshold is headerHeight, not 0, so pinning kicks in exactly where the
+    // timeline will visually rest — never later, which is what let it scroll
+    // in underneath the header before pinning caught up. Engage is
+    // edge-triggered (crossing detection against lastTimelineTop), not
+    // level-triggered, so it fires exactly once per approach instead of on
+    // every tick that top happens to be past the threshold — see
     // lastTimelineTop comment above for why that distinction matters.
     function checkEngage(direction) {
       if (!nearSection || !desktopMedia.matches) return;
@@ -390,11 +404,11 @@ document.addEventListener('DOMContentLoaded', () => {
         lastTimelineTop = top;
         return;
       }
-      const wasAbove = lastTimelineTop === null || lastTimelineTop > 0;
-      const wasBelow = lastTimelineTop === null || lastTimelineTop < 0;
-      if (direction > 0 && wasAbove && top <= 0) {
+      const wasAbove = lastTimelineTop === null || lastTimelineTop > headerHeight;
+      const wasBelow = lastTimelineTop === null || lastTimelineTop < headerHeight;
+      if (direction > 0 && wasAbove && top <= headerHeight) {
         engagePin(false);
-      } else if (direction < 0 && wasBelow && top >= 0) {
+      } else if (direction < 0 && wasBelow && top >= headerHeight) {
         engagePin(true);
       }
       lastTimelineTop = top;
