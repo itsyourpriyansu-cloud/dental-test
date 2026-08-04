@@ -355,6 +355,26 @@ document.addEventListener('DOMContentLoaded', () => {
       window.removeEventListener('touchend', onTouchEnd, { passive: true });
     }
 
+    // Escape hatch for controls outside this section (e.g. the Back-to-Top
+    // button) that need to guarantee normal page scrolling before running a
+    // programmatic scroll: fully releases the pin/lock/lenis.stop() state,
+    // clears the in-progress transition/gesture flags, stops autoplay, and
+    // — since releasePin()'s default re-engage lock (650ms) is shorter than
+    // a scroll-to-top animation — holds re-engagement off for `suppressMs`
+    // so the pin doesn't re-trigger while the programmatic scroll passes
+    // back through this section.
+    function forceRelease(suppressMs) {
+      isTransitioning = false;
+      wheelAccum = 0;
+      touchStartY = null;
+      stopAutoplay();
+      if (resumeTimer) { window.clearTimeout(resumeTimer); resumeTimer = null; }
+      releasePin();
+      releasedUntil = Date.now() + (suppressMs || REENGAGE_LOCK_MS);
+      if (typeof lenis !== 'undefined' && lenis) lenis.start();
+    }
+    window.techJourneyReleasePin = forceRelease;
+
     // Fires once per scroll frame with a direction, so we can catch the exact
     // moment .tj-timeline-outer's top edge crosses the viewport top — same
     // trigger point native `position: sticky` uses, just computed ourselves
