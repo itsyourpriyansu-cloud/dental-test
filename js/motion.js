@@ -127,41 +127,108 @@ document.addEventListener('DOMContentLoaded', () => {
     counters.forEach((el) => observer.observe(el));
   }
 
-  /* ------------------------------ 4. Testimonial carousel ------------------------ */
+  /* ------------------------------ 4. Testimonial carousel (Infinite Loop) ------------------------ */
   function initTestimonialCarousel() {
     const root = document.querySelector('[data-testimonials]');
     const track = root && root.querySelector('[data-testi-track]');
     const dotsWrap = root && root.querySelector('[data-testi-dots]');
-    if (!root || !track || !dotsWrap) return;
+    const btnPrev = root && root.querySelector('[data-testi-prev]');
+    const btnNext = root && root.querySelector('[data-testi-next]');
+    if (!root || !track) return;
 
-    const slides = Array.from(track.children);
-    if (slides.length < 2) return;
+    // Clear any previous clones if re-initialized
+    track.querySelectorAll('.testi-slide-clone').forEach(el => el.remove());
 
-    slides.forEach((_, i) => {
-      const dot = document.createElement('button');
-      dot.type = 'button';
-      dot.className = 'testi-dot';
-      dot.setAttribute('aria-label', `Go to testimonial ${i + 1}`);
-      dot.addEventListener('click', () => goTo(i, true));
-      dotsWrap.appendChild(dot);
-    });
-    const dots = Array.from(dotsWrap.children);
+    const originalSlides = Array.from(track.querySelectorAll('.testi-slide:not(.testi-slide-clone)'));
+    const numOriginal = originalSlides.length;
+    if (numOriginal < 2) return;
 
-    let active = 0;
+    // Create clones for seamless infinite looping
+    const firstClone = originalSlides[0].cloneNode(true);
+    firstClone.classList.add('testi-slide-clone');
+    const lastClone = originalSlides[numOriginal - 1].cloneNode(true);
+    lastClone.classList.add('testi-slide-clone');
+
+    track.insertBefore(lastClone, originalSlides[0]);
+    track.appendChild(firstClone);
+
+    const allSlides = Array.from(track.children);
+
+    if (dotsWrap) {
+      dotsWrap.innerHTML = '';
+      originalSlides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'testi-dot';
+        dot.setAttribute('aria-label', `Go to testimonial ${i + 1}`);
+        dot.addEventListener('click', () => goToRealIndex(i, true));
+        dotsWrap.appendChild(dot);
+      });
+    }
+    const dots = dotsWrap ? Array.from(dotsWrap.children) : [];
+
+    let currentIndex = 1; // Start at first real slide (index 1 in allSlides)
     let autoplayTimer = null;
+    let isBoundaryJumping = false;
 
-    function setActiveDot(index) {
-      dots.forEach((d, i) => d.classList.toggle('is-active', i === index));
+    function getRealIndex(allIdx) {
+      if (allIdx <= 0) return numOriginal - 1;
+      if (allIdx >= allSlides.length - 1) return 0;
+      return allIdx - 1;
     }
 
-    function goTo(index, userInitiated) {
-      active = ((index % slides.length) + slides.length) % slides.length;
+    function updateActiveState(allIdx) {
+      const realIdx = getRealIndex(allIdx);
+      allSlides.forEach((s, i) => s.classList.toggle('is-active', i === allIdx));
+      dots.forEach((d, i) => d.classList.toggle('is-active', i === realIdx));
+    }
+
+    function centerSlide(allIdx, smooth = true) {
+      if (!allSlides[allIdx]) return;
+      const targetLeft = allSlides[allIdx].offsetLeft - (track.offsetWidth - allSlides[allIdx].offsetWidth) / 2;
       track.scrollTo({
-        left: slides[active].offsetLeft,
-        behavior: prefersReducedMotion ? 'auto' : 'smooth'
+        left: targetLeft,
+        behavior: smooth && !prefersReducedMotion ? 'smooth' : 'auto'
       });
-      setActiveDot(active);
+    }
+
+    function goToAllIndex(allIdx, userInitiated = false) {
+      currentIndex = allIdx;
+      updateActiveState(currentIndex);
+      centerSlide(currentIndex, true);
       if (userInitiated) restartAutoplay();
+    }
+
+    function goToRealIndex(realIdx, userInitiated = false) {
+      goToAllIndex(realIdx + 1, userInitiated);
+    }
+
+    function handleBoundaryReset() {
+      if (isBoundaryJumping) return;
+      if (currentIndex === 0) {
+        isBoundaryJumping = true;
+        currentIndex = numOriginal;
+        updateActiveState(currentIndex);
+        centerSlide(currentIndex, false);
+        setTimeout(() => { isBoundaryJumping = false; }, 50);
+      } else if (currentIndex === allSlides.length - 1) {
+        isBoundaryJumping = true;
+        currentIndex = 1;
+        updateActiveState(currentIndex);
+        centerSlide(currentIndex, false);
+        setTimeout(() => { isBoundaryJumping = false; }, 50);
+      }
+    }
+
+    if (btnPrev) {
+      btnPrev.addEventListener('click', () => {
+        goToAllIndex(currentIndex - 1, true);
+      });
+    }
+    if (btnNext) {
+      btnNext.addEventListener('click', () => {
+        goToAllIndex(currentIndex + 1, true);
+      });
     }
 
     function stopAutoplay() {
@@ -170,24 +237,32 @@ document.addEventListener('DOMContentLoaded', () => {
     function startAutoplay() {
       stopAutoplay();
       if (prefersReducedMotion) return;
-      autoplayTimer = setInterval(() => goTo(active + 1), 6000);
+      autoplayTimer = setInterval(() => {
+        goToAllIndex(currentIndex + 1, false);
+      }, 5000);
     }
     function restartAutoplay() { stopAutoplay(); startAutoplay(); }
 
-    // Sync active dot when the user scrolls/drags the track directly.
     let scrollSyncTimer = null;
     track.addEventListener('scroll', () => {
+      if (isBoundaryJumping) return;
       if (scrollSyncTimer) clearTimeout(scrollSyncTimer);
       scrollSyncTimer = setTimeout(() => {
-        let closest = 0;
+        const trackCenter = track.scrollLeft + track.offsetWidth / 2;
+        let closest = 1;
         let closestDist = Infinity;
-        slides.forEach((slide, i) => {
-          const dist = Math.abs(slide.offsetLeft - track.scrollLeft);
+        allSlides.forEach((slide, i) => {
+          const slideCenter = slide.offsetLeft + slide.offsetWidth / 2;
+          const dist = Math.abs(slideCenter - trackCenter);
           if (dist < closestDist) { closestDist = dist; closest = i; }
         });
-        active = closest;
-        setActiveDot(active);
-      }, 100);
+
+        if (closest !== currentIndex) {
+          currentIndex = closest;
+          updateActiveState(currentIndex);
+        }
+        handleBoundaryReset();
+      }, 80);
     });
 
     root.addEventListener('mouseenter', stopAutoplay);
@@ -195,11 +270,9 @@ document.addEventListener('DOMContentLoaded', () => {
     root.addEventListener('focusin', stopAutoplay);
     root.addEventListener('focusout', startAutoplay);
     track.addEventListener('touchstart', stopAutoplay, { passive: true });
-    track.addEventListener('touchend', () => { if (desktopCanAutoplay()) startAutoplay(); }, { passive: true });
+    track.addEventListener('touchend', startAutoplay, { passive: true });
 
-    function desktopCanAutoplay() { return true; }
-
-    // Pointer drag support (mouse). Touch already scrolls natively.
+    // Pointer dragging support
     let isDragging = false;
     let dragStartX = 0;
     let dragStartScroll = 0;
@@ -221,20 +294,26 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!isDragging) return;
       isDragging = false;
       track.classList.remove('is-dragging');
-      let closest = 0;
+      const trackCenter = track.scrollLeft + track.offsetWidth / 2;
+      let closest = 1;
       let closestDist = Infinity;
-      slides.forEach((slide, i) => {
-        const dist = Math.abs(slide.offsetLeft - track.scrollLeft);
+      allSlides.forEach((slide, i) => {
+        const slideCenter = slide.offsetLeft + slide.offsetWidth / 2;
+        const dist = Math.abs(slideCenter - trackCenter);
         if (dist < closestDist) { closestDist = dist; closest = i; }
       });
-      goTo(closest, false);
+      goToAllIndex(closest, false);
       startAutoplay();
     }
     track.addEventListener('pointerup', endDrag);
     track.addEventListener('pointercancel', endDrag);
     track.addEventListener('pointerleave', () => { if (isDragging) endDrag(); });
 
-    setActiveDot(0);
+    // Init active state at first real slide
+    updateActiveState(1);
+    setTimeout(() => {
+      centerSlide(1, false);
+    }, 150);
 
     if (prefersReducedMotion || !('IntersectionObserver' in window)) {
       startAutoplay();
@@ -244,7 +323,7 @@ document.addEventListener('DOMContentLoaded', () => {
           if (entry.isIntersecting) startAutoplay();
           else stopAutoplay();
         });
-      }, { threshold: 0.4 });
+      }, { threshold: 0.3 });
       io.observe(root);
     }
   }

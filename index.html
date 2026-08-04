@@ -23,9 +23,14 @@
   <link rel="stylesheet" href="css/motion.css">
   <link rel="stylesheet" href="css/button-system.css">
   <link rel="stylesheet" href="css/floating-buttons.css">
+  <link rel="stylesheet" href="css/testimonials-redesign.css">
 
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Phosphor Icons -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css" />
 </head>
 <body class="min-h-screen bg-brand-ice text-brand-dark flex flex-col font-body selection:bg-brand-sky selection:text-brand-dark">
 
@@ -1141,7 +1146,8 @@
                   <span class="tf-card__badge-pill">Smile Makeovers</span>
                   <span class="tf-card__duration">2 Weeks</span>
                 </div>
-                <h3 class="tf-card__title">Smile Rejuvenation &amp; Crowns</h3>
+                <h3 class="tf-card__title">Smile Rejuvenation<br>&amp; Crowns</h3>
+                <p class="tf-card__desc">Custom ceramic crowns &amp; aesthetic veneers.</p>
               </div>
               <div class="tf-card__visual">
                 <img src="images/tf-dental-crown.png" alt="Porcelain dental crowns and ceramic veneers" class="tf-card__img" loading="lazy">
@@ -1200,70 +1206,118 @@
     </section>
 
     <!-- 10. TESTIMONIALS SECTION -->
-    <section id="testimonials" class="py-20 bg-white">
+    <section id="testimonials" class="relative overflow-hidden">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-16 space-y-4" data-reveal="up">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-surface border border-brand-border text-brand-deep text-xs font-bold uppercase tracking-wider">
+        
+        <!-- Header -->
+        <div class="text-center max-w-2xl mx-auto mb-12 space-y-4" data-reveal="up">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-surface border border-brand-border text-brand-deep text-xs font-bold uppercase tracking-wider shadow-xs">
             <i data-lucide="sparkles" class="w-3.5 h-3.5 text-brand-sky"></i>
             <span>PATIENT FEEDBACK</span>
           </div>
           <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-heading text-brand-dark tracking-tight">
             What our patients say.
           </h2>
-          <p class="text-base sm:text-lg text-brand-muted">Read experiences from patients treated at our Ameerpet clinic.</p>
+          <p class="text-base sm:text-lg text-brand-muted">Read real experiences from patients treated at our Ameerpet clinic.</p>
         </div>
 
-        <div class="testi-carousel max-w-3xl mx-auto" data-testimonials data-reveal="up">
-          <div class="testi-track" data-testi-track>
+        <!-- Carousel -->
+        <div class="testi-carousel-wrapper" data-testimonials data-reveal="up">
+          <div class="testi-track-container">
+            <div class="testi-track" data-testi-track>
 
-            <article class="testi-slide">
-              <div class="bg-brand-ice rounded-card-lg border border-brand-border p-8 shadow-soft-sm flex flex-col justify-between space-y-6">
-                <p class="text-sm text-brand-dark leading-relaxed italic">
-                  "Dr. Prudhvi made my aligner journey extremely smooth. The 3D scan before starting gave me total confidence in the results. Today my teeth are perfectly aligned!"
-                </p>
-                <div class="flex items-center gap-3 pt-4 border-t border-brand-border">
-                  <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Ananya R." class="w-11 h-11 rounded-full object-cover border-2 border-brand-sky">
-                  <div>
-                    <h4 class="text-sm font-bold text-brand-dark">Ananya R.</h4>
-                    <p class="text-xs text-brand-muted">Ameerpet · Clear Aligners</p>
+              <article class="testi-slide">
+                <div class="testi-card">
+                  <p class="testi-quote">
+                    "Dr. Prudhvi made my aligner journey extremely smooth. The 3D scan before starting gave me total confidence in the results. Today my teeth are perfectly aligned!"
+                  </p>
+                  <div class="testi-author-wrap">
+                    <div class="testi-avatar-ring">
+                      <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Ananya R." class="testi-avatar-img">
+                    </div>
+                    <h4 class="testi-author-name">Ananya R.</h4>
+                    <p class="testi-author-role">Ameerpet · Clear Aligners</p>
                   </div>
                 </div>
-              </div>
-            </article>
+              </article>
 
-            <article class="testi-slide">
-              <div class="bg-brand-ice rounded-card-lg border border-brand-border p-8 shadow-soft-sm flex flex-col justify-between space-y-6">
-                <p class="text-sm text-brand-dark leading-relaxed italic">
-                  "As a working professional, I wanted discreet braces. The ceramic options at THE BRACES & CROWNS were fantastic. Highly systematic and very clean clinic."
-                </p>
-                <div class="flex items-center gap-3 pt-4 border-t border-brand-border">
-                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Vikram K." class="w-11 h-11 rounded-full object-cover border-2 border-brand-sky">
-                  <div>
-                    <h4 class="text-sm font-bold text-brand-dark">Vikram K.</h4>
-                    <p class="text-xs text-brand-muted">Begumpet · Ceramic Braces</p>
+              <article class="testi-slide">
+                <div class="testi-card">
+                  <p class="testi-quote">
+                    "As a working professional, I wanted discreet braces. The ceramic options at THE BRACES & CROWNS were fantastic. Highly systematic and very clean clinic."
+                  </p>
+                  <div class="testi-author-wrap">
+                    <div class="testi-avatar-ring">
+                      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Vikram K." class="testi-avatar-img">
+                    </div>
+                    <h4 class="testi-author-name">Vikram K.</h4>
+                    <p class="testi-author-role">Begumpet · Ceramic Braces</p>
                   </div>
                 </div>
-              </div>
-            </article>
+              </article>
 
-            <article class="testi-slide">
-              <div class="bg-brand-ice rounded-card-lg border border-brand-border p-8 shadow-soft-sm flex flex-col justify-between space-y-6">
-                <p class="text-sm text-brand-dark leading-relaxed italic">
-                  "Painless treatment and transparent explanation! Dr. Prudhvi explained every step on the monitor screen. I felt completely relaxed throughout."
-                </p>
-                <div class="flex items-center gap-3 pt-4 border-t border-brand-border">
-                  <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" alt="Sowmya P." class="w-11 h-11 rounded-full object-cover border-2 border-brand-sky">
-                  <div>
-                    <h4 class="text-sm font-bold text-brand-dark">Sowmya P.</h4>
-                    <p class="text-xs text-brand-muted">SR Nagar · Restorative Care</p>
+              <article class="testi-slide">
+                <div class="testi-card">
+                  <p class="testi-quote">
+                    "Painless treatment and transparent explanation! Dr. Prudhvi explained every step on the monitor screen. I felt completely relaxed throughout the procedure."
+                  </p>
+                  <div class="testi-author-wrap">
+                    <div class="testi-avatar-ring">
+                      <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" alt="Sowmya P." class="testi-avatar-img">
+                    </div>
+                    <h4 class="testi-author-name">Sowmya P.</h4>
+                    <p class="testi-author-role">SR Nagar · Restorative Care</p>
                   </div>
                 </div>
-              </div>
-            </article>
+              </article>
 
+              <article class="testi-slide">
+                <div class="testi-card">
+                  <p class="testi-quote">
+                    "The precision of digital smile design is unbelievable! My crown replacement looks 100% natural and feels completely comfortable. Truly top quality."
+                  </p>
+                  <div class="testi-author-wrap">
+                    <div class="testi-avatar-ring">
+                      <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" alt="Rajesh V." class="testi-avatar-img">
+                    </div>
+                    <h4 class="testi-author-name">Rajesh V.</h4>
+                    <p class="testi-author-role">Punjagutta · Zirconia Crowns</p>
+                  </div>
+                </div>
+              </article>
+
+              <article class="testi-slide">
+                <div class="testi-card">
+                  <p class="testi-quote">
+                    "From initial consultation to final checkup, the care was world-class. Dr. Prudhvi and his staff treat every patient with extreme dedication and kindness."
+                  </p>
+                  <div class="testi-author-wrap">
+                    <div class="testi-avatar-ring">
+                      <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" alt="Pooja M." class="testi-avatar-img">
+                    </div>
+                    <h4 class="testi-author-name">Pooja M.</h4>
+                    <p class="testi-author-role">Kukatpally · Orthodontics</p>
+                  </div>
+                </div>
+              </article>
+
+            </div>
           </div>
+
+          <!-- Controls: Left (White Circle) & Right (Lime Accent Circle) Arrow Buttons -->
+          <div class="testi-controls-row">
+            <button type="button" class="testi-nav-btn testi-nav-btn--prev" data-testi-prev aria-label="Previous testimonial">
+              <i data-lucide="arrow-left" class="w-5 h-5"></i>
+            </button>
+            <button type="button" class="testi-nav-btn testi-nav-btn--next" data-testi-next aria-label="Next testimonial">
+              <i data-lucide="arrow-right" class="w-5 h-5"></i>
+            </button>
+          </div>
+
+          <!-- Dots Indicator -->
           <div class="testi-dots" data-testi-dots></div>
         </div>
+
       </div>
     </section>
 
@@ -1438,7 +1492,7 @@
           </a>
 
           <address class="footer-address">
-            <i data-lucide="map-pin" class="address-icon" aria-hidden="true"></i>
+            <i class="ph ph-map-pin address-icon" aria-hidden="true"></i>
             <span>
               Opp. Metro Pillar 1042, Main Road,<br>
               Ameerpet, Hyderabad,<br>
@@ -1448,13 +1502,13 @@
 
           <div class="social-links" aria-label="Social media links">
             <a href="#" class="social-link-btn" aria-label="Facebook" title="Facebook">
-              <svg viewBox="0 0 24 24" fill="currentColor" class="social-icon" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              <i class="ph-fill ph-facebook-logo social-icon" aria-hidden="true"></i>
             </a>
             <a href="#" class="social-link-btn" aria-label="Instagram" title="Instagram">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="social-icon" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+              <i class="ph-fill ph-instagram-logo social-icon" aria-hidden="true"></i>
             </a>
             <a href="#" class="social-link-btn" aria-label="YouTube" title="YouTube">
-              <svg viewBox="0 0 24 24" fill="currentColor" class="social-icon" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              <i class="ph-fill ph-youtube-logo social-icon" aria-hidden="true"></i>
             </a>
           </div>
         </div>
@@ -1481,7 +1535,7 @@
 
           <div class="clinic-hours">
             <div class="hours-header">
-              <i data-lucide="clock" class="hours-icon" aria-hidden="true"></i>
+              <i class="ph ph-clock hours-icon" aria-hidden="true"></i>
               <span class="label">Hours</span>
             </div>
             <p class="hours-line">Mon – Sat: 10:00 AM – 8:30 PM</p>
@@ -1490,11 +1544,11 @@
 
           <div class="clinic-contact-actions">
             <a href="tel:+919876543210" class="contact-action-phone">
-              <i data-lucide="phone" class="contact-icon" aria-hidden="true"></i>
+              <i class="ph ph-phone contact-icon" aria-hidden="true"></i>
               <span>+91 98765 43210</span>
             </a>
             <a href="mailto:dasreddyprudhvi@gmail.com" class="contact-action-email">
-              <i data-lucide="mail" class="contact-icon" aria-hidden="true"></i>
+              <i class="ph ph-envelope-simple contact-icon" aria-hidden="true"></i>
               <span>dasreddyprudhvi@gmail.com</span>
             </a>
           </div>
