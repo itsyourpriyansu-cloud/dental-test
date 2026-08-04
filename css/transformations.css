@@ -201,42 +201,23 @@
   height: 88%;
 }
 
-/* ---- Circular Arrow CTA Button ---- */
+/* ---- Circular Arrow CTA Button ----
+   Sizing/color/icon now come from the shared .cta-arrow system
+   (css/cta-arrow-system.css); this just positions it on the card. */
 
 .tf-card__arrow-btn {
   position: absolute;
   right: 24px;
   bottom: 24px;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: #F8FAFC;
-  border: 1px solid #E2E8F0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #475569;
-  transition: all 0.22s var(--ease-premium, cubic-bezier(.22,.61,.36,1));
   z-index: 3;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .tf-card:hover .tf-card__arrow-btn {
-  background: #0B4696;
-  border-color: #0B4696;
-  color: #FFFFFF;
-  transform: translate(3px, -3px);
-  box-shadow: 0 10px 24px rgba(11, 70, 150, 0.35);
+  transform: scale(1.05);
 }
 
-.tf-card__arrow-icon {
-  width: 18px;
-  height: 18px;
-  transition: transform 0.22s var(--ease-premium, cubic-bezier(.22,.61,.36,1));
-}
-
-.tf-card:hover .tf-card__arrow-icon {
-  transform: translate(2px, -2px);
+.tf-card:hover .tf-card__arrow-btn .cta-arrow__icon {
+  transform: translateX(3px);
 }
 
 /* ---- Mobile Responsive ---- */

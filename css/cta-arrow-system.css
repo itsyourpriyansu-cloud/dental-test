@@ -1,0 +1,149 @@
+/* ==========================================================================
+   Universal CTA Arrow — single source of truth for every call-to-action
+   arrow on the site. Mirrors the header "Book Consultation" reference:
+   48px white circle, #0B4696 20px arrow icon, translateY + shadow on
+   hover, circle scale(1.05), arrow translateX(3px), press scale(.98).
+
+   Loaded last so it wins the cascade over the older per-component arrow
+   rules it supersedes, without needing !important anywhere.
+   ========================================================================== */
+
+/* ------------------------------ Arrow circle ------------------------------ */
+
+.cta-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 9999px;
+  background: #FFFFFF;
+  flex: 0 0 auto;
+  box-shadow: 0 2px 8px rgba(11, 18, 32, .07);
+  transition: transform 250ms ease;
+}
+
+.cta-arrow__icon {
+  width: 20px;
+  height: 20px;
+  color: #0B4696;
+  transition: transform 250ms ease;
+}
+
+/* Icon-only circular CTA — the button itself IS the arrow circle */
+button.cta-arrow {
+  border: none;
+  cursor: pointer;
+}
+button.cta-arrow:hover { transform: scale(1.05); }
+button.cta-arrow:hover .cta-arrow__icon { transform: translateX(3px); }
+button.cta-arrow:active,
+button.cta-arrow:hover:active { transform: scale(.98); }
+
+/* --------------------------------- Button --------------------------------- */
+
+.cta-btn {
+  transition: transform 250ms ease, box-shadow 250ms ease;
+}
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 32px -16px rgba(11, 70, 150, .35);
+}
+.cta-btn:hover .cta-arrow { transform: scale(1.05); }
+.cta-btn:hover .cta-arrow__icon { transform: translateX(3px); }
+.cta-btn:active,
+.cta-btn:hover:active { transform: scale(.98); }
+
+.cta-btn--primary {
+  background: #0B4696;
+  color: #FFFFFF;
+}
+
+.cta-btn--secondary {
+  background: #EEF6FF;
+  border: 1px solid #D5E4F5;
+  color: #0F172A;
+}
+
+/* -------------------------- Component-specific fits ------------------------
+   The circle/arrow are universal; these just give the existing component
+   shells (pill height, fixed heights, bare-link chrome) enough room to fit
+   the 48px circle without breaking their layout. Colors here normalize the
+   handful of buttons still on the old navy-at-rest / deep-on-hover pattern
+   to the flat #0B4696 the primary spec calls for. */
+
+.hnav__cta,
+.hero2__cta,
+.ds__btn-primary,
+.hnav__mobile-book {
+  background: #0B4696;
+}
+
+/* .hero2__cta / .hero2__cta-secondary already carry a long opacity+transform
+   entrance transition (hero-redesign.css) that never gets removed after it
+   fires once. A bare `.cta-btn { transition: ... }` would replace that
+   shorthand outright and kill the entrance fade, so these two get a
+   higher-specificity rule that keeps the original opacity transition and
+   adds the fast hover transform/shadow alongside it. */
+.hero2__cta.cta-btn,
+.hero2__cta-secondary.cta-btn {
+  transition: opacity .6s var(--ease-premium, cubic-bezier(.22,.61,.36,1)),
+              transform 250ms ease,
+              box-shadow 250ms ease;
+}
+
+/* .tj-cta is a direct child of .tj-text, which carries its own
+   opacity/transform transition (tech-journey.css) for the step
+   content-swap fade. Same fix as above: keep that fade alive while
+   still getting the fast hover motion. */
+.tj-cta.cta-btn {
+  transition: opacity 250ms ease, transform 250ms ease, box-shadow 250ms ease;
+}
+
+.ab-submit {
+  height: auto;
+  padding: 8px 8px 8px 28px;
+}
+
+.ds__btn-primary {
+  padding: 8px 8px 8px 28px;
+}
+
+.hero2__cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 8px 8px 24px;
+  border-radius: 9999px;
+  background: #EEF6FF;
+  border: 1px solid #D5E4F5;
+  color: #0F172A;
+  font-size: 13.5px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.ds__btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 8px 8px 24px;
+  border-radius: 9999px;
+  background: #EEF6FF;
+  border: 1px solid #D5E4F5;
+  color: #0F172A;
+}
+.ds__btn-secondary:hover { color: #0F172A; }
+
+@media (min-width: 1024px) {
+  .hero2__card--wide { height: auto; min-height: 190px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta-btn,
+  .cta-arrow,
+  .cta-arrow__icon,
+  button.cta-arrow {
+    transition: none !important;
+  }
+}
