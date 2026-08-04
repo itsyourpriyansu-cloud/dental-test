@@ -43,13 +43,7 @@ html, body { overflow-anchor: none; }
 
 /* Top Accent Gradient Bar */
 .hnav__top-gradient {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3.5px;
-  background: linear-gradient(90deg, #38bdf8 0%, #3b82f6 30%, #a855f7 65%, #ec4899 100%);
-  z-index: 10;
+  display: none;
 }
 
 .hnav__inner {

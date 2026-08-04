@@ -1,6 +1,6 @@
 /**
- * Premium Luxury Footer Interactive Scripts
- * Handles viewport reveal for the footer.
+ * Redesigned Footer Interactive Scripts
+ * Handles viewport reveal for the redesigned footer shell.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
  * Reveal entire footer smoothly when entering viewport
  */
 function initFooterReveal() {
-  const footerEl = document.querySelector('.app-footer');
+  const footerEl = document.querySelector('.footer-shell') || document.querySelector('.app-footer');
   if (!footerEl) return;
 
   if ('IntersectionObserver' in window) {
@@ -24,7 +24,7 @@ function initFooterReveal() {
           }
         });
       },
-      { threshold: 0.15 }
+      { threshold: 0.1 }
     );
     observer.observe(footerEl);
   } else {
