@@ -32,6 +32,16 @@ html, body { overflow-anchor: none; }
 .hnav.is-loaded { opacity: 1; transform: translateY(0); }
 .hnav--scrolled { box-shadow: 0 10px 30px -14px rgba(11, 18, 32, .18); }
 
+/* Smart auto-hide: JS swaps in this transition (300ms ease, transform-only)
+   once the one-time entrance animation above has finished, so retiming it
+   doesn't disturb the initial page-load fade/slide-in. */
+.hnav.hnav--interactive {
+  transition: box-shadow .3s ease, opacity 400ms var(--ease-premium, cubic-bezier(.22,.61,.36,1)),
+              transform 300ms ease;
+  will-change: transform;
+}
+.hnav.is-loaded.hnav--hidden { transform: translateY(-100%); }
+
 .hnav__inner {
   max-width: 1280px;
   margin: 0 auto;

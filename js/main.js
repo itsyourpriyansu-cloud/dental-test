@@ -71,16 +71,57 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  // 1. Header Scroll Behavior
-  const handleScroll = () => {
-    if (window.scrollY > 20) {
-      header.classList.add('hnav--scrolled');
-    } else {
-      header.classList.remove('hnav--scrolled');
+  // 1. Header Scroll Behavior (shadow-on-scroll + smart auto-hide)
+  const SCROLL_HIDE_THRESHOLD = 20;
+  let lastScrollY = window.scrollY;
+  let navHidden = false;
+  let scrollScheduled = false;
+
+  // The one-time entrance transition (400ms premium ease, set on .hnav) must
+  // finish before we switch to the 300ms ease transition used for hide/show —
+  // swapping transition rules mid-flight would retime the entrance animation.
+  window.setTimeout(() => header.classList.add('hnav--interactive'), 500);
+
+  const updateHeaderOnScroll = () => {
+    // Clamp against iOS rubber-band overscroll producing negative values.
+    const currentScrollY = Math.max(window.scrollY, 0);
+
+    header.classList.toggle('hnav--scrolled', currentScrollY > 20);
+
+    const mobileMenuOpen = mobileMenu.classList.contains('is-open');
+    if (mobileMenuOpen || currentScrollY <= SCROLL_HIDE_THRESHOLD) {
+      if (navHidden) {
+        header.classList.remove('hnav--hidden');
+        navHidden = false;
+      }
+      lastScrollY = currentScrollY;
+      scrollScheduled = false;
+      return;
     }
+
+    const delta = currentScrollY - lastScrollY;
+    if (Math.abs(delta) >= SCROLL_HIDE_THRESHOLD) {
+      if (delta > 0 && !navHidden) {
+        header.classList.add('hnav--hidden');
+        navHidden = true;
+      } else if (delta < 0 && navHidden) {
+        header.classList.remove('hnav--hidden');
+        navHidden = false;
+      }
+      lastScrollY = currentScrollY;
+    }
+
+    scrollScheduled = false;
   };
-  window.addEventListener('scroll', handleScroll);
-  handleScroll();
+
+  window.addEventListener('scroll', () => {
+    if (!scrollScheduled) {
+      scrollScheduled = true;
+      window.requestAnimationFrame(updateHeaderOnScroll);
+    }
+  }, { passive: true });
+
+  updateHeaderOnScroll();
 
   // 2. Mobile Menu Toggle
   window.closeMobileMenu = function() {
