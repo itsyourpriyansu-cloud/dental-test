@@ -212,4 +212,123 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.2, rootMargin: '0px 0px -60px 0px' });
     mobileSteps.forEach((el) => mio.observe(el));
   }
+
+  // Scroll-driven pinned progression — temporarily "locks" the section while
+  // wheel/touch input steps through stages 1-5, releasing to normal page
+  // scroll once either end of the sequence is reached. Skipped entirely for
+  // prefers-reduced-motion, matching the rest of this component's motion gating.
+  if (!prefersReducedMotion) {
+    const pinSection = wrap.closest('section') || wrap;
+    const WHEEL_THRESHOLD = 45;
+    const TOUCH_THRESHOLD = 40;
+    const TRANSITION_LOCK_MS = 650;
+    const REENGAGE_LOCK_MS = 700;
+
+    let pinned = false;
+    let releasedUntil = 0;
+    let isTransitioning = false;
+    let lastRectTop = null;
+    let wheelAccum = 0;
+    let touchStartY = null;
+
+    function lockTransition() {
+      isTransitioning = true;
+      window.setTimeout(() => { isTransitioning = false; }, TRANSITION_LOCK_MS);
+    }
+
+    function onWheel(e) {
+      if (!pinned) return;
+      e.preventDefault();
+      if (isTransitioning) return;
+      wheelAccum += e.deltaY;
+      if (Math.abs(wheelAccum) < WHEEL_THRESHOLD) return;
+      const direction = wheelAccum > 0 ? 1 : -1;
+      wheelAccum = 0;
+      advance(direction);
+    }
+
+    function onTouchStart(e) {
+      if (!pinned) return;
+      touchStartY = e.touches[0].clientY;
+    }
+
+    function onTouchMove(e) {
+      if (!pinned || touchStartY === null) return;
+      const currentY = e.touches[0].clientY;
+      const delta = touchStartY - currentY;
+      e.preventDefault();
+      if (isTransitioning) return;
+      if (Math.abs(delta) < TOUCH_THRESHOLD) return;
+      const direction = delta > 0 ? 1 : -1;
+      touchStartY = currentY;
+      advance(direction);
+    }
+
+    function onTouchEnd() {
+      touchStartY = null;
+    }
+
+    function advance(direction) {
+      if (isTransitioning) return;
+      if (direction > 0) {
+        if (active < steps.length - 1) {
+          goTo(active + 1);
+          pauseForInteraction();
+          lockTransition();
+        } else {
+          releasePin();
+        }
+      } else if (active > 0) {
+        goTo(active - 1);
+        pauseForInteraction();
+        lockTransition();
+      } else {
+        releasePin();
+      }
+    }
+
+    function engagePin(fromBelow) {
+      if (pinned || !desktopMedia.matches) return;
+      pinned = true;
+      goTo(fromBelow ? steps.length - 1 : 0, false);
+      window.addEventListener('wheel', onWheel, { passive: false });
+      window.addEventListener('touchstart', onTouchStart, { passive: true });
+      window.addEventListener('touchmove', onTouchMove, { passive: false });
+      window.addEventListener('touchend', onTouchEnd, { passive: true });
+    }
+
+    function releasePin() {
+      if (!pinned) return;
+      pinned = false;
+      releasedUntil = Date.now() + REENGAGE_LOCK_MS;
+      window.removeEventListener('wheel', onWheel, { passive: false });
+      window.removeEventListener('touchstart', onTouchStart, { passive: true });
+      window.removeEventListener('touchmove', onTouchMove, { passive: false });
+      window.removeEventListener('touchend', onTouchEnd, { passive: true });
+    }
+
+    const pinIo = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const top = entry.boundingClientRect.top;
+        const scrollingDown = lastRectTop === null ? true : top < lastRectTop;
+        lastRectTop = top;
+
+        if (!desktopMedia.matches) {
+          if (pinned) releasePin();
+          return;
+        }
+
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.6 && !pinned && Date.now() >= releasedUntil) {
+          engagePin(!scrollingDown);
+        } else if (!entry.isIntersecting && pinned) {
+          releasePin();
+        }
+      });
+    }, { threshold: [0, 0.2, 0.4, 0.6, 0.8, 1] });
+    pinIo.observe(pinSection);
+
+    desktopMedia.addEventListener('change', (e) => {
+      if (!e.matches) releasePin();
+    });
+  }
 });
