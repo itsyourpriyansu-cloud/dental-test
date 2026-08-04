@@ -10,13 +10,13 @@
 .ab-container {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 80px 24px;
+  padding: 56px 24px;
   border-radius: 32px;
   overflow: hidden;
 }
 
 @media (max-width: 1024px) {
-  .ab-container { padding: 60px 24px; }
+  .ab-container { padding: 48px 24px; }
 }
 
 @media (max-width: 640px) {
@@ -27,13 +27,13 @@
   display: grid;
   grid-template-columns: 55% 45%;
   gap: 64px;
-  align-items: center;
+  align-items: stretch;
 }
 
 @media (max-width: 1024px) {
   .ab-grid {
     grid-template-columns: 1fr;
-    gap: 48px;
+    gap: 40px;
   }
   .ab-content { order: 1; }
   .ab-media { order: 2; }
@@ -81,7 +81,7 @@
 /* ---------------------------------- Form ---------------------------------- */
 
 .ab-form {
-  margin-top: 40px;
+  margin-top: 32px;
   display: flex;
   flex-direction: column;
 }
@@ -90,7 +90,7 @@
 .ab-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 32px;
+  gap: 26px;
   opacity: 0;
 }
 .ab-row--single { grid-template-columns: 1fr; }
@@ -108,7 +108,7 @@
 .ab-section.is-visible .ab-row:nth-of-type(4) { animation-delay: .45s; }
 
 .ab-field {
-  padding: 18px 0;
+  padding: 14px 0;
   border-bottom: 1px solid #D8DFEE;
   transition: border-color 300ms ease;
 }
@@ -144,7 +144,7 @@
    This file keeps only what's specific to this form: the entrance-fade
    start state/keyframe and the JS-driven disabled/loading state. */
 .ab-submit {
-  margin-top: 32px;
+  margin-top: 26px;
   opacity: 0;
 }
 .ab-section.is-visible .ab-submit {
@@ -215,7 +215,9 @@
 /* ---------------------------------- Media ---------------------------------- */
 
 .ab-media {
+  position: relative;
   height: 100%;
+  min-height: 420px;
   border-radius: 24px;
   overflow: hidden;
   opacity: 0;
@@ -226,16 +228,17 @@
 
 .ab-media img {
   display: block;
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  min-height: 420px;
   object-fit: cover;
   transition: transform 600ms ease;
 }
 .ab-media:hover img { transform: scale(1.02); }
 
 @media (max-width: 1024px) {
-  .ab-media img { min-height: 320px; }
+  .ab-media { min-height: 320px; }
 }
 
 /* --------------------------------- Motion --------------------------------- */

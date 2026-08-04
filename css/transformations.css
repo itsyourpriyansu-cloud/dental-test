@@ -374,3 +374,236 @@
     aspect-ratio: 1 / 1;
   }
 }
+
+/* ==========================================================================
+   BEFORE / AFTER — Selectable Service Tabs + Drag Slider (#transformations)
+   ========================================================================== */
+
+.ba-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .ba-layout {
+    grid-template-columns: 220px 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+}
+
+@media (min-width: 1200px) {
+  .ba-layout {
+    grid-template-columns: 280px 1fr;
+  }
+}
+
+.ba-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.625rem;
+  margin-bottom: 2.5rem;
+}
+
+.ba-tab {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(247, 251, 254, 0.72);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 9999px;
+  padding: 0.6rem 1.15rem;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.ba-tab:hover {
+  color: #F7FBFE;
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.24);
+}
+
+.ba-tab.is-active {
+  background: #4AC0EE;
+  border-color: #4AC0EE;
+  color: #0B1220;
+  box-shadow: 0 8px 20px -6px rgba(74, 192, 238, 0.45);
+}
+
+.ba-tab:focus-visible {
+  outline: 2px solid #4AC0EE;
+  outline-offset: 2px;
+}
+
+.ba-slider-wrap {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.ba-slider__frame {
+  position: relative;
+  aspect-ratio: 16 / 7;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 24px 50px -22px rgba(3, 10, 24, 0.65);
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: none;
+}
+
+.ba-slider__img {
+  position: absolute;
+  inset: 0;
+}
+
+.ba-slider__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 38%;
+  display: block;
+  transition: opacity 0.25s ease;
+}
+
+.ba-slider__img--before {
+  clip-path: inset(0 calc(100% - var(--ba-pos, 50%)) 0 0);
+}
+
+.ba-slider__img .ba-card__tag {
+  top: 0.85rem;
+}
+
+.ba-slider__img--after .ba-card__tag {
+  right: 0.85rem;
+  left: auto;
+}
+
+.ba-slider__img--before .ba-card__tag {
+  left: 0.85rem;
+  right: auto;
+}
+
+.ba-slider__handle {
+  position: absolute;
+  top: 0;
+  left: var(--ba-pos, 50%);
+  height: 100%;
+  width: 0;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: ew-resize;
+  z-index: 5;
+}
+
+.ba-slider__handle::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 3px;
+  transform: translateX(-50%);
+  background: #FFFFFF;
+  box-shadow: 0 0 0 1px rgba(11, 18, 32, 0.08);
+}
+
+.ba-slider__handle-btn {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  border-radius: 9999px;
+  background: #FFFFFF;
+  color: #0B4696;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  box-shadow: 0 10px 24px -6px rgba(3, 10, 24, 0.45);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ba-slider__handle:hover .ba-slider__handle-btn,
+.ba-slider__handle:active .ba-slider__handle-btn {
+  transform: scale(1.06);
+}
+
+.ba-slider__handle:focus-visible {
+  outline: none;
+}
+
+.ba-slider__handle:focus-visible .ba-slider__handle-btn {
+  box-shadow: 0 0 0 3px rgba(74, 192, 238, 0.55), 0 10px 24px -6px rgba(3, 10, 24, 0.45);
+}
+
+.ba-slider__caption {
+  padding-top: 1.5rem;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #F7FBFE;
+  font-family: 'Manrope', sans-serif;
+}
+
+.ba-slider__caption em {
+  font-style: normal;
+  color: #4AC0EE;
+  padding: 0 0.1em;
+}
+
+.ba-slider__caption [data-ba-tagline] {
+  font-weight: 500;
+  color: rgba(247, 251, 254, 0.75);
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+}
+
+@media (max-width: 639px) {
+  .ba-slider__frame {
+    aspect-ratio: 4 / 3;
+  }
+
+  .ba-tab {
+    font-size: 0.78rem;
+    padding: 0.55rem 1rem;
+  }
+}
+
+/* Vertical sidebar layout — tablet and desktop only. Mobile keeps the
+   horizontal wrapping pill row defined above untouched. Placed last in
+   the cascade so it wins over the base .ba-tabs/.ba-tab/.ba-slider-wrap
+   rules above without needing extra specificity. */
+@media (min-width: 768px) {
+  .ba-tabs {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 1rem;
+    margin-bottom: 0;
+  }
+
+  .ba-tab {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 52px;
+    padding: 0 22px;
+    border-radius: 0.75rem;
+    text-align: left;
+    white-space: normal;
+  }
+
+  .ba-slider-wrap {
+    max-width: none;
+    margin: 0;
+  }
+}

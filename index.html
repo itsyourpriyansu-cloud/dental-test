@@ -834,56 +834,42 @@
             Before &amp; after<br>
             <em class="heading-serif text-brand-sky">results that speak for themselves.</em>
           </h2>
-          <p class="text-base sm:text-lg text-slate-300 leading-relaxed">
-            A glimpse at the kind of transformation precise orthodontic and cosmetic treatment can achieve.
-          </p>
+         
         </div>
 
-        <div class="ba-grid" data-reveal-group>
+        <div class="ba-layout">
 
-          <!-- Card 1 -->
-          <div class="ba-card" data-reveal="up">
-            <div class="ba-card__frame">
-              <div class="ba-card__photo ba-card__photo--before">
-                <img src="https://images.unsplash.com/photo-1663182234283-28941e7612da?auto=format&fit=crop&w=800&q=80" alt="Before orthodontic treatment - close-up of teeth" loading="lazy">
-                <span class="ba-card__tag ba-card__tag--before">Before</span>
-              </div>
-              <div class="ba-card__photo ba-card__photo--after">
-                <img src="https://images.unsplash.com/photo-1654373535457-383a0a4d00f9?auto=format&fit=crop&w=800&q=80" alt="After orthodontic treatment - aligned white smile" loading="lazy">
-                <span class="ba-card__tag ba-card__tag--after">After</span>
-              </div>
-            </div>
-            <p class="ba-card__caption">Clear Aligners <em>|</em> Full Arch Alignment</p>
+          <!-- Service Selector -->
+          <div class="ba-tabs" data-reveal="up" data-ba-tabs role="tablist" aria-label="Select a treatment to view before and after results">
+            <button type="button" class="ba-tab is-active" data-ba-service="orthodontics" role="tab" aria-selected="true">Orthodontics</button>
+            <button type="button" class="ba-tab" data-ba-service="aligners" role="tab" aria-selected="false">Clear Aligners</button>
+            <button type="button" class="ba-tab" data-ba-service="implants" role="tab" aria-selected="false">Dental Implants</button>
+            <button type="button" class="ba-tab" data-ba-service="cosmetic" role="tab" aria-selected="false">Cosmetic Dentistry</button>
+            <button type="button" class="ba-tab" data-ba-service="general" role="tab" aria-selected="false">General Dentistry</button>
+            <button type="button" class="ba-tab" data-ba-service="smile-makeover" role="tab" aria-selected="false">Smile Makeovers</button>
           </div>
 
-          <!-- Card 2 -->
-          <div class="ba-card" data-reveal="up">
-            <div class="ba-card__frame">
-              <div class="ba-card__photo ba-card__photo--before">
-                <img src="https://images.unsplash.com/photo-1663182245833-7dd667277043?auto=format&fit=crop&w=800&q=80" alt="Before teeth whitening - close-up of teeth" loading="lazy">
-                <span class="ba-card__tag ba-card__tag--before">Before</span>
+          <!-- Before / After Slider -->
+          <div class="ba-slider-wrap" data-reveal="up">
+            <div class="ba-slider" data-ba-slider>
+              <div class="ba-slider__frame" data-ba-frame>
+                <div class="ba-slider__img ba-slider__img--after">
+                  <img data-ba-after src="images/root_canal_after.png" alt="After treatment result">
+                  <span class="ba-card__tag ba-card__tag--after">After</span>
+                </div>
+                <div class="ba-slider__img ba-slider__img--before" data-ba-before-clip>
+                  <img data-ba-before src="images/root_canal_before.png" alt="Before treatment result">
+                  <span class="ba-card__tag ba-card__tag--before">Before</span>
+                </div>
+                <div class="ba-slider__handle" data-ba-handle role="slider" aria-label="Drag to compare before and after images" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
+                  <span class="ba-slider__handle-btn">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+                  </span>
+                </div>
               </div>
-              <div class="ba-card__photo ba-card__photo--after">
-                <img src="https://images.unsplash.com/photo-1677026010083-78ec7f1b84ed?auto=format&fit=crop&w=800&q=80" alt="After teeth whitening - bright white smile" loading="lazy">
-                <span class="ba-card__tag ba-card__tag--after">After</span>
-              </div>
+              <p class="ba-slider__caption"><span data-ba-title>Orthodontics</span> <em>|</em> <span data-ba-tagline>Full Arch Alignment</span></p>
             </div>
-            <p class="ba-card__caption">Professional Whitening <em>|</em> In-Clinic Session</p>
-          </div>
-
-          <!-- Card 3 -->
-          <div class="ba-card" data-reveal="up">
-            <div class="ba-card__frame">
-              <div class="ba-card__photo ba-card__photo--before">
-                <img src="https://images.unsplash.com/photo-1567516364473-233c4b6fcfbe?auto=format&fit=crop&w=800&q=80" alt="Before cosmetic dental treatment - close-up smile" loading="lazy">
-                <span class="ba-card__tag ba-card__tag--before">Before</span>
-              </div>
-              <div class="ba-card__photo ba-card__photo--after">
-                <img src="https://plus.unsplash.com/premium_photo-1723874705687-a2b999a37994?auto=format&fit=crop&w=800&q=80" alt="After cosmetic dental treatment - refined smile" loading="lazy">
-                <span class="ba-card__tag ba-card__tag--after">After</span>
-              </div>
-            </div>
-            <p class="ba-card__caption">Ceramic Veneers <em>|</em> Complete Smile Makeover</p>
           </div>
 
         </div>
@@ -1769,6 +1755,7 @@
   <!-- Main Script -->
   <script src="js/main.js"></script>
   <script src="js/tech-journey.js"></script>
+  <script src="js/transformations.js"></script>
   <script src="js/footer.js"></script>
   <script src="js/appointment-booking.js"></script>
   <script src="js/motion.js"></script>
