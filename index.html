@@ -146,40 +146,72 @@
     <!-- Floating Info Cards -->
     <div class="hero2__cards" data-hero-cards>
 
-        <div class="hero2__card hero2__card--wide">
+      <!-- Card 1: Doctor-Led Care -->
+      <div class="hero2__card hero2__card--wide">
+        <div class="hero2__card-top">
+          <div class="hero2__card-icon-badge hero2__card-icon-badge--navy">
+            <i data-lucide="user-check"></i>
+          </div>
+          <span class="hero2__card-tag">Specialist Guided</span>
+        </div>
+        <div class="hero2__card-body">
           <h3>Doctor-Led Care</h3>
           <p>Every treatment plan is personally guided by Dr. Prudhvi, an orthodontic &amp; dentofacial specialist.</p>
-          <a href="#doctor" class="hero2__card-link btn btn-ghost">
+        </div>
+        <div class="hero2__card-footer">
+          <a href="#doctor" class="hero2__card-link">
             <span>Meet the Doctor</span>
-            <i data-lucide="arrow-up-right" class="btn-ghost-icon"></i>
+            <i data-lucide="arrow-up-right"></i>
           </a>
         </div>
+      </div>
 
-        <div class="hero2__card hero2__card--stat">
-          <span class="hero2__card-stat-icon" aria-hidden="true">
+      <!-- Card 2: 12+ Years Clinical Experience -->
+      <div class="hero2__card hero2__card--stat">
+        <div class="hero2__card-top">
+          <div class="hero2__card-icon-badge hero2__card-icon-badge--sky">
             <svg viewBox="0 0 24 24" fill="none" width="22" height="22">
-              <path d="M12 3c-2.4 0-4.2 1.7-4.9 3.3-.5 1.2-.5 2.5-.4 3.9.1 1.7.5 3.4 1 5 .4 1.2.9 2.7 2 2.8.9.1 1.2-.9 1.5-1.7.3-.8.6-1.6 1.3-1.6s1 .8 1.3 1.6c.3.8.6 1.8 1.5 1.7 1.1-.1 1.6-1.6 2-2.8.5-1.6.9-3.3 1-5 .1-1.4.1-2.7-.4-3.9C16.2 4.7 14.4 3 12 3Z" stroke="#4AC0EE" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M12 3c-2.4 0-4.2 1.7-4.9 3.3-.5 1.2-.5 2.5-.4 3.9.1 1.7.5 3.4 1 5 .4 1.2.9 2.7 2 2.8.9.1 1.2-.9 1.5-1.7.3-.8.6-1.6 1.3-1.6s1 .8 1.3 1.6c.3.8.6 1.8 1.5 1.7 1.1-.1 1.6-1.6 2-2.8.5-1.6.9-3.3 1-5 .1-1.4.1-2.7-.4-3.9C16.2 4.7 14.4 3 12 3Z" stroke="#0284C7" stroke-width="2" stroke-linejoin="round"/>
             </svg>
-          </span>
-          <span>
-            <span class="hero2__card-stat-value"><span data-count-to="12">0</span>+ Years</span>
-            <span class="hero2__card-stat-label">Clinical Experience</span>
+          </div>
+          <span class="hero2__card-tag hero2__card-tag--success">
+            <i data-lucide="check-circle-2"></i> Verified
           </span>
         </div>
+        <div class="hero2__card-body">
+          <span class="hero2__card-stat-value"><span data-count-to="12">0</span>+ Years</span>
+          <span class="hero2__card-stat-label">Clinical Experience</span>
+        </div>
+        <div class="hero2__card-footer">
+          <span class="hero2__card-stat-subtext">Advanced Orthodontics</span>
+        </div>
+      </div>
 
-       
-
-        <div class="hero2__card hero2__card--trust">
-          <div class="hero2__card-trust-text">
-            <span class="hero2__card-trust-label">Trusted care for</span>
-            <span class="hero2__card-trust-value">Teens &amp; Adults</span>
+      <!-- Card 3: Trusted Care for Teens & Adults -->
+      <div class="hero2__card hero2__card--trust">
+        <div class="hero2__card-top">
+          <div class="hero2__card-icon-badge hero2__card-icon-badge--indigo">
+            <i data-lucide="users"></i>
           </div>
+          <span class="hero2__card-tag hero2__card-tag--star">
+            <i data-lucide="star"></i> 5.0 Rating
+          </span>
+        </div>
+        <div class="hero2__card-body">
+          <span class="hero2__card-trust-label">Trusted care for</span>
+          <h3 class="hero2__card-trust-value">Teens &amp; Adults</h3>
+        </div>
+        <div class="hero2__card-footer hero2__card-footer--avatar">
           <div class="hero2__avatar-stack">
             <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Patient">
             <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Patient">
             <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" alt="Patient">
           </div>
+          <span class="hero2__avatar-count">500+ Smiles</span>
         </div>
+      </div>
+
+    </div>
 
 
 
@@ -1614,6 +1646,24 @@
   <script>
     lucide.createIcons();
   </script>
+
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script>
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      smoothTouch: false
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+  </script>
+
   <!-- Main Script -->
   <script src="js/main.js"></script>
   <script src="js/tech-journey.js"></script>
