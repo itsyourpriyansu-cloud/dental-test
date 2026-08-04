@@ -32,42 +32,42 @@ document.addEventListener('DOMContentLoaded', () => {
       category: "Specialized Care",
       fullDetails: "Orthodontics goes beyond straightening teeth—it balances your bite, protects tooth enamel from uneven wear, and improves facial aesthetics. We provide custom metal braces, tooth-colored ceramic brackets, and self-ligating orthodontic systems engineered for shorter treatment durations.",
       highlights: ["Custom ceramic & metal brackets", "Bite correction & alignment", "Teens & adult braces options", "Post-treatment retainer systems"],
-      image: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80"
+      image: "images/orthodontics.png"
     },
     aligners: {
       title: "Clear Aligners",
       category: "Invisible Braces",
       fullDetails: "Clear aligner therapy offers an invisible, removable alternative to conventional braces. Using 3D computer models, a sequential series of clear trays is generated to align your teeth gradually, allowing you to eat, brush, and speak with complete confidence.",
       highlights: ["Virtually invisible appearance", "Removable for meals & oral hygiene", "3D digital progress preview", "Fewer in-clinic adjustment visits"],
-      image: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=800&q=80"
+      image: "images/clear-aligners.png"
     },
     implants: {
       title: "Dental Implants",
       category: "Restorative",
       fullDetails: "Dental implants are the gold standard for replacing missing teeth. Implant posts integrate with your jawbone like natural roots, supporting individual ceramic crowns or bridges that feel and function just like your natural teeth.",
       highlights: ["Permanent replacement solution", "Preserves jawbone density", "Natural appearance & strength", "Single & multi-tooth restorations"],
-      image: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80"
+      image: "images/dental-implants.png"
     },
     cosmetic: {
       title: "Cosmetic Dentistry",
       category: "Smile Enhancement",
       fullDetails: "Transform stained, chipped, or gapped teeth into a radiant smile. Our cosmetic treatments blend artistic eye with biological conservation, creating natural-looking aesthetic upgrades tailored to your facial proportions.",
       highlights: ["Ultra-thin ceramic veneers", "In-office clinical teeth whitening", "Composite direct bonding", "Enamel smoothing & recontouring"],
-      image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80"
+      image: "images/cosmetic-dentistry.png"
     },
     general: {
       title: "General Dentistry",
       category: "Preventative & Core",
       fullDetails: "Comprehensive oral healthcare keeps your teeth healthy for a lifetime. From routine prophylactic cleans and early cavity detection to tooth-colored composite fillings and endodontic care, we ensure your foundation is secure.",
       highlights: ["Comprehensive oral examinations", "Ultrasonic scaling & polishing", "Tooth-colored composite fillings", "Painless root canal therapy"],
-      image: "https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&w=800&q=80"
+      image: "images/general-dentistry.png"
     },
     "smile-makeover": {
       title: "Smile Makeovers",
       category: "Complete Transformation",
       fullDetails: "For patients requiring comprehensive rejuvenation, a smile makeover harmonizes multiple disciplines. Dr. Prudhvi maps out a phased sequence combining alignment, restorative crowns, and whitening for a flawless result.",
       highlights: ["Full-mouth digital planning", "Phased treatment execution", "Custom shade & shape matching", "Long-term maintenance program"],
-      image: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80"
+      image: "images/smile-makeover.png"
     }
   };
 

@@ -10,40 +10,40 @@ document.addEventListener('DOMContentLoaded', () => {
       eyebrow: 'Step 01', title: 'Digital Scan', badge: '3D Scanner',
       desc: 'High-resolution digital scanning captures every detail of your smile with exceptional comfort and precision—eliminating the need for traditional impressions.',
       highlights: ['High Precision', 'Comfortable', 'Fast', 'No Traditional Molds'],
-      image: 'https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&w=1200&q=80',
-      alt: 'Modern intraoral digital scanner used for a comfortable, mold-free dental scan',
+      image: 'images/digital-scan.png',
+      alt: 'Doctor examining 3D dental scan and X-rays on lightboard for digital treatment planning',
       ctaLabel: 'Explore Scanning Technology', ctaService: 'Digital Scan'
     },
     {
       eyebrow: 'Step 02', title: 'Smile Analysis', badge: 'AI Simulation',
       desc: 'We map your facial proportions, lip line, and bite relationship, then simulate your new smile digitally—so you can preview realistic results before treatment begins.',
       highlights: ['Facial Analysis', 'Bite Mapping', 'Smile Preview', 'AI Simulation'],
-      image: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1200&q=80',
-      alt: 'Digital smile design and simulation session with a patient',
+      image: 'images/smile-analysis.jpg',
+      alt: 'Digital smile analysis grid mapping smile proportions and tooth alignment',
       ctaLabel: 'See Smile Simulation', ctaService: 'Smile Analysis'
     },
     {
       eyebrow: 'Step 03', title: 'Treatment Planning', badge: 'Digital Planning',
       desc: 'Dr. Prudhvi reviews your 3D scan and simulation to build a personalised, sequenced treatment plan with predictable timelines and transparent milestones.',
       highlights: ['AI Planning', 'Custom Treatment', 'Predictable Results', 'Precision Workflow'],
-      image: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=1200&q=80',
-      alt: 'Dentist reviewing a digital orthodontic treatment plan',
+      image: 'images/treatment-planning.png',
+      alt: 'Dentist reviewing digital dental X-ray on overhead screen with patient',
       ctaLabel: 'View Treatment Planning', ctaService: 'Treatment Planning'
     },
     {
       eyebrow: 'Step 04', title: 'Precision Treatment', badge: 'Precision Care',
       desc: 'Guided by your digital plan, treatment is delivered through gentle, low-friction mechanics and precise appliance fabrication for faster, more comfortable movement.',
       highlights: ['Comfortable', 'Less Pain', 'Faster Healing', 'Precise Movement'],
-      image: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=1200&q=80',
-      alt: 'Clear aligners and precision orthodontic appliances',
+      image: 'images/precision-treatment.png',
+      alt: 'Dentist using precision microscope for dental procedure',
       ctaLabel: 'Explore Treatment Options', ctaService: 'Precision Treatment'
     },
     {
       eyebrow: 'Step 05', title: 'Perfect Smile', badge: 'Confident Smile',
       desc: 'Every stage is monitored against your original simulation, so the final result matches what was planned—a healthy, confident, long-lasting smile.',
       highlights: ['Healthy Smile', 'Better Confidence', 'Long-term Results', 'Beautiful Finish'],
-      image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=80',
-      alt: 'Happy patient with a confident, healthy smile',
+      image: 'images/perfect-smile.png',
+      alt: 'Patient showcasing a beautiful, healthy, perfect smile after treatment',
       ctaLabel: 'Book Consultation', ctaService: 'Perfect Smile'
     }
   ];
