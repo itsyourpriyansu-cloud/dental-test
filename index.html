@@ -430,141 +430,255 @@
 
         <div class="services-grid" data-reveal-group>
 
-          <!-- Orthodontics Card -->
-          <div class="service-card bg-white rounded-card-lg border border-brand-border overflow-hidden shadow-soft-md hover:shadow-soft-lg transition-all group" data-reveal="up">
-            <div class="service-card__image">
-              <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80" alt="Orthodontics" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-              <div class="absolute top-4 left-4">
-                <span class="px-3 py-1 bg-white/90 backdrop-blur-md text-brand-deep text-xs font-bold rounded-full shadow-soft-sm">Specialized Care</span>
+          <!-- 1. Orthodontics Card -->
+          <div class="service-card group card-shine" data-reveal="up">
+            <div class="service-card__image-wrap">
+              <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80" alt="Orthodontics">
+
+              <div class="service-card__dots" aria-hidden="true">
+                <span class="service-card__dot service-card__dot--active"></span>
+                <span class="service-card__dot"></span>
+                <span class="service-card__dot"></span>
+                <span class="service-card__dot"></span>
               </div>
             </div>
-            <div class="p-6 space-y-3 flex-1 flex flex-col justify-between">
+            <div class="service-card__body">
               <div>
-                <h3 class="text-xl font-bold font-heading text-brand-dark group-hover:text-brand-deep transition-colors">Orthodontics</h3>
-                <p class="service-card__desc text-xs sm:text-sm text-brand-muted mt-2 leading-relaxed">Fixed ceramic, self-ligating & metal braces for precise bite alignment and long-term dental health.</p>
+                <div class="service-card__header-row">
+                  <h3 class="service-card__title">Orthodontics</h3>
+                  <span class="service-card__tagline">Specialist Care</span>
+                </div>
+                <p class="service-card__doctor-sub">Dr. S. Prudhvi Das Reddy • MDS</p>
+                <p class="service-card__desc-text">Fixed ceramic, self-ligating &amp; metal braces for precise bite alignment and long-term dental health.</p>
               </div>
-              <div class="pt-4 border-t border-brand-border flex items-center justify-between">
-                <button onclick="openServiceModal('orthodontics')" class="btn btn-ghost">View Details →</button>
-                <button onclick="openBookingModal('Orthodontics')" class="btn btn-sm btn-primary">
-                  <span>Book Now</span>
-                  <span class="btn-arrow"><i data-lucide="arrow-up-right" class="btn-arrow-icon"></i></span>
-                </button>
+
+              <div>
+                <div class="service-card__divider"></div>
+                <div class="service-card__specs">
+                  <div class="service-card__spec-item">
+                    <i data-lucide="scan"></i>
+                    <span>Fixed &amp; Clear</span>
+                  </div>
+                  <div class="service-card__spec-item service-card__spec-item--right">
+                    <i data-lucide="shield-check"></i>
+                    <span>Bite Alignment</span>
+                  </div>
+                </div>
               </div>
+
+              <button type="button" onclick="openServiceModal('orthodontics')" class="service-card__action-btn">
+                <span>View Details</span>
+              </button>
             </div>
           </div>
 
-          <!-- Clear Aligners Card -->
-          <div class="service-card bg-white rounded-card-lg border border-brand-border overflow-hidden shadow-soft-md hover:shadow-soft-lg transition-all group" data-reveal="up">
-            <div class="service-card__image">
-              <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=800&q=80" alt="Clear Aligners" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-              <div class="absolute top-4 left-4">
-                <span class="px-3 py-1 bg-white/90 backdrop-blur-md text-brand-deep text-xs font-bold rounded-full shadow-soft-sm">Invisible Braces</span>
+          <!-- 2. Clear Aligners Card -->
+          <div class="service-card group card-shine" data-reveal="up">
+            <div class="service-card__image-wrap">
+              <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=800&q=80" alt="Clear Aligners">
+
+              <div class="service-card__dots" aria-hidden="true">
+                <span class="service-card__dot service-card__dot--active"></span>
+                <span class="service-card__dot"></span>
+                <span class="service-card__dot"></span>
+                <span class="service-card__dot"></span>
               </div>
             </div>
-            <div class="p-6 space-y-3 flex-1 flex flex-col justify-between">
+            <div class="service-card__body">
               <div>
-                <h3 class="text-xl font-bold font-heading text-brand-dark group-hover:text-brand-deep transition-colors">Clear Aligners</h3>
-                <p class="service-card__desc text-xs sm:text-sm text-brand-muted mt-2 leading-relaxed">Discreet, custom-molded clear tray aligners that systematically move your teeth without metal wires.</p>
+                <div class="service-card__header-row">
+                  <h3 class="service-card__title">Clear Aligners</h3>
+                  <span class="service-card__tagline">Invisible Trays</span>
+                </div>
+                <p class="service-card__doctor-sub">Dr. S. Prudhvi Das Reddy • MDS</p>
+                <p class="service-card__desc-text">Discreet, custom-molded clear tray aligners that systematically move your teeth without metal wires.</p>
               </div>
-              <div class="pt-4 border-t border-brand-border flex items-center justify-between">
-                <button onclick="openServiceModal('aligners')" class="btn btn-ghost">View Details →</button>
-                <button onclick="openBookingModal('Clear Aligners')" class="btn btn-sm btn-primary">
-                  <span>Book Now</span>
-                  <span class="btn-arrow"><i data-lucide="arrow-up-right" class="btn-arrow-icon"></i></span>
-                </button>
+
+              <div>
+                <div class="service-card__divider"></div>
+                <div class="service-card__specs">
+                  <div class="service-card__spec-item">
+                    <i data-lucide="sparkles"></i>
+                    <span>100% Invisible</span>
+                  </div>
+                  <div class="service-card__spec-item service-card__spec-item--right">
+                    <i data-lucide="smile"></i>
+                    <span>Removable Trays</span>
+                  </div>
+                </div>
               </div>
+
+              <button type="button" onclick="openServiceModal('aligners')" class="service-card__action-btn">
+                <span>View Details</span>
+              </button>
             </div>
           </div>
 
-          <!-- Dental Implants Card -->
-          <div class="service-card bg-white rounded-card-lg border border-brand-border overflow-hidden shadow-soft-md hover:shadow-soft-lg transition-all group" data-reveal="up">
-            <div class="service-card__image">
-              <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80" alt="Dental Implants" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-              <div class="absolute top-4 left-4">
-                <span class="px-3 py-1 bg-white/90 backdrop-blur-md text-brand-deep text-xs font-bold rounded-full shadow-soft-sm">Restorative</span>
+          <!-- 3. Dental Implants Card -->
+          <div class="service-card group card-shine" data-reveal="up">
+            <div class="service-card__image-wrap">
+              <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80" alt="Dental Implants">
+
+              <div class="service-card__dots" aria-hidden="true">
+                <span class="service-card__dot service-card__dot--active"></span>
+                <span class="service-card__dot"></span>
+                <span class="service-card__dot"></span>
+                <span class="service-card__dot"></span>
               </div>
             </div>
-            <div class="p-6 space-y-3 flex-1 flex flex-col justify-between">
+            <div class="service-card__body">
               <div>
-                <h3 class="text-xl font-bold font-heading text-brand-dark group-hover:text-brand-deep transition-colors">Dental Implants</h3>
-                <p class="service-card__desc text-xs sm:text-sm text-brand-muted mt-2 leading-relaxed">Permanent titanium implant posts and natural-looking crowns to restore missing teeth seamlessly.</p>
+                <div class="service-card__header-row">
+                  <h3 class="service-card__title">Dental Implants</h3>
+                  <span class="service-card__tagline">Restorative</span>
+                </div>
+                <p class="service-card__doctor-sub">Dr. S. Prudhvi Das Reddy • MDS</p>
+                <p class="service-card__desc-text">Permanent titanium implant posts and natural-looking crowns to restore missing teeth seamlessly.</p>
               </div>
-              <div class="pt-4 border-t border-brand-border flex items-center justify-between">
-                <button onclick="openServiceModal('implants')" class="btn btn-ghost">View Details →</button>
-                <button onclick="openBookingModal('Dental Implants')" class="btn btn-sm btn-primary">
-                  <span>Book Now</span>
-                  <span class="btn-arrow"><i data-lucide="arrow-up-right" class="btn-arrow-icon"></i></span>
-                </button>
+
+              <div>
+                <div class="service-card__divider"></div>
+                <div class="service-card__specs">
+                  <div class="service-card__spec-item">
+                    <i data-lucide="anchor"></i>
+                    <span>Titanium Post</span>
+                  </div>
+                  <div class="service-card__spec-item service-card__spec-item--right">
+                    <i data-lucide="check-circle-2"></i>
+                    <span>Permanent Tooth</span>
+                  </div>
+                </div>
               </div>
+
+              <button type="button" onclick="openServiceModal('implants')" class="service-card__action-btn">
+                <span>View Details</span>
+              </button>
             </div>
           </div>
 
-          <!-- Cosmetic Dentistry Card -->
-          <div class="service-card bg-white rounded-card-lg border border-brand-border overflow-hidden shadow-soft-md hover:shadow-soft-lg transition-all group" data-reveal="up">
-            <div class="service-card__image">
-              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" alt="Cosmetic Dentistry" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-              <div class="absolute top-4 left-4">
-                <span class="px-3 py-1 bg-white/90 backdrop-blur-md text-brand-deep text-xs font-bold rounded-full shadow-soft-sm">Smile Enhancement</span>
+          <!-- 4. Cosmetic Dentistry Card -->
+          <div class="service-card group card-shine" data-reveal="up">
+            <div class="service-card__image-wrap">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" alt="Cosmetic Dentistry">
+
+              <div class="service-card__dots" aria-hidden="true">
+                <span class="service-card__dot service-card__dot--active"></span>
+                <span class="service-card__dot"></span>
+                <span class="service-card__dot"></span>
+                <span class="service-card__dot"></span>
               </div>
             </div>
-            <div class="p-6 space-y-3 flex-1 flex flex-col justify-between">
+            <div class="service-card__body">
               <div>
-                <h3 class="text-xl font-bold font-heading text-brand-dark group-hover:text-brand-deep transition-colors">Cosmetic Dentistry</h3>
-                <p class="service-card__desc text-xs sm:text-sm text-brand-muted mt-2 leading-relaxed">Porcelain veneers, tooth whitening, composite bonding, and gum contouring for radiant confidence.</p>
+                <div class="service-card__header-row">
+                  <h3 class="service-card__title">Cosmetic Dentistry</h3>
+                  <span class="service-card__tagline">Enhancement</span>
+                </div>
+                <p class="service-card__doctor-sub">Dr. S. Prudhvi Das Reddy • MDS</p>
+                <p class="service-card__desc-text">Porcelain veneers, tooth whitening, composite bonding, and gum contouring for radiant confidence.</p>
               </div>
-              <div class="pt-4 border-t border-brand-border flex items-center justify-between">
-                <button onclick="openServiceModal('cosmetic')" class="btn btn-ghost">View Details →</button>
-                <button onclick="openBookingModal('Cosmetic Dentistry')" class="btn btn-sm btn-primary">
-                  <span>Book Now</span>
-                  <span class="btn-arrow"><i data-lucide="arrow-up-right" class="btn-arrow-icon"></i></span>
-                </button>
+
+              <div>
+                <div class="service-card__divider"></div>
+                <div class="service-card__specs">
+                  <div class="service-card__spec-item">
+                    <i data-lucide="sparkle"></i>
+                    <span>Smile Design</span>
+                  </div>
+                  <div class="service-card__spec-item service-card__spec-item--right">
+                    <i data-lucide="sun"></i>
+                    <span>Veneers &amp; Whitening</span>
+                  </div>
+                </div>
               </div>
+
+              <button type="button" onclick="openServiceModal('cosmetic')" class="service-card__action-btn">
+                <span>View Details</span>
+              </button>
             </div>
           </div>
 
-          <!-- General Dentistry Card -->
-          <div class="service-card bg-white rounded-card-lg border border-brand-border overflow-hidden shadow-soft-md hover:shadow-soft-lg transition-all group" data-reveal="up">
-            <div class="service-card__image">
-              <img src="https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&w=800&q=80" alt="General Dentistry" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-              <div class="absolute top-4 left-4">
-                <span class="px-3 py-1 bg-white/90 backdrop-blur-md text-brand-deep text-xs font-bold rounded-full shadow-soft-sm">Preventative & Core</span>
+          <!-- 5. General Dentistry Card -->
+          <div class="service-card group card-shine" data-reveal="up">
+            <div class="service-card__image-wrap">
+              <img src="https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&w=800&q=80" alt="General Dentistry">
+
+              <div class="service-card__dots" aria-hidden="true">
+                <span class="service-card__dot service-card__dot--active"></span>
+                <span class="service-card__dot"></span>
+                <span class="service-card__dot"></span>
+                <span class="service-card__dot"></span>
               </div>
             </div>
-            <div class="p-6 space-y-3 flex-1 flex flex-col justify-between">
+            <div class="service-card__body">
               <div>
-                <h3 class="text-xl font-bold font-heading text-brand-dark group-hover:text-brand-deep transition-colors">General Dentistry</h3>
-                <p class="service-card__desc text-xs sm:text-sm text-brand-muted mt-2 leading-relaxed">Preventative checkups, tooth-colored restorations, root canal therapy, and ultrasonic scaling.</p>
+                <div class="service-card__header-row">
+                  <h3 class="service-card__title">General Dentistry</h3>
+                  <span class="service-card__tagline">Core Care</span>
+                </div>
+                <p class="service-card__doctor-sub">Dr. S. Prudhvi Das Reddy • MDS</p>
+                <p class="service-card__desc-text">Preventative checkups, tooth-colored restorations, root canal therapy, and ultrasonic scaling.</p>
               </div>
-              <div class="pt-4 border-t border-brand-border flex items-center justify-between">
-                <button onclick="openServiceModal('general')" class="btn btn-ghost">View Details →</button>
-                <button onclick="openBookingModal('General Dentistry')" class="btn btn-sm btn-primary">
-                  <span>Book Now</span>
-                  <span class="btn-arrow"><i data-lucide="arrow-up-right" class="btn-arrow-icon"></i></span>
-                </button>
+
+              <div>
+                <div class="service-card__divider"></div>
+                <div class="service-card__specs">
+                  <div class="service-card__spec-item">
+                    <i data-lucide="activity"></i>
+                    <span>Preventative Care</span>
+                  </div>
+                  <div class="service-card__spec-item service-card__spec-item--right">
+                    <i data-lucide="heart-pulse"></i>
+                    <span>Restorations</span>
+                  </div>
+                </div>
               </div>
+
+              <button type="button" onclick="openServiceModal('general')" class="service-card__action-btn">
+                <span>View Details</span>
+              </button>
             </div>
           </div>
 
-          <!-- Smile Makeover Card -->
-          <div class="service-card bg-white rounded-card-lg border border-brand-border overflow-hidden shadow-soft-md hover:shadow-soft-lg transition-all group" data-reveal="up">
-            <div class="service-card__image">
-              <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80" alt="Smile Makeovers" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-              <div class="absolute top-4 left-4">
-                <span class="px-3 py-1 bg-white/90 backdrop-blur-md text-brand-deep text-xs font-bold rounded-full shadow-soft-sm">Complete Transformation</span>
+          <!-- 6. Smile Makeover Card -->
+          <div class="service-card group card-shine" data-reveal="up">
+            <div class="service-card__image-wrap">
+              <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80" alt="Smile Makeovers">
+
+              <div class="service-card__dots" aria-hidden="true">
+                <span class="service-card__dot service-card__dot--active"></span>
+                <span class="service-card__dot"></span>
+                <span class="service-card__dot"></span>
+                <span class="service-card__dot"></span>
               </div>
             </div>
-            <div class="p-6 space-y-3 flex-1 flex flex-col justify-between">
+            <div class="service-card__body">
               <div>
-                <h3 class="text-xl font-bold font-heading text-brand-dark group-hover:text-brand-deep transition-colors">Smile Makeovers</h3>
-                <p class="service-card__desc text-xs sm:text-sm text-brand-muted mt-2 leading-relaxed">Integrated multi-treatment plans combining orthodontics, crowns, and aesthetic enhancements.</p>
+                <div class="service-card__header-row">
+                  <h3 class="service-card__title">Smile Makeovers</h3>
+                  <span class="service-card__tagline">Full Smile</span>
+                </div>
+                <p class="service-card__doctor-sub">Dr. S. Prudhvi Das Reddy • MDS</p>
+                <p class="service-card__desc-text">Integrated multi-treatment plans combining orthodontics, crowns, and aesthetic enhancements.</p>
               </div>
-              <div class="pt-4 border-t border-brand-border flex items-center justify-between">
-                <button onclick="openServiceModal('smile-makeover')" class="btn btn-ghost">View Details →</button>
-                <button onclick="openBookingModal('Smile Makeovers')" class="btn btn-sm btn-primary">
-                  <span>Book Now</span>
-                  <span class="btn-arrow"><i data-lucide="arrow-up-right" class="btn-arrow-icon"></i></span>
-                </button>
+
+              <div>
+                <div class="service-card__divider"></div>
+                <div class="service-card__specs">
+                  <div class="service-card__spec-item">
+                    <i data-lucide="wand-2"></i>
+                    <span>Full Transformation</span>
+                  </div>
+                  <div class="service-card__spec-item service-card__spec-item--right">
+                    <i data-lucide="layers"></i>
+                    <span>Multi-Treatment</span>
+                  </div>
+                </div>
               </div>
+
+              <button type="button" onclick="openServiceModal('smile-makeover')" class="service-card__action-btn">
+                <span>View Details</span>
+              </button>
             </div>
           </div>
 
@@ -1720,5 +1834,6 @@
   <script src="js/footer.js"></script>
   <script src="js/appointment-booking.js"></script>
   <script src="js/motion.js"></script>
+  <script src="js/ba-ripple.js"></script>
 </body>
 </html>
