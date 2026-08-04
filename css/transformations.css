@@ -96,8 +96,7 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  flex-wrap: wrap;
-  max-width: calc(100% - 44px);
+  flex-wrap: nowrap;
 }
 
 .tf-card__badge-pill {
