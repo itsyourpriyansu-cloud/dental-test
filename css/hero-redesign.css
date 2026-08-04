@@ -225,6 +225,14 @@ html, body { overflow-anchor: none; }
   .hnav__cta--sm { display: none; }
 }
 
+@media (max-width: 767px) {
+  .hnav__cta-pill--sm,
+  .hero2__cta,
+  .hero2__cta-secondary {
+    display: none !important;
+  }
+}
+
 .hnav__menu-btn {
   display: inline-flex;
   align-items: center;
