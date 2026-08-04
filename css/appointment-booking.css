@@ -139,50 +139,22 @@
 .ab-field textarea::placeholder { color: #94A3B8; }
 .ab-field textarea { min-height: 24px; }
 
+/* .ab-submit box-model (padding, height, colors, radius, the arrow circle)
+   now comes entirely from the shared .btn system (css/button-system.css).
+   This file keeps only what's specific to this form: the entrance-fade
+   start state/keyframe and the JS-driven disabled/loading state. */
 .ab-submit {
   margin-top: 32px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  height: 58px;
-  padding: 0 8px 0 28px;
-  width: fit-content;
-  border-radius: 999px;
-  background: var(--hr-navy, #0B1220);
-  color: #fff;
-  font-size: 15px;
-  font-weight: 700;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 16px 32px -14px rgba(11,18,32,.35);
-  transition: transform 300ms ease, background 300ms ease, box-shadow 300ms ease;
   opacity: 0;
 }
 .ab-section.is-visible .ab-submit {
   animation: abFadeUp .6s cubic-bezier(.16,1,.3,1) .55s forwards;
 }
-.ab-submit:hover { transform: translateY(-2px); background: var(--hr-deep, #0B4696); }
 .ab-submit:disabled,
 .ab-submit.is-loading { opacity: .75; cursor: not-allowed; transform: none; }
 
-.ab-submit-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 42px;
-  height: 42px;
-  border-radius: 999px;
-  background: #fff;
-  color: var(--hr-navy, #0B1220);
-  flex-shrink: 0;
-  transition: transform 300ms ease;
-}
-.ab-submit-icon i { width: 18px; height: 18px; }
-.ab-submit:hover .ab-submit-icon { transform: translateX(6px); }
-
 @media (max-width: 640px) {
-  .ab-submit { width: 100%; }
+  .ab-form .btn { width: 100%; }
 }
 
 /* --------------------------------- Success --------------------------------- */
