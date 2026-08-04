@@ -201,10 +201,16 @@
   color: #0F172A;
 }
 .btn-secondary:hover {
-  background: #FFFFFF;
+  background: #0B4696;
   border-color: #0B4696;
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 40px rgba(11, 70, 150, .18);
 }
-.btn-secondary:hover .btn-arrow-icon { transform: translateX(2px); }
+.btn-secondary:hover .btn-arrow {
+  background: rgba(255, 255, 255, 0.18);
+}
+.btn-secondary:hover .btn-arrow-icon { color: #FFFFFF; transform: translateX(2px); }
 .btn-secondary:active,
 .btn-secondary:hover:active { transform: scale(.98); }
 
