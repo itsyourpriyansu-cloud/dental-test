@@ -9,6 +9,13 @@
   background-color: #F7FBFE;
 }
 
+/* ── Before & After section — background handled by ba-ripple.js canvas ── */
+#transformations.ba-section {
+  position: relative;
+  overflow: hidden;
+  background: #081B43;
+}
+
 .tf-grid {
   display: flex;
   flex-direction: column;
