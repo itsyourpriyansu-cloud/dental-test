@@ -222,12 +222,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Scroll-pinned progression — freezes page scroll (via Lenis, the site's
   // smooth-scroll engine, plus a wheel/touch capture fallback) once the top
-  // of the section reaches the top of the viewport, and lets wheel/touch
-  // input step through stages 1-5 one at a time. Released back to normal
-  // scroll only once Stage 5 (scrolling down) or Stage 1 (scrolling up,
-  // re-entering from below) is reached. Desktop/tablet only — mobile keeps
-  // plain scrolling — and skipped entirely for prefers-reduced-motion.
+  // of .tj-timeline-outer (NOT the section) reaches the top of the viewport,
+  // and lets wheel/touch input step through stages 1-5 one at a time.
+  // Released back to normal scroll only once Stage 5 (scrolling down) or
+  // Stage 1 (scrolling up, re-entering from below) is reached. Desktop/
+  // tablet only — mobile keeps plain scrolling — and skipped entirely for
+  // prefers-reduced-motion.
   if (!prefersReducedMotion) {
+    // Used only as a coarse "are we anywhere near this component" gate for
+    // the IntersectionObserver below — the actual pin trigger is always
+    // timelineOuter's own position, never this element's.
     const pinSection = wrap.closest('section') || wrap;
     // Only the section intro (badge + heading + description) and the
     // timeline/progress bar are pinned — the content card (image + text)
@@ -245,6 +249,14 @@ document.addEventListener('DOMContentLoaded', () => {
     let isTransitioning = false;
     let wheelAccum = 0;
     let touchStartY = null;
+    // Last observed timelineOuter.top, used to detect the exact frame it
+    // crosses the viewport top — NOT just whether it's currently <= 0.
+    // Without this, top stays <= 0 for the entire rest of the scroll
+    // through (and past) the component, so a naive "top <= 0" check would
+    // re-fire engagePin() on every scroll tick after release, snapping the
+    // timeline back to Stage 1 forever. Crossing-detection makes engage a
+    // one-shot event per approach, from either direction.
+    let lastTimelineTop = null;
 
     function lockTransition() {
       isTransitioning = true;
@@ -344,19 +356,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Fires once per scroll frame with a direction, so we can catch the exact
-    // moment the section's leading edge (top when heading down, bottom when
-    // heading up) reaches its matching viewport edge — same trigger point
-    // native `position: sticky` uses, just computed ourselves since the
-    // multi-stage hold can't be expressed as a fixed sticky scroll distance.
+    // moment .tj-timeline-outer's top edge crosses the viewport top — same
+    // trigger point native `position: sticky` uses, just computed ourselves
+    // since the multi-stage hold can't be expressed as a fixed sticky scroll
+    // distance. Engage is edge-triggered (crossing detection against
+    // lastTimelineTop), not level-triggered, so it fires exactly once per
+    // approach instead of on every tick that top happens to be <= 0 — see
+    // lastTimelineTop comment above for why that distinction matters.
     function checkEngage(direction) {
-      if (pinned || !nearSection || !desktopMedia.matches || !direction) return;
-      if (Date.now() < releasedUntil) return;
-      const rect = pinSection.getBoundingClientRect();
-      if (direction > 0 && rect.top <= 0) {
+      if (!nearSection || !desktopMedia.matches) return;
+      const top = timelineOuter.getBoundingClientRect().top;
+      if (pinned || !direction || Date.now() < releasedUntil) {
+        lastTimelineTop = top;
+        return;
+      }
+      const wasAbove = lastTimelineTop === null || lastTimelineTop > 0;
+      const wasBelow = lastTimelineTop === null || lastTimelineTop < 0;
+      if (direction > 0 && wasAbove && top <= 0) {
         engagePin(false);
-      } else if (direction < 0 && rect.bottom <= window.innerHeight) {
+      } else if (direction < 0 && wasBelow && top >= 0) {
         engagePin(true);
       }
+      lastTimelineTop = top;
     }
 
     const nearIo = new IntersectionObserver((entries) => {
