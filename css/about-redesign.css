@@ -5,7 +5,7 @@
 .about-section {
   position: relative;
   min-height: 100vh;
-  padding: clamp(32px, 5vh, 60px) 0;
+  padding: clamp(44px, 6.5vh, 76px) 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -28,7 +28,7 @@
 .about-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.02fr) minmax(400px, 0.98fr);
-  gap: clamp(32px, 4vw, 64px);
+  gap: clamp(36px, 4.5vw, 72px);
   align-items: center;
   width: 100%;
 }
@@ -37,8 +37,8 @@
 .about-image-panel {
   position: relative;
   height: 100%;
-  min-height: 480px;
-  max-height: 540px;
+  min-height: 520px;
+  max-height: 580px;
   overflow: hidden;
   border-radius: 28px;
   background: #eef4fa;
@@ -74,14 +74,14 @@
 /* Location Badge */
 .about-location-badge {
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 22px;
+  left: 22px;
   z-index: 10;
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 15px;
-  border-radius: 16px;
+  padding: 11px 16px;
+  border-radius: 18px;
   background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -90,9 +90,9 @@
 }
 
 .about-location-badge__icon {
-  width: 32px;
-  height: 32px;
-  border-radius: 10px;
+  width: 34px;
+  height: 34px;
+  border-radius: 11px;
   background: rgba(23, 79, 159, 0.1);
   color: #174f9f;
   display: flex;
@@ -109,7 +109,7 @@
 
 .about-location-badge__title {
   display: block;
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 700;
   color: #09162d;
   line-height: 1.2;
@@ -117,7 +117,7 @@
 
 .about-location-badge__sub {
   display: block;
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 500;
   color: #56677e;
   line-height: 1.2;
@@ -127,12 +127,12 @@
 /* Doctor Identity Overlay */
 .doctor-overlay {
   position: absolute;
-  left: 20px;
-  right: 20px;
-  bottom: 20px;
+  left: 22px;
+  right: 22px;
+  bottom: 22px;
   z-index: 10;
-  padding: 16px 20px;
-  border-radius: 18px;
+  padding: 18px 22px;
+  border-radius: 20px;
   color: #ffffff;
   background: linear-gradient(
     135deg,
@@ -145,18 +145,18 @@
   box-shadow: 0 16px 40px rgba(3, 18, 42, 0.24);
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
 }
 
 .doctor-overlay__header {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 10px;
+  gap: 12px;
 }
 
 .doctor-overlay__name {
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 700;
   color: #ffffff;
   line-height: 1.25;
@@ -165,19 +165,19 @@
 }
 
 .doctor-overlay__title {
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.88);
   margin: 2px 0 0 0;
 }
 
 .doctor-overlay__exp-badge {
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 700;
   color: #ffffff;
   background: rgba(255, 255, 255, 0.18);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  padding: 3px 10px;
+  padding: 3px 11px;
   border-radius: 9999px;
   white-space: nowrap;
   backdrop-filter: blur(8px);
@@ -186,12 +186,12 @@
 }
 
 .doctor-overlay__micro {
-  font-size: 11.5px;
+  font-size: 12px;
   line-height: 1.4;
   color: rgba(255, 255, 255, 0.78);
   margin: 0;
   border-top: 1px solid rgba(255, 255, 255, 0.14);
-  padding-top: 6px;
+  padding-top: 8px;
 }
 
 /* ---------------- Right Content Column ---------------- */
@@ -234,7 +234,7 @@
   letter-spacing: -0.04em;
   color: #09162d;
   max-width: 720px;
-  margin: 0 0 20px 0;
+  margin: 0 0 36px 0;
 }
 
 .about-heading .heading-serif {
@@ -249,16 +249,16 @@
 .about-value-cards {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  margin-bottom: 22px;
+  gap: 14px;
+  margin-bottom: 28px;
 }
 
 .about-value-card {
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 14px;
-  padding: 14px 18px;
-  border-radius: 18px;
+  gap: 16px;
+  padding: 16px 20px;
+  border-radius: 20px;
   background: rgba(248, 251, 255, 0.96);
   border: 1px solid rgba(23, 79, 159, 0.09);
   box-shadow: 0 8px 24px rgba(23, 61, 108, 0.05);
@@ -274,9 +274,9 @@
 }
 
 .about-value-card__icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
+  width: 42px;
+  height: 42px;
+  border-radius: 13px;
   background: rgba(72, 185, 232, 0.11);
   color: #174f9f;
   display: flex;
@@ -299,7 +299,7 @@
 }
 
 .about-value-card__title {
-  font-size: 16px;
+  font-size: 16.5px;
   font-weight: 700;
   color: #101c33;
   letter-spacing: -0.015em;
@@ -307,8 +307,8 @@
 }
 
 .about-value-card__desc {
-  font-size: 13.5px;
-  line-height: 1.45;
+  font-size: 14px;
+  line-height: 1.48;
   color: #617087;
   margin: 0;
 }
@@ -317,14 +317,14 @@
 .about-cta-group {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 22px;
   flex-wrap: wrap;
 }
 
 .about-primary-cta {
-  height: 50px;
-  padding: 0 8px 0 24px;
-  font-size: 15px;
+  height: 52px;
+  padding: 0 8px 0 26px;
+  font-size: 15.5px;
   font-weight: 600;
 }
 
@@ -332,7 +332,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 14.5px;
+  font-size: 15px;
   font-weight: 600;
   color: #174f9f;
   text-decoration: none;
@@ -360,15 +360,16 @@
     gap: 32px;
   }
   .about-image-panel {
-    min-height: 440px;
-    max-height: 480px;
+    min-height: 480px;
+    max-height: 520px;
   }
   .about-heading {
     font-size: 40px;
+    margin-bottom: 28px;
   }
   .about-value-card {
-    padding: 12px 16px;
-    gap: 12px;
+    padding: 14px 18px;
+    gap: 14px;
   }
 }
 
@@ -391,8 +392,8 @@
   }
   .about-image-panel {
     order: 2;
-    min-height: 440px;
-    max-height: 480px;
+    min-height: 460px;
+    max-height: 500px;
   }
   .about-content-body {
     order: 3;
@@ -407,7 +408,7 @@
   .about-heading {
     font-size: clamp(30px, 7.5vw, 40px);
     line-height: 1.1;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
   }
   .about-image-panel {
     min-height: 400px;
