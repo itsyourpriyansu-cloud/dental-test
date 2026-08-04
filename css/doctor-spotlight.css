@@ -185,51 +185,10 @@
   margin-top: 32px;
 }
 
-.ds__btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 16px 28px;
-  min-height: 44px;
-  background: var(--hr-navy, #0B1220);
-  color: #fff;
-  font-size: 14px;
-  font-weight: 700;
-  border: none;
-  border-radius: 14px;
-  cursor: pointer;
-  box-shadow: 0 8px 30px -6px rgba(11, 70, 150, .18);
-  transition: background var(--dur-hover, 220ms) var(--ease-premium, ease),
-              transform var(--dur-hover, 220ms) var(--ease-premium, ease),
-              box-shadow var(--dur-hover, 220ms) var(--ease-premium, ease);
-}
-.ds__btn-primary:hover {
-  background: var(--hr-deep, #0B4696);
-  transform: translateY(-2px);
-  box-shadow: 0 14px 36px -6px rgba(11, 70, 150, .25);
-}
-.ds__btn-icon { width: 18px; height: 18px; }
+/* .ds__btn-primary / .ds__btn-secondary box-model now comes entirely from
+   the shared .btn system (css/button-system.css). This file keeps only
+   what's specific to this section: keyboard focus rings. */
 
-.ds__btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 44px;
-  padding: 12px 4px;
-  color: var(--hr-navy, #0B1220);
-  font-size: 14px;
-  font-weight: 700;
-  text-decoration: none;
-}
-.ds__btn-secondary:hover { color: var(--hr-deep, #0B4696); }
-.ds__btn-arrow {
-  width: 16px;
-  height: 16px;
-  transition: transform var(--dur-hover, 220ms) var(--ease-premium, ease);
-}
-.ds__btn-secondary:hover .ds__btn-arrow { transform: translateX(4px); }
-
-/* Keyboard focus (accessibility) */
 .ds__btn-primary:focus-visible,
 .ds__btn-secondary:focus-visible {
   outline: 2px solid var(--hr-sky, #4AC0EE);
@@ -254,13 +213,10 @@
   .ds__description { font-size: 15px; }
   .ds__features { grid-template-columns: 1fr; margin-top: 24px; }
   .ds__actions { flex-direction: column; align-items: stretch; gap: 12px; margin-top: 24px; }
-  .ds__btn-primary,
-  .ds__btn-secondary { width: 100%; justify-content: center; }
+  .ds__actions .btn { width: 100%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .ds__image,
-  .ds__feature,
-  .ds__btn-primary,
-  .ds__btn-arrow { transition: none !important; }
+  .ds__feature { transition: none !important; }
 }

@@ -1,0 +1,295 @@
+/* ==========================================================================
+   UNIVERSAL BUTTON SYSTEM
+   One component, three sizes, three variants. Every button on the site
+   (nav, hero, cards, forms, modals, footer) is built from these classes —
+   nothing is hardcoded per-section. Reuses the site's existing motion
+   tokens (--dur-hover / --ease-premium from motion.css) so button motion
+   feels of a piece with the rest of the UI.
+
+   Usage:
+     <a/button class="btn btn-lg btn-primary">
+       <span>Label</span>
+       <span class="btn-arrow"><i data-lucide="arrow-up-right" class="btn-arrow-icon"></i></span>
+     </a/button>
+
+   Ghost buttons are text-only — no size class, no .btn-arrow:
+     <a class="btn btn-ghost">View Details →</a>
+   ========================================================================== */
+
+:root {
+  --btn-radius: 9999px;
+  --btn-gap: 16px;
+  --btn-weight: 600;
+  --btn-tracking: 0;
+  --btn-transition: var(--dur-hover, 220ms) var(--ease-premium, cubic-bezier(.22,.61,.36,1));
+
+  /* Large — hero-level CTAs */
+  --btn-height-lg: 56px;
+  --btn-pad-left-lg: 28px;
+  --btn-pad-right-lg: 10px;
+  --btn-font-lg: 17px;
+  --btn-arrow-circle-lg: 40px;
+  --btn-arrow-size-lg: 18px;
+
+  /* Medium — default section CTAs */
+  --btn-height-md: 52px;
+  --btn-pad-left-md: 24px;
+  --btn-pad-right-md: 8px;
+  --btn-font-md: 16px;
+  --btn-arrow-circle-md: 38px;
+  --btn-arrow-size-md: 17px;
+
+  /* Small — compact / in-card CTAs */
+  --btn-height-sm: 44px;
+  --btn-pad-left-sm: 18px;
+  --btn-pad-right-sm: 8px;
+  --btn-font-sm: 15px;
+  --btn-arrow-circle-sm: 34px;
+  --btn-arrow-size-sm: 16px;
+
+  /* Mobile — every size collapses to this below 768px */
+  --btn-height-mobile: 48px;
+  --btn-font-mobile: 15px;
+  --btn-arrow-circle-mobile: 36px;
+  --btn-arrow-size-mobile: 16px;
+}
+
+/* ---------------------------------- Base ----------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--btn-gap);
+  width: fit-content;
+  max-width: 100%;
+  border-radius: var(--btn-radius);
+  font-family: inherit;
+  font-weight: var(--btn-weight);
+  letter-spacing: var(--btn-tracking);
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  border: none;
+  cursor: pointer;
+  transition: transform var(--btn-transition), background var(--btn-transition),
+              border-color var(--btn-transition), box-shadow var(--btn-transition),
+              color var(--btn-transition);
+}
+
+.btn.btn-full { width: 100%; }
+.btn.btn-center { justify-content: center; }
+
+.btn:active,
+.btn:hover:active { transform: scale(.98); }
+
+/* --------------------------------- Sizes ------------------------------------ */
+
+.btn-lg {
+  height: var(--btn-height-lg);
+  padding: 0 var(--btn-pad-right-lg) 0 var(--btn-pad-left-lg);
+  font-size: var(--btn-font-lg);
+}
+.btn-md {
+  height: var(--btn-height-md);
+  padding: 0 var(--btn-pad-right-md) 0 var(--btn-pad-left-md);
+  font-size: var(--btn-font-md);
+}
+.btn-sm {
+  height: var(--btn-height-sm);
+  padding: 0 var(--btn-pad-right-sm) 0 var(--btn-pad-left-sm);
+  font-size: var(--btn-font-sm);
+}
+
+/* ------------------------------ Arrow component ----------------------------- */
+/* One arrow, everywhere: white circle + #0B4696 arrow-up-right icon. Only the
+   circle/icon dimensions scale, tied to the button's size class. */
+
+.btn-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: #FFFFFF;
+  flex: 0 0 auto;
+  transition: transform var(--btn-transition);
+}
+.btn-arrow-icon {
+  color: #0B4696;
+  transition: transform var(--btn-transition);
+}
+
+.btn-lg .btn-arrow { width: var(--btn-arrow-circle-lg); height: var(--btn-arrow-circle-lg); }
+.btn-lg .btn-arrow-icon { width: var(--btn-arrow-size-lg); height: var(--btn-arrow-size-lg); }
+.btn-md .btn-arrow { width: var(--btn-arrow-circle-md); height: var(--btn-arrow-circle-md); }
+.btn-md .btn-arrow-icon { width: var(--btn-arrow-size-md); height: var(--btn-arrow-size-md); }
+.btn-sm .btn-arrow { width: var(--btn-arrow-circle-sm); height: var(--btn-arrow-circle-sm); }
+.btn-sm .btn-arrow-icon { width: var(--btn-arrow-size-sm); height: var(--btn-arrow-size-sm); }
+
+/* Icon-only circular CTA — the element itself IS the arrow (in-card corner
+   buttons, bento icon buttons). Sized off the same tokens as .btn-sm/.btn-md
+   via a size modifier so it never invents a fourth circle size. */
+.btn-arrow-only {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: #FFFFFF;
+  border: none;
+  cursor: pointer;
+  flex: 0 0 auto;
+  transition: transform var(--btn-transition), box-shadow var(--btn-transition);
+}
+.btn-arrow-only .btn-arrow-icon { transition: transform var(--btn-transition); }
+.btn-arrow-only.btn-arrow-only-sm { width: var(--btn-arrow-circle-sm); height: var(--btn-arrow-circle-sm); }
+.btn-arrow-only.btn-arrow-only-sm .btn-arrow-icon { width: var(--btn-arrow-size-sm); height: var(--btn-arrow-size-sm); }
+.btn-arrow-only:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 40px rgba(11, 70, 150, .18);
+}
+.btn-arrow-only:hover .btn-arrow-icon { transform: translateX(2px); }
+.btn-arrow-only:active,
+.btn-arrow-only:hover:active { transform: scale(.98); }
+
+/* -------------------------------- Primary ----------------------------------- */
+
+.btn-primary {
+  background: #0B4696;
+  color: #FFFFFF;
+}
+.btn-primary:hover {
+  background: #083A80;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 40px rgba(11, 70, 150, .18);
+}
+.btn-primary:hover .btn-arrow-icon { transform: translateX(2px); }
+.btn-primary:active,
+.btn-primary:hover:active { transform: scale(.98); }
+
+/* ------------------------------- Secondary ----------------------------------- */
+
+.btn-secondary {
+  background: #EEF6FF;
+  border: 1px solid #D8E8FB;
+  color: #0F172A;
+}
+.btn-secondary:hover {
+  background: #FFFFFF;
+  border-color: #0B4696;
+}
+.btn-secondary:hover .btn-arrow-icon { transform: translateX(2px); }
+.btn-secondary:active,
+.btn-secondary:hover:active { transform: scale(.98); }
+
+/* --------------------------------- Ghost -------------------------------------- */
+/* Text-only link — no height/padding/circle. Used for lower-emphasis actions
+   like "View Details" that don't warrant full button chrome. */
+
+.btn-ghost {
+  height: auto;
+  width: auto;
+  padding: 0;
+  gap: 4px;
+  justify-content: flex-start;
+  background: transparent;
+  border: none;
+  color: #0B4696;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.btn-ghost:hover { text-decoration: underline; text-underline-offset: 3px; }
+.btn-ghost:active,
+.btn-ghost:hover:active { transform: scale(.98); }
+
+.btn-ghost-icon {
+  width: 14px;
+  height: 14px;
+  color: currentColor;
+  flex: 0 0 auto;
+  transition: transform var(--btn-transition);
+}
+.btn-ghost:hover .btn-ghost-icon { transform: translate(2px, -2px); }
+
+/* ------------------------------ Icon-leading action ---------------------------- */
+/* Same size tokens/colors as the button system, but centered icon+label with
+   no arrow — for actions like "Call Clinic" that sit beside a real .btn and
+   need to match its height/radius/type without inheriting the arrow layout. */
+
+.btn-icon-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: var(--btn-height-mobile);
+  padding: 0 var(--btn-pad-left-sm);
+  border-radius: var(--btn-radius);
+  font-size: var(--btn-font-mobile);
+  font-weight: var(--btn-weight);
+  text-decoration: none;
+  transition: transform var(--btn-transition), background var(--btn-transition),
+              border-color var(--btn-transition), color var(--btn-transition);
+}
+.btn-icon-action:active,
+.btn-icon-action:hover:active { transform: scale(.98); }
+
+/* ---------------------- Entrance/swap-animation compatibility ------------------ */
+/* A few buttons already carry their own opacity/transform transition for a
+   one-time entrance fade or an in-place content swap (hero-redesign.css /
+   tech-journey.css). The bare `.btn { transition: ... }` above would replace
+   that shorthand outright and kill the effect, so these get a
+   higher-specificity rule that keeps the original opacity transition
+   alongside the button system's own motion. */
+.hero2__cta.btn,
+.hero2__cta-secondary.btn {
+  transition: opacity .6s var(--ease-premium, cubic-bezier(.22,.61,.36,1)),
+              transform var(--btn-transition), background var(--btn-transition),
+              border-color var(--btn-transition), box-shadow var(--btn-transition),
+              color var(--btn-transition);
+}
+.tj-cta.btn {
+  transition: opacity .4s cubic-bezier(.4,0,.2,1),
+              transform var(--btn-transition), background var(--btn-transition),
+              border-color var(--btn-transition), box-shadow var(--btn-transition),
+              color var(--btn-transition);
+}
+
+/* -------------------------------- Responsive ---------------------------------- */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .btn-lg { padding-left: calc(var(--btn-pad-left-lg) * 0.85); padding-right: calc(var(--btn-pad-right-lg) * 0.85); }
+  .btn-md { padding-left: calc(var(--btn-pad-left-md) * 0.85); padding-right: calc(var(--btn-pad-right-md) * 0.85); }
+  .btn-sm { padding-left: calc(var(--btn-pad-left-sm) * 0.85); padding-right: calc(var(--btn-pad-right-sm) * 0.85); }
+}
+
+@media (max-width: 767px) {
+  .btn-lg, .btn-md, .btn-sm {
+    height: var(--btn-height-mobile);
+    font-size: var(--btn-font-mobile);
+    padding-left: var(--btn-pad-left-sm);
+    padding-right: var(--btn-pad-right-sm);
+  }
+  .btn-lg .btn-arrow, .btn-md .btn-arrow, .btn-sm .btn-arrow {
+    width: var(--btn-arrow-circle-mobile);
+    height: var(--btn-arrow-circle-mobile);
+  }
+  .btn-lg .btn-arrow-icon, .btn-md .btn-arrow-icon, .btn-sm .btn-arrow-icon {
+    width: var(--btn-arrow-size-mobile);
+    height: var(--btn-arrow-size-mobile);
+  }
+  .btn-arrow-only.btn-arrow-only-sm {
+    width: var(--btn-arrow-circle-mobile);
+    height: var(--btn-arrow-circle-mobile);
+  }
+  .btn-arrow-only.btn-arrow-only-sm .btn-arrow-icon {
+    width: var(--btn-arrow-size-mobile);
+    height: var(--btn-arrow-size-mobile);
+  }
+  .btn { white-space: normal; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn, .btn-arrow, .btn-arrow-icon, .btn-arrow-only {
+    transition: none !important;
+  }
+}
