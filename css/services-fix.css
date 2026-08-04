@@ -246,6 +246,7 @@
         cursor:default;
         transition:transform 450ms var(--pj-ease), box-shadow 450ms var(--pj-ease), border-color 450ms var(--pj-ease);
         outline:none;
+        overflow:visible !important;
       }
       #patient-journey .pj__card-body{
         position:relative;
@@ -254,6 +255,28 @@
         padding:52px 32px 32px;
         border-radius:28px;
         overflow:hidden;
+      }
+      #patient-journey .pj__card-body::before {
+        content:'';
+        position:absolute;
+        top:-50%;
+        left:-100%;
+        width:200%;
+        height:200%;
+        background:linear-gradient(
+          45deg,
+          transparent 40%,
+          rgba(255, 255, 255, 0.7) 50%,
+          transparent 60%
+        );
+        transform:rotate(25deg);
+        transition:transform 850ms cubic-bezier(0.22, 1, 0.36, 1);
+        pointer-events:none;
+        z-index:15;
+      }
+      #patient-journey .pj__card:hover .pj__card-body::before,
+      #patient-journey .pj__card:focus-visible .pj__card-body::before {
+        transform:translateX(100%) rotate(25deg);
       }
       #patient-journey .pj__card:hover,
       #patient-journey .pj__card:focus-visible{
@@ -302,26 +325,21 @@
         display:flex; align-items:center; justify-content:space-between; margin-bottom:18px;
       }
       #patient-journey .pj__number{
-        font-size:48px; font-weight:800; line-height:1;
-        color:var(--pj-blue-light);
-        background-image:linear-gradient(180deg, var(--pj-blue-light), var(--pj-blue-light));
+        font-size:52px; font-weight:800; line-height:1;
+        background:linear-gradient(135deg, #0B4696 0%, #2563EB 50%, #00C6FF 100%);
         background-clip:text; -webkit-background-clip:text; color:transparent;
-        transition:background-image 450ms var(--pj-ease);
+        transition:transform 450ms var(--pj-ease), filter 450ms var(--pj-ease);
+        display:inline-block;
       }
       #patient-journey .pj__card:hover .pj__number,
       #patient-journey .pj__card:focus-visible .pj__number{
-        background-image:linear-gradient(180deg,#2563EB,#0B3FA8);
+        background:linear-gradient(135deg, #2563EB 0%, #00C6FF 50%, #0072FF 100%);
+        background-clip:text; -webkit-background-clip:text; color:transparent;
+        transform:scale(1.06);
+        filter:drop-shadow(0 4px 12px rgba(37,99,235,.3));
       }
       #patient-journey .pj__badge-pill{
-        padding:6px 14px; border-radius:999px;
-        background:var(--pj-badge-bg);
-        color:var(--pj-blue); font-size:12px; font-weight:700;
-        letter-spacing:.02em; white-space:nowrap;
-        transition:background-color 450ms var(--pj-ease);
-      }
-      #patient-journey .pj__card:hover .pj__badge-pill,
-      #patient-journey .pj__card:focus-visible .pj__badge-pill{
-        background:var(--pj-badge-bg-hover);
+        display:none !important;
       }
       #patient-journey .pj__title{
         margin:0 0 16px; font-size:22px; font-weight:700; color:var(--pj-navy);
