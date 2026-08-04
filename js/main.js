@@ -230,4 +230,54 @@ document.addEventListener('DOMContentLoaded', () => {
       item.classList.add('is-open');
     }
   };
+
+  // 6. Floating Action Stack & Scroll Progress Ring
+  const floatingActions = document.getElementById('floating-actions');
+  const backToTopBtn = document.getElementById('back-to-top');
+  const progressCircle = document.getElementById('progress-circle');
+
+  if (floatingActions && backToTopBtn && progressCircle) {
+    const RADIUS = 23;
+    const CIRCUMFERENCE = 2 * Math.PI * RADIUS; // ~144.513
+
+    progressCircle.style.strokeDasharray = `${CIRCUMFERENCE} ${CIRCUMFERENCE}`;
+    progressCircle.style.strokeDashoffset = `${CIRCUMFERENCE}`;
+
+    const updateScrollProgress = () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+      // Show after scrolling past 120px
+      if (scrollTop > 120) {
+        floatingActions.classList.add('is-visible');
+      } else {
+        floatingActions.classList.remove('is-visible');
+      }
+
+      if (scrollHeight <= 0) return;
+
+      const progress = Math.min(Math.max(scrollTop / scrollHeight, 0), 1);
+      const offset = CIRCUMFERENCE - (progress * CIRCUMFERENCE);
+      progressCircle.style.strokeDashoffset = offset;
+    };
+
+    // Listen on window scroll
+    window.addEventListener('scroll', updateScrollProgress, { passive: true });
+
+    // Hook into Lenis scroll listener if initialized
+    if (typeof lenis !== 'undefined' && lenis) {
+      lenis.on('scroll', updateScrollProgress);
+    }
+
+    updateScrollProgress();
+
+    backToTopBtn.addEventListener('click', () => {
+      if (typeof lenis !== 'undefined' && lenis) {
+        lenis.scrollTo(0, { duration: 1.2 });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+  }
 });
+
