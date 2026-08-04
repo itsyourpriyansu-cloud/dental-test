@@ -81,8 +81,8 @@
 
 .tj-track {
   position: absolute;
-  left: 40px;
-  right: 40px;
+  left: 10%;
+  right: 10%;
   top: 32px;
   height: 2px;
   background: var(--tj-border);
