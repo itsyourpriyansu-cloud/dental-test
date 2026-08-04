@@ -22,19 +22,18 @@ html, body { overflow-anchor: none; }
   top: 0;
   z-index: 50;
   width: 100%;
-  background: #ffffff;
-  border-bottom: 1px solid var(--hr-border);
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
   opacity: 0;
   transform: translateY(-20px);
   transition: box-shadow .3s ease, opacity 400ms var(--ease-premium, cubic-bezier(.22,.61,.36,1)),
               transform 400ms var(--ease-premium, cubic-bezier(.22,.61,.36,1));
 }
 .hnav.is-loaded { opacity: 1; transform: translateY(0); }
-.hnav--scrolled { box-shadow: 0 10px 30px -14px rgba(11, 18, 32, .18); }
+.hnav--scrolled { box-shadow: 0 10px 30px -14px rgba(15, 23, 42, 0.12); }
 
-/* Smart auto-hide: JS swaps in this transition (300ms ease, transform-only)
-   once the one-time entrance animation above has finished, so retiming it
-   doesn't disturb the initial page-load fade/slide-in. */
 .hnav.hnav--interactive {
   transition: box-shadow .3s ease, opacity 400ms var(--ease-premium, cubic-bezier(.22,.61,.36,1)),
               transform 300ms ease;
@@ -42,59 +41,183 @@ html, body { overflow-anchor: none; }
 }
 .hnav.is-loaded.hnav--hidden { transform: translateY(-100%); }
 
+/* Top Accent Gradient Bar */
+.hnav__top-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3.5px;
+  background: linear-gradient(90deg, #38bdf8 0%, #3b82f6 30%, #a855f7 65%, #ec4899 100%);
+  z-index: 10;
+}
+
 .hnav__inner {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 20px 24px;
+  padding: 14px 24px;
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
-  gap: 16px;
+  gap: 20px;
+  position: relative;
 }
 
 .hnav__logo { display: flex; align-items: center; justify-self: start; }
-.hnav__logo-img { height: 34px; width: auto; object-fit: contain; }
-
-@media (min-width: 768px) {
-  .hnav__logo-img { height: 36px; }
-}
+.hnav__logo-img { height: 36px; width: auto; object-fit: contain; }
 
 @media (min-width: 1024px) {
   .hnav__inner {
-    height: 88px;
-    padding: 0 32px;
+    height: 72px;
+    padding: 0 36px;
   }
-  .hnav__logo-img { height: 60px; }
+  .hnav__logo-img { height: 50px; }
 }
 
-.hnav__links { justify-self: center; align-items: center; gap: 2px; }
-.hnav__links a {
-  padding: 9px 15px;
-  border-radius: 999px;
-  font-size: 13.5px;
-  font-weight: 600;
-  color: var(--hr-navy);
-  text-decoration: none;
-  white-space: nowrap;
-  transition: background .2s ease, color .2s ease;
+/* Nav Links Container */
+.hnav__links {
+  justify-self: center;
+  align-items: center;
+  gap: 4px;
 }
-.hnav__links a:hover { background: var(--hr-surface); color: var(--hr-deep); }
 
-.hnav__actions { justify-self: end; align-items: center; gap: 10px; }
-.hnav__icon-btn {
+/* Individual Link Item */
+.hnav__link {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 999px;
-  border: 1px solid var(--hr-border);
-  color: var(--hr-navy);
-  flex-shrink: 0;
-  transition: background .2s ease, border-color .2s ease;
+  gap: 5px;
+  padding: 7px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #334155;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.18s ease-in-out;
+  line-height: 1.4;
 }
-.hnav__icon-btn:hover { background: var(--hr-surface); border-color: var(--hr-sky); }
-.hnav__icon-btn i { width: 16px; height: 16px; }
+
+/* Hover Pill Effect */
+.hnav__link:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+/* Right Actions Container */
+.hnav__actions {
+  justify-self: end;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Secondary Button ("Call Us >") */
+.hnav__secondary-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #475569;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.18s ease;
+}
+
+.hnav__secondary-btn:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.hnav__arrow-icon {
+  width: 14px;
+  height: 14px;
+  opacity: 0.7;
+  transition: transform 0.15s ease;
+}
+
+.hnav__secondary-btn:hover .hnav__arrow-icon {
+  transform: translateX(2px);
+  opacity: 1;
+}
+
+/* Ice-Blue CTA Pill Button matching user UI image */
+.hnav__cta-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 5px 6px 5px 20px;
+  border-radius: 9999px;
+  background: #EEF6FF;
+  border: 1px solid rgba(190, 218, 255, 0.6);
+  color: #0b1a30;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 8px rgba(11, 70, 150, 0.04);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.hnav__cta-pill:hover {
+  background: #E1F0FF;
+  border-color: rgba(160, 200, 255, 0.8);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(11, 70, 150, 0.1);
+}
+
+.hnav__cta-pill:active {
+  transform: translateY(0);
+}
+
+.hnav__cta-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0b4696;
+  box-shadow: 0 2px 6px rgba(11, 70, 150, 0.08);
+  transition: transform 0.2s ease, color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.hnav__cta-circle i {
+  width: 16px;
+  height: 16px;
+  stroke-width: 2.2;
+}
+
+.hnav__cta-pill:hover .hnav__cta-circle {
+  transform: scale(1.05);
+  color: #0056b3;
+}
+
+.hnav__cta-pill--sm {
+  padding: 4px 5px 4px 14px;
+  font-size: 13px;
+  gap: 8px;
+}
+
+.hnav__cta-pill--sm .hnav__cta-circle {
+  width: 26px;
+  height: 26px;
+}
+
+.hnav__cta-pill--sm .hnav__cta-circle i {
+  width: 14px;
+  height: 14px;
+}
+
+.hnav__cta-pill--full {
+  width: 100%;
+  justify-content: space-between;
+  padding: 8px 8px 8px 20px;
+}
 
 .hnav__mobile-actions { align-items: center; gap: 8px; justify-self: end; }
 

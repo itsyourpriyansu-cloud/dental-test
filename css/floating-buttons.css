@@ -1,0 +1,155 @@
+/* ==========================================================================
+   FLOATING ACTION BUTTONS (WhatsApp & Scroll Progress Back-To-Top)
+   Matches Clinical Precision & Modern Elegance Design System
+   ========================================================================== */
+
+.floating-actions {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px) scale(0.92);
+  transition: opacity 0.35s cubic-bezier(0.22, 0.61, 0.36, 1),
+              transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.floating-actions.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+/* Base Floating Button */
+.floating-btn {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  transition: transform 0.25s cubic-bezier(0.22, 0.61, 0.36, 1),
+              box-shadow 0.25s cubic-bezier(0.22, 0.61, 0.36, 1),
+              background-color 0.25s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.floating-btn:hover {
+  transform: scale(1.08) translateY(-3px);
+}
+
+.floating-btn:active {
+  transform: scale(0.95) translateY(0);
+}
+
+/* 1. WhatsApp Floating Button */
+.floating-btn--whatsapp {
+  background: #25D366;
+  color: #FFFFFF;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.38),
+              0 2px 8px rgba(11, 18, 32, 0.08);
+}
+
+.floating-btn--whatsapp:hover {
+  background: #20BD5A;
+  box-shadow: 0 10px 28px rgba(37, 211, 102, 0.5),
+              0 4px 12px rgba(11, 18, 32, 0.12);
+}
+
+.whatsapp-icon {
+  width: 26px;
+  height: 26px;
+  transition: transform 0.25s ease;
+}
+
+.floating-btn--whatsapp:hover .whatsapp-icon {
+  transform: scale(1.1) rotate(-6deg);
+}
+
+/* 2. Back to Top Button with Circular Progress Bar (Blue Variant) */
+.floating-btn--top {
+  background: #F7FBFE;
+  color: #0B4696; /* Brand Deep Blue arrow */
+  box-shadow: 0 6px 20px rgba(11, 70, 150, 0.12),
+              0 2px 8px rgba(11, 18, 32, 0.04);
+  border: 1px solid #D9EAF4;
+}
+
+.floating-btn--top:hover {
+  background: #FFFFFF;
+  color: #0B4696;
+  border-color: #4AC0EE;
+  box-shadow: 0 10px 28px rgba(11, 70, 150, 0.22),
+              0 4px 12px rgba(11, 18, 32, 0.08);
+}
+
+/* SVG Progress Ring */
+.progress-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg); /* Start progress at top (12 o'clock) */
+  pointer-events: none;
+  overflow: visible;
+}
+
+.progress-ring__bg {
+  fill: none;
+  stroke: rgba(11, 70, 150, 0.15); /* Soft ice blue background track */
+  stroke-width: 3.5px;
+}
+
+.progress-ring__circle {
+  fill: none;
+  stroke: #0B4696; /* Brand Primary Deep Blue progress fill */
+  stroke-width: 3.5px;
+  stroke-linecap: round;
+  stroke-dasharray: 144.51;
+  stroke-dashoffset: 144.51;
+  transition: stroke-dashoffset 0.1s linear;
+}
+
+.top-icon {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.floating-btn--top:hover .top-icon {
+  transform: translateY(-2px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .floating-actions {
+    bottom: 20px;
+    right: 16px;
+    gap: 10px;
+  }
+  
+  .floating-btn {
+    width: 46px;
+    height: 46px;
+  }
+
+  .whatsapp-icon {
+    width: 22px;
+    height: 22px;
+  }
+}
