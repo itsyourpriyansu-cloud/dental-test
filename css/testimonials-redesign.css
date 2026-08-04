@@ -1,0 +1,294 @@
+/* ==========================================================================
+   TESTIMONIALS SECTION REDESIGN
+   Brand Color System Adaptation with Infinite Carousel & Generous Vertical Spacing
+   ========================================================================== */
+
+#testimonials {
+  background-color: #f7fbfe;
+  background: linear-gradient(180deg, #f7fbfe 0%, #eef8fd 50%, #e0f2fe 100%);
+  position: relative;
+  overflow: hidden;
+  padding: 120px 0 110px 0;
+  border-top: 1px solid rgba(217, 234, 244, 0.7);
+  border-bottom: 1px solid rgba(217, 234, 244, 0.7);
+}
+
+@media (max-width: 768px) {
+  #testimonials {
+    padding: 85px 0 80px 0;
+  }
+}
+
+/* Subtle brand glow accent shapes */
+#testimonials::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  right: -120px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(74, 192, 238, 0.18) 0%, rgba(255, 255, 255, 0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+#testimonials::after {
+  content: '';
+  position: absolute;
+  bottom: -120px;
+  left: -120px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(11, 70, 150, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Outer Carousel Wrapper */
+.testi-carousel-wrapper {
+  position: relative;
+  width: 100%;
+  padding: 10px 0 20px 0;
+}
+
+/* Track container allowing side cards to peek */
+.testi-track-container {
+  overflow: hidden;
+  width: 100%;
+  padding: 25px 0 40px 0;
+}
+
+.testi-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  cursor: grab;
+  user-select: none;
+  gap: 28px;
+  padding: 10px 15% 30px 15%; /* Ensures side cards peek in */
+}
+
+@media (max-width: 768px) {
+  .testi-track {
+    padding: 10px 8% 25px 8%;
+    gap: 18px;
+  }
+}
+
+.testi-track.is-dragging {
+  cursor: grabbing;
+  scroll-behavior: auto;
+}
+
+.testi-track::-webkit-scrollbar {
+  display: none;
+}
+
+/* Individual Slide */
+.testi-slide {
+  flex: 0 0 680px;
+  max-width: 82vw;
+  scroll-snap-align: center;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, filter 0.4s ease;
+  opacity: 0.5;
+  transform: scale(0.92);
+  filter: blur(0.3px);
+}
+
+@media (max-width: 768px) {
+  .testi-slide {
+    flex: 0 0 90vw;
+    max-width: 90vw;
+  }
+}
+
+.testi-slide.is-active {
+  opacity: 1;
+  transform: scale(1);
+  filter: none;
+  z-index: 5;
+}
+
+/* Main Card Styling - Solid Brand Deep (#0B4696) Offset Shadow & White Surface */
+.testi-card {
+  background: #ffffff;
+  border-radius: 28px;
+  padding: 46px 42px;
+  box-shadow: 4px 4px 0px rgba(11, 70, 150, 0.12);
+  border: 1.5px solid rgba(11, 70, 150, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  min-height: 280px;
+  justify-content: space-between;
+}
+
+@media (max-width: 640px) {
+  .testi-card {
+    padding: 32px 24px;
+    border-radius: 22px;
+    box-shadow: 4px 4px 0px rgba(11, 70, 150, 0.1);
+  }
+}
+
+.testi-slide.is-active .testi-card {
+  box-shadow: 12px 12px 0px #0B4696;
+  border-color: rgba(11, 70, 150, 0.25);
+}
+
+/* Quote Text */
+.testi-quote {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  font-weight: 600;
+  color: #0B1220;
+  max-width: 540px;
+  margin: 0 auto 28px auto;
+  font-family: 'Manrope', 'Inter', sans-serif;
+  letter-spacing: -0.01em;
+}
+
+@media (max-width: 640px) {
+  .testi-quote {
+    font-size: 1.05rem;
+    line-height: 1.55;
+    margin-bottom: 20px;
+  }
+}
+
+/* Author Info Section */
+.testi-author-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Avatar Image with Brand Sky (#4AC0EE) Ring */
+.testi-avatar-ring {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #4AC0EE; /* Brand sky accent */
+  padding: 3px;
+  box-shadow: 0 4px 12px rgba(74, 192, 238, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.testi-slide.is-active .testi-avatar-ring {
+  transform: scale(1.05);
+}
+
+.testi-avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ffffff;
+}
+
+.testi-author-name {
+  font-size: 1.025rem;
+  font-weight: 700;
+  color: #0B1220;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.testi-author-role {
+  font-size: 0.825rem;
+  font-weight: 500;
+  color: #475569;
+  margin: 0;
+}
+
+/* Nav Controls & Arrow Buttons */
+.testi-controls-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.testi-nav-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 1px solid rgba(11, 70, 150, 0.15);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  outline: none;
+  user-select: none;
+}
+
+/* Left Arrow Button: White Circle */
+.testi-nav-btn--prev {
+  background: #ffffff;
+  color: #0B1220;
+  box-shadow: 0 3px 10px rgba(11, 70, 150, 0.08);
+}
+
+.testi-nav-btn--prev:hover {
+  background: #f1f7fc;
+  transform: translateX(-2px);
+  box-shadow: 0 6px 16px rgba(11, 70, 150, 0.14);
+}
+
+/* Right Arrow Button: Brand Deep (#0B4696) Circle */
+.testi-nav-btn--next {
+  background: #0B4696; /* Brand Deep primary accent */
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(11, 70, 150, 0.35);
+}
+
+.testi-nav-btn--next:hover {
+  background: #083778;
+  transform: translateX(2px) scale(1.04);
+  box-shadow: 0 6px 20px rgba(11, 70, 150, 0.45);
+}
+
+.testi-nav-btn:active {
+  transform: scale(0.95);
+}
+
+/* Pagination Dots */
+.testi-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.testi-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(11, 70, 150, 0.2);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.testi-dot:hover {
+  background: rgba(11, 70, 150, 0.4);
+}
+
+.testi-dot.is-active {
+  background: #0B4696;
+  width: 24px;
+}
