@@ -218,13 +218,19 @@
   position: relative;
   height: 100%;
   min-height: 420px;
-  border-radius: 24px;
-  overflow: hidden;
   opacity: 0;
   transform: translateX(40px);
   transition: opacity .8s cubic-bezier(.16,1,.3,1) .1s, transform .8s cubic-bezier(.16,1,.3,1) .1s;
 }
 .ab-section.is-visible .ab-media { opacity: 1; transform: translateX(0); }
+
+.ab-media-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  overflow: hidden;
+}
 
 .ab-media img {
   display: block;
@@ -235,10 +241,15 @@
   object-fit: cover;
   transition: transform 600ms ease;
 }
+
 .ab-media:hover img { transform: scale(1.02); }
 
 @media (max-width: 1024px) {
   .ab-media { min-height: 320px; }
+}
+
+@media (max-width: 640px) {
+  .ab-media-inner { border-radius: 22px; }
 }
 
 /* --------------------------------- Motion --------------------------------- */
