@@ -13,45 +13,44 @@ document.addEventListener('DOMContentLoaded', () => {
   const taglineEl = document.querySelector('[data-ba-tagline]');
   const tabs = Array.from(tabsWrap.querySelectorAll('[data-ba-service]'));
 
-  // Placeholder imagery — every service points at the same before/after pair
-  // for now; swap each entry's before/after path individually once real
-  // clinical photos are ready.
+  // Each service has its own before/after pair. Drop new photos into
+  // /images using the filenames below (or edit the paths to match yours).
   const services = {
     orthodontics: {
       title: 'Orthodontics',
       tagline: 'Full Arch Alignment',
-      before: 'images/root_canal_before.png',
-      after: 'images/root_canal_after.png'
+      before: 'images/orthodontics_before.png',
+      after: 'images/orthodontics_after.png'
     },
-    aligners: {
-      title: 'Clear Aligners',
-      tagline: 'Invisible Tray Straightening',
+    'root-canal': {
+      title: 'Root Canal',
+      tagline: 'Root Canal Therapy',
       before: 'images/root_canal_before.png',
       after: 'images/root_canal_after.png'
     },
     implants: {
       title: 'Dental Implants',
       tagline: 'Restored Missing Teeth',
-      before: 'images/root_canal_before.png',
-      after: 'images/root_canal_after.png'
+      before: 'images/clearaligners-before.png',
+      after: 'images/clearaligners-after.png'
     },
     cosmetic: {
       title: 'Cosmetic Dentistry',
       tagline: 'Veneers & Whitening',
-      before: 'images/root_canal_before.png',
-      after: 'images/root_canal_after.png'
+      before: 'images/cosmetic-before.png',
+      after: 'images/cosmetic-after.png'
     },
     general: {
       title: 'General Dentistry',
-      tagline: 'Root Canal Therapy',
-      before: 'images/root_canal_before.png',
-      after: 'images/root_canal_after.png'
+      tagline: 'Checkups & Preventive Care',
+      before: 'images/general-before.png',
+      after: 'images/general-after.png'
     },
     'smile-makeover': {
       title: 'Smile Makeovers',
       tagline: 'Complete Smile Transformation',
-      before: 'images/root_canal_before.png',
-      after: 'images/root_canal_after.png'
+      before: 'images/smile-makeover_before.png',
+      after: 'images/smile-makeover_after.png'
     }
   };
 

@@ -123,6 +123,7 @@
 }
 
 .ab-field input,
+.ab-field select,
 .ab-field textarea {
   display: block;
   width: 100%;
@@ -138,6 +139,8 @@
 .ab-field input::placeholder,
 .ab-field textarea::placeholder { color: #94A3B8; }
 .ab-field textarea { min-height: 24px; }
+.ab-field select { cursor: pointer; }
+.ab-field select:invalid { color: #94A3B8; }
 
 /* .ab-submit box-model (padding, height, colors, radius, the arrow circle)
    now comes entirely from the shared .btn system (css/button-system.css).

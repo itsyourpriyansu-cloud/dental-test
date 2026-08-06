@@ -109,8 +109,8 @@
   font-family: 'Manrope', sans-serif;
   font-weight: 800;
   font-size: 36px;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
+  line-height: 1.20;
+  letter-spacing: -0.05em;
   color: var(--hr-navy, #0B1220);
   margin-top: 20px;
 }

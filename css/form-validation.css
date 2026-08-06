@@ -1,0 +1,82 @@
+/* ==========================================================================
+   Shared Form Validation & Submission Feedback
+   Used by: Contact / Appointment Booking form (.ab-form) and the
+   Book Consultation popup (#booking-form). Reuses the existing brand error
+   tokens (#BA1A1A / #FFDAD6 / #93000A) — no new colors introduced.
+   ========================================================================== */
+
+.field-error {
+  display: block;
+  min-height: 14px;
+  margin-top: 4px;
+  font-size: 12px;
+  line-height: 1.4;
+  color: #BA1A1A;
+}
+
+/* Underline-style fields (Contact / Appointment Booking form) */
+.ab-field.is-invalid {
+  border-color: #BA1A1A;
+}
+
+/* Box-style fields (Book Consultation popup + any bordered input) */
+input.is-invalid,
+select.is-invalid,
+textarea.is-invalid {
+  border-color: #BA1A1A !important;
+}
+input.is-invalid:focus,
+select.is-invalid:focus,
+textarea.is-invalid:focus {
+  box-shadow: 0 0 0 2px rgba(186, 26, 26, 0.25);
+}
+
+/* Server / network submission error banner */
+.form-submit-error {
+  margin-top: 16px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: #FFDAD6;
+  color: #93000A;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.form-submit-error.hidden { display: none; }
+
+/* Honeypot field — invisible to real visitors, left open for bots */
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+}
+
+/* Booking modal: keep the popup fully usable on small screens and when
+   the on-screen keyboard reduces visible viewport height. */
+#booking-modal .motion-panel {
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+#booking-modal .booking-modal__header {
+  flex-shrink: 0;
+}
+#booking-modal .booking-modal__body {
+  flex: 1 1 auto;
+  /* Flex children default to min-height:auto, which refuses to shrink
+     below content height — that starves this element of the overflow
+     it needs to scroll, and the panel's own overflow-hidden then just
+     clips the rest instead of scrolling it. min-height:0 lets it shrink
+     to the space actually available so overflow-y can do its job. */
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 480px) {
+  #booking-modal .motion-panel { max-height: 95vh; }
+}

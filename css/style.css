@@ -1261,6 +1261,7 @@
   .floating-contact-widget__toggle {
     width: 58px;
     height: 58px;
+    margin-bottom:35px;
   }
  
   .floating-contact-widget__link {
