@@ -13,9 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const bookingForm = document.getElementById('booking-form');
   const bookingSuccess = document.getElementById('booking-success');
   const serviceSelect = document.getElementById('booking-service-select');
-  const patientNameSpan = document.getElementById('success-patient-name');
-  const selectedServiceSpan = document.getElementById('success-service-name');
-  const whatsappLink = document.getElementById('whatsapp-link');
 
   // Service Modal
   const serviceModal = document.getElementById('service-modal');
@@ -169,25 +166,20 @@ document.addEventListener('DOMContentLoaded', () => {
     bookingSuccess.classList.add('hidden');
     openOverlay(bookingModal);
     document.body.style.overflow = 'hidden';
+    // Lenis intercepts wheel/touch scroll globally, so it must be paused
+    // while a modal is open or scroll gestures over the modal move the
+    // page behind it instead of the modal's own scrollable content.
+    if (typeof lenis !== 'undefined' && lenis) lenis.stop();
   };
 
   window.closeBookingModal = function() {
     closeOverlay(bookingModal);
     document.body.style.overflow = '';
+    if (typeof lenis !== 'undefined' && lenis) lenis.start();
   };
 
-  if (bookingForm) {
-    bookingForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const name = document.getElementById('patient-name').value || 'Patient';
-      const service = serviceSelect.value || 'Consultation';
-      patientNameSpan.textContent = name;
-      selectedServiceSpan.textContent = service;
-      whatsappLink.href = `https://wa.me/+919676328450?text=Hi%20Clinic,%20I%20just%20requested%20an%20appointment%20for%20${encodeURIComponent(name)}`;
-      bookingForm.classList.add('hidden');
-      bookingSuccess.classList.remove('hidden');
-    });
-  }
+  // Form validation and AJAX submission for #booking-form are handled
+  // centrally in js/form-validation.js (shared with the contact form).
 
   // 4. Service Modal Functionality
   window.openServiceModal = function(serviceId) {
@@ -206,11 +198,13 @@ document.addEventListener('DOMContentLoaded', () => {
     serviceModal.setAttribute('data-current-service', service.title);
     openOverlay(serviceModal);
     document.body.style.overflow = 'hidden';
+    if (typeof lenis !== 'undefined' && lenis) lenis.stop();
   };
 
   window.closeServiceModal = function() {
     closeOverlay(serviceModal);
     document.body.style.overflow = '';
+    if (typeof lenis !== 'undefined' && lenis) lenis.start();
   };
 
   window.bookCurrentModalService = function() {
