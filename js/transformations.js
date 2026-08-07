@@ -19,38 +19,38 @@ document.addEventListener('DOMContentLoaded', () => {
     orthodontics: {
       title: 'Orthodontics',
       tagline: 'Full Arch Alignment',
-      before: 'images/orthodontics_before.png',
-      after: 'images/orthodontics_after.png'
+      before: 'images/orthodontics_before.webp',
+      after: 'images/orthodontics_after.webp'
     },
     'root-canal': {
       title: 'Root Canal',
       tagline: 'Root Canal Therapy',
-      before: 'images/root_canal_before.png',
-      after: 'images/root_canal_after.png'
+      before: 'images/root_canal_before.webp',
+      after: 'images/root_canal_after.webp'
     },
     implants: {
       title: 'Dental Implants',
       tagline: 'Restored Missing Teeth',
-      before: 'images/clearaligners-before.png',
-      after: 'images/clearaligners-after.png'
+      before: 'images/clearaligners-before.webp',
+      after: 'images/clearaligners-after.webp'
     },
     cosmetic: {
       title: 'Cosmetic Dentistry',
       tagline: 'Veneers & Whitening',
-      before: 'images/cosmetic-before.png',
-      after: 'images/cosmetic-after.png'
+      before: 'images/cosmetic-before.webp',
+      after: 'images/cosmetic-after.webp'
     },
     general: {
       title: 'General Dentistry',
       tagline: 'Checkups & Preventive Care',
-      before: 'images/general-before.png',
-      after: 'images/general-after.png'
+      before: 'images/general-before.webp',
+      after: 'images/general-after.webp'
     },
     'smile-makeover': {
       title: 'Smile Makeovers',
       tagline: 'Complete Smile Transformation',
-      before: 'images/smile-makeover_before.png',
-      after: 'images/smile-makeover_after.png'
+      before: 'images/smile-makeover_before.webp',
+      after: 'images/smile-makeover_after.webp'
     }
   };
 
