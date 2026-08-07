@@ -9,6 +9,10 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="dns-prefetch" href="https://images.unsplash.com">
+  <link rel="preload" as="image" href="images/dentist-hero3.webp" fetchpriority="high">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 
   <!-- Stylesheet -->
@@ -43,7 +47,7 @@
 
       <!-- Logo -->
       <a href="index.html" class="hnav__logo">
-        <img src="images/logo-transparent.webp" alt="THE BRACES & CROWNS" class="hnav__logo-img">
+        <img src="images/logo-transparent.webp" alt="THE BRACES & CROWNS" class="hnav__logo-img" width="1024" height="438">
       </a>
 
       <!-- Desktop Navigation (Clean, no dropdown options) -->
@@ -122,7 +126,7 @@
         src="images/dentist-hero3.webp"
         alt="Dr. S. Prudhvi Das Reddy treating a patient"
         class="hero2__bg"
-        fetchpriority="high"
+        loading="eager" fetchpriority="high" decoding="async" width="2880" height="1600"
       >
       <div class="hero2__gradient" aria-hidden="true"></div>
 
@@ -212,9 +216,9 @@
         </div>
         <div class="hero2__card-footer hero2__card-footer--avatar">
           <div class="hero2__avatar-stack">
-            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Patient">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Patient">
-            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" alt="Patient">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Patient" width="150" height="188" loading="lazy" decoding="async">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Patient" width="150" height="225" loading="lazy" decoding="async">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" alt="Patient" width="150" height="225" loading="lazy" decoding="async">
           </div>
           <span class="hero2__avatar-count">500+ Smiles</span>
         </div>
@@ -277,7 +281,7 @@
 
           <div class="md:col-span-5 bg-white rounded-card-lg border border-brand-border overflow-hidden shadow-soft-md group flex flex-col relative card-shine" data-reveal="up">
             <div class="relative h-48 overflow-hidden">
-              <img src="images/clear-aligner-options.webp" alt="Clear Aligner Options" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <img src="images/clear-aligner-options.webp" alt="Clear Aligner Options" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" width="600" height="400" loading="lazy" decoding="async">
               <div class="absolute top-4 left-4 z-10">
                 <span class="px-3 py-1 bg-white/90 backdrop-blur-md text-brand-deep text-xs font-bold rounded-full shadow-soft-sm">Invisible Braces</span>
               </div>
@@ -331,7 +335,7 @@
            
 
             <!-- Main Consultation Image -->
-            <img src="images/smile.webp" alt="Dr. S. Prudhvi Das Reddy examining dental scans at The Braces & Crowns">
+            <img src="images/smile.webp" alt="Dr. S. Prudhvi Das Reddy examining dental scans at The Braces & Crowns" width="2048" height="2080" loading="lazy" decoding="async">
 
           </div>
 
@@ -434,7 +438,7 @@ From braces and clear aligners to crowns, implants, and everyday dental care —
           <!-- 1. Orthodontics Card -->
           <div class="service-card group card-shine" data-reveal="up">
             <div class="service-card__image-wrap">
-              <img src="images/orthodontics.webp" alt="Orthodontics">
+              <img src="images/orthodontics.webp" alt="Orthodontics" width="547" height="365" loading="lazy" decoding="async">
 
             </div>
             <div class="service-card__body">
@@ -470,7 +474,7 @@ From braces and clear aligners to crowns, implants, and everyday dental care —
           <!-- 2. Clear Aligners Card -->
           <div class="service-card group card-shine" data-reveal="up">
             <div class="service-card__image-wrap">
-              <img src="images/clear-aligners.webp" alt="Clear Aligners">
+              <img src="images/clear-aligners.webp" alt="Clear Aligners" width="843" height="645" loading="lazy" decoding="async">
 
             </div>
             <div class="service-card__body">
@@ -506,7 +510,7 @@ From braces and clear aligners to crowns, implants, and everyday dental care —
           <!-- 3. Dental Implants Card -->
           <div class="service-card group card-shine" data-reveal="up">
             <div class="service-card__image-wrap">
-              <img src="images/dental-implants.webp" alt="Dental Implants">
+              <img src="images/dental-implants.webp" alt="Dental Implants" width="800" height="533" loading="lazy" decoding="async">
             </div>
             <div class="service-card__body">
               <div>
@@ -541,7 +545,7 @@ From braces and clear aligners to crowns, implants, and everyday dental care —
           <!-- 4. Cosmetic Dentistry Card -->
           <div class="service-card group card-shine" data-reveal="up">
             <div class="service-card__image-wrap">
-              <img src="images/cosmetic-dentistry.webp" alt="Cosmetic Dentistry">
+              <img src="images/cosmetic-dentistry.webp" alt="Cosmetic Dentistry" width="900" height="550" loading="lazy" decoding="async">
             </div>
             <div class="service-card__body">
               <div>
@@ -576,7 +580,7 @@ From braces and clear aligners to crowns, implants, and everyday dental care —
           <!-- 5. General Dentistry Card -->
           <div class="service-card group card-shine" data-reveal="up">
             <div class="service-card__image-wrap">
-              <img src="images/general-dentistry.webp" alt="General Dentistry">
+              <img src="images/general-dentistry.webp" alt="General Dentistry" width="1024" height="657" loading="lazy" decoding="async">
             </div>
             <div class="service-card__body">
               <div>
@@ -611,7 +615,7 @@ From braces and clear aligners to crowns, implants, and everyday dental care —
           <!-- 6. Smile Makeover Card -->
           <div class="service-card group card-shine" data-reveal="up">
             <div class="service-card__image-wrap">
-              <img src="images/smile-makeover.webp" alt="Smile Makeovers">
+              <img src="images/smile-makeover.webp" alt="Smile Makeovers" width="1024" height="721" loading="lazy" decoding="async">
             </div>
             <div class="service-card__body">
               <div>
@@ -654,7 +658,7 @@ From braces and clear aligners to crowns, implants, and everyday dental care —
 
           <div class="ds__media" data-reveal="left-scale">
             <div class="ds__image-frame">
-              <img src="images/prudvi-doc.webp" alt="Dr. S. Prudhvi Das Reddy, MDS" class="ds__image">
+              <img src="images/prudvi-doc.webp" alt="Dr. S. Prudhvi Das Reddy, MDS" class="ds__image" width="1684" height="2528" loading="lazy" decoding="async">
             </div>
             <div class="ds__identity">
               <span class="ds__identity-check" aria-hidden="true"><i data-lucide="badge-check"></i></span>
@@ -889,11 +893,11 @@ Dr. S. Prudhvi Das Reddy is an orthodontist with 12+ years of overall clinical e
             <div class="ba-slider" data-ba-slider>
               <div class="ba-slider__frame" data-ba-frame>
                 <div class="ba-slider__img ba-slider__img--after">
-                  <img data-ba-after src="images/root_canal_after.webp" alt="After treatment result">
+                  <img data-ba-after src="images/root_canal_after.webp" alt="After treatment result" width="1408" height="768" loading="lazy" decoding="async">
                   <span class="ba-card__tag ba-card__tag--after">After</span>
                 </div>
                 <div class="ba-slider__img ba-slider__img--before" data-ba-before-clip>
-                  <img data-ba-before src="images/root_canal_before.webp" alt="Before treatment result">
+                  <img data-ba-before src="images/root_canal_before.webp" alt="Before treatment result" width="1408" height="768" loading="lazy" decoding="async">
                   <span class="ba-card__tag ba-card__tag--before">Before</span>
                 </div>
                 <div class="ba-slider__handle" data-ba-handle role="slider" aria-label="Drag to compare before and after images" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
@@ -976,7 +980,7 @@ Dr. S. Prudhvi Das Reddy is an orthodontist with 12+ years of overall clinical e
             <div class="tj-panel-inner" id="tj-panel" role="tabpanel" aria-labelledby="tj-tab-0" data-tj-panel>
               <div class="tj-media">
                 <span class="tj-media__badge" data-tj-badge>3D Scanner</span>
-                <img data-tj-image src="images/digital-scan.webp" alt="Doctor examining 3D dental scan and X-rays on lightboard for digital treatment planning" fetchpriority="high">
+                <img data-tj-image src="images/digital-scan.webp" alt="Doctor examining 3D dental scan and X-rays on lightboard for digital treatment planning" width="1396" height="1127" loading="lazy" decoding="async">
               </div>
               <div class="tj-text">
                 <span class="tj-eyebrow" data-tj-eyebrow>Step 01</span>
@@ -1006,7 +1010,7 @@ Dr. S. Prudhvi Das Reddy is an orthodontist with 12+ years of overall clinical e
               <span class="tj-mobile-step__eyebrow">Digital Scan</span>
               <h3 class="tj-mobile-step__title">Digital Scan</h3>
               <div class="tj-mobile-step__media">
-                <img src="images/digital-scan.webp" alt="Doctor examining 3D dental scan and X-rays on lightboard for digital treatment planning">
+                <img src="images/digital-scan.webp" alt="Doctor examining 3D dental scan and X-rays on lightboard for digital treatment planning" width="1396" height="1127" loading="lazy" decoding="async">
               </div>
               <p class="tj-mobile-step__desc">High-resolution digital scanning captures every detail of your smile with exceptional comfort and precision—eliminating the need for traditional impressions.</p>
               <ul class="tj-mobile-step__highlights">
@@ -1026,7 +1030,7 @@ Dr. S. Prudhvi Das Reddy is an orthodontist with 12+ years of overall clinical e
               <span class="tj-mobile-step__eyebrow">Smile Analysis</span>
               <h3 class="tj-mobile-step__title">Smile Analysis</h3>
               <div class="tj-mobile-step__media">
-                <img src="images/smile-analysis.webp" alt="Digital smile analysis grid mapping smile proportions and tooth alignment" loading="lazy">
+                <img src="images/smile-analysis.webp" alt="Digital smile analysis grid mapping smile proportions and tooth alignment" loading="lazy" width="800" height="800" decoding="async">
               </div>
               <p class="tj-mobile-step__desc">We map your facial proportions, lip line, and bite relationship, then simulate your new smile digitally—so you can preview realistic results before treatment begins.</p>
               <ul class="tj-mobile-step__highlights">
@@ -1046,7 +1050,7 @@ Dr. S. Prudhvi Das Reddy is an orthodontist with 12+ years of overall clinical e
               <span class="tj-mobile-step__eyebrow">Treatment Planning</span>
               <h3 class="tj-mobile-step__title">Treatment Planning</h3>
               <div class="tj-mobile-step__media">
-                <img src="images/treatment-planning.webp" alt="Dentist reviewing digital dental X-ray on overhead screen with patient" loading="lazy">
+                <img src="images/treatment-planning.webp" alt="Dentist reviewing digital dental X-ray on overhead screen with patient" loading="lazy" width="1385" height="1136" decoding="async">
               </div>
               <p class="tj-mobile-step__desc">Dr. Prudhvi reviews your 3D scan and simulation to build a personalised, sequenced treatment plan with predictable timelines and transparent milestones.</p>
               <ul class="tj-mobile-step__highlights">
@@ -1066,7 +1070,7 @@ Dr. S. Prudhvi Das Reddy is an orthodontist with 12+ years of overall clinical e
               <span class="tj-mobile-step__eyebrow">Precision Treatment</span>
               <h3 class="tj-mobile-step__title">Precision Treatment</h3>
               <div class="tj-mobile-step__media">
-                <img src="images/precision-treatment.webp" alt="Dentist using precision microscope for dental procedure" loading="lazy">
+                <img src="images/precision-treatment.webp" alt="Dentist using precision microscope for dental procedure" loading="lazy" width="1537" height="1023" decoding="async">
               </div>
               <p class="tj-mobile-step__desc">Guided by your digital plan, treatment is delivered through gentle, low-friction mechanics and precise appliance fabrication for faster, more comfortable movement.</p>
               <ul class="tj-mobile-step__highlights">
@@ -1086,7 +1090,7 @@ Dr. S. Prudhvi Das Reddy is an orthodontist with 12+ years of overall clinical e
               <span class="tj-mobile-step__eyebrow">Perfect Smile</span>
               <h3 class="tj-mobile-step__title">Perfect Smile</h3>
               <div class="tj-mobile-step__media">
-                <img src="images/perfect-smile.webp" alt="Patient showcasing a beautiful, healthy, perfect smile after treatment" loading="lazy">
+                <img src="images/perfect-smile.webp" alt="Patient showcasing a beautiful, healthy, perfect smile after treatment" loading="lazy" width="1000" height="600" decoding="async">
               </div>
               <p class="tj-mobile-step__desc">Every stage is monitored against your original simulation, so the final result matches what was planned—a healthy, confident, long-lasting smile.</p>
               <ul class="tj-mobile-step__highlights">
@@ -1137,7 +1141,7 @@ Dr. S. Prudhvi Das Reddy is an orthodontist with 12+ years of overall clinical e
                 <p class="tf-card__desc">Targeted braces to fix crowding and deep bite overlap.</p>
               </div>
               <div class="tf-card__visual">
-                <img src="images/tf-braces-patient.webp" alt="Confident patient after orthodontic crowding correction" class="tf-card__img" loading="lazy">
+                <img src="images/tf-braces-patient.webp" alt="Confident patient after orthodontic crowding correction" class="tf-card__img" loading="lazy" width="1024" height="1024" decoding="async">
               </div>
               <div class="tf-card__arrow-btn btn-arrow-only btn-arrow-only-sm" aria-label="View Details">
                 <i data-lucide="arrow-up-right" class="btn-arrow-icon"></i>
@@ -1155,7 +1159,7 @@ Dr. S. Prudhvi Das Reddy is an orthodontist with 12+ years of overall clinical e
                 <p class="tf-card__desc">Easily scheduled at your convenience.</p>
               </div>
               <div class="tf-card__visual">
-                <img src="images/tf-clear-aligner.webp" alt="Clear dental aligner tray held by dentist" class="tf-card__img" loading="lazy">
+                <img src="images/tf-clear-aligner.webp" alt="Clear dental aligner tray held by dentist" class="tf-card__img" loading="lazy" width="1024" height="1024" decoding="async">
               </div>
             </article>
 
@@ -1170,7 +1174,7 @@ Dr. S. Prudhvi Das Reddy is an orthodontist with 12+ years of overall clinical e
                 <p class="tf-card__desc">Custom ceramic crowns &amp; aesthetic veneers.</p>
               </div>
               <div class="tf-card__visual">
-                <img src="images/tf-dental-crown.webp" alt="Porcelain dental crowns and ceramic veneers" class="tf-card__img" loading="lazy">
+                <img src="images/tf-dental-crown.webp" alt="Porcelain dental crowns and ceramic veneers" class="tf-card__img" loading="lazy" width="1024" height="1024" decoding="async">
               </div>
             </article>
 
@@ -1190,7 +1194,7 @@ Dr. S. Prudhvi Das Reddy is an orthodontist with 12+ years of overall clinical e
                 <p class="tf-card__desc">Permanent implant posts with custom porcelain crowns.</p>
               </div>
               <div class="tf-card__visual">
-                <img src="images/tf-dental-implant.webp" alt="Titanium dental implant with ceramic crown" class="tf-card__img" loading="lazy">
+                <img src="images/tf-dental-implant.webp" alt="Titanium dental implant with ceramic crown" class="tf-card__img" loading="lazy" width="1024" height="1024" decoding="async">
               </div>
               <div class="tf-card__arrow-btn btn-arrow-only btn-arrow-only-sm" aria-label="View Details">
                 <i data-lucide="arrow-up-right" class="btn-arrow-icon"></i>
@@ -1208,7 +1212,7 @@ Dr. S. Prudhvi Das Reddy is an orthodontist with 12+ years of overall clinical e
                 <p class="tf-card__desc">Ultra-thin veneers for a naturally perfect smile.</p>
               </div>
               <div class="tf-card__visual">
-                <img src="images/tf-veneers-patient.webp" alt="Happy patient with perfect smile after porcelain veneers" class="tf-card__img" loading="lazy">
+                <img src="images/tf-veneers-patient.webp" alt="Happy patient with perfect smile after porcelain veneers" class="tf-card__img" loading="lazy" width="1024" height="1024" decoding="async">
               </div>
               <div class="tf-card__arrow-btn btn-arrow-only btn-arrow-only-sm" aria-label="View Details">
                 <i data-lucide="arrow-up-right" class="btn-arrow-icon"></i>
@@ -1258,7 +1262,7 @@ Dr. S. Prudhvi Das Reddy is an orthodontist with 12+ years of overall clinical e
                   </p>
                   <div class="testi-author-wrap">
                     <div class="testi-avatar-ring">
-                      <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Ananya R." class="testi-avatar-img">
+                      <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Ananya R." class="testi-avatar-img" width="150" height="188" loading="lazy" decoding="async">
                     </div>
                     <h4 class="testi-author-name">Ananya R.</h4>
                     <p class="testi-author-role">Ameerpet · Clear Aligners</p>
@@ -1274,7 +1278,7 @@ Dr. S. Prudhvi Das Reddy is an orthodontist with 12+ years of overall clinical e
                   </p>
                   <div class="testi-author-wrap">
                     <div class="testi-avatar-ring">
-                      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Vikram K." class="testi-avatar-img">
+                      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Vikram K." class="testi-avatar-img" width="150" height="225" loading="lazy" decoding="async">
                     </div>
                     <h4 class="testi-author-name">Vikram K.</h4>
                     <p class="testi-author-role">Begumpet · Ceramic Braces</p>
@@ -1290,7 +1294,7 @@ Dr. S. Prudhvi Das Reddy is an orthodontist with 12+ years of overall clinical e
                   </p>
                   <div class="testi-author-wrap">
                     <div class="testi-avatar-ring">
-                      <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" alt="Sowmya P." class="testi-avatar-img">
+                      <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" alt="Sowmya P." class="testi-avatar-img" width="150" height="225" loading="lazy" decoding="async">
                     </div>
                     <h4 class="testi-author-name">Sowmya P.</h4>
                     <p class="testi-author-role">SR Nagar · Restorative Care</p>
@@ -1306,7 +1310,7 @@ Dr. S. Prudhvi Das Reddy is an orthodontist with 12+ years of overall clinical e
                   </p>
                   <div class="testi-author-wrap">
                     <div class="testi-avatar-ring">
-                      <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" alt="Rajesh V." class="testi-avatar-img">
+                      <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" alt="Rajesh V." class="testi-avatar-img" width="150" height="225" loading="lazy" decoding="async">
                     </div>
                     <h4 class="testi-author-name">Rajesh V.</h4>
                     <p class="testi-author-role">Punjagutta · Zirconia Crowns</p>
@@ -1322,7 +1326,7 @@ Dr. S. Prudhvi Das Reddy is an orthodontist with 12+ years of overall clinical e
                   </p>
                   <div class="testi-author-wrap">
                     <div class="testi-avatar-ring">
-                      <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" alt="Pooja M." class="testi-avatar-img">
+                      <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" alt="Pooja M." class="testi-avatar-img" width="150" height="225" loading="lazy" decoding="async">
                     </div>
                     <h4 class="testi-author-name">Pooja M.</h4>
                     <p class="testi-author-role">Kukatpally · Orthodontics</p>
@@ -1518,7 +1522,7 @@ Your first visit includes discussion of your concern, clinical examination, trea
 
           <div class="ab-media">
             <div class="ab-media-inner">
-              <img src="images/contact.webp" alt="Dr. S. Prudhvi Das Reddy and clinic team at THE BRACES & CROWNS, Ameerpet" loading="lazy">
+              <img src="images/contact.webp" alt="Dr. S. Prudhvi Das Reddy and clinic team at THE BRACES & CROWNS, Ameerpet" loading="lazy" width="682" height="1024" decoding="async">
             </div>
           </div>
 
@@ -1623,7 +1627,7 @@ Your first visit includes discussion of your concern, clinical examination, trea
         <!-- COLUMN ONE: BRAND & LOCATION -->
         <div class="footer-brand">
           <a href="index.html" class="footer-logo" aria-label="THE BRACES & CROWNS Homepage">
-            <img src="images/logo-transparent.webp" alt="THE BRACES & CROWNS" class="footer-logo-img">
+            <img src="images/logo-transparent.webp" alt="THE BRACES & CROWNS" class="footer-logo-img" width="1024" height="438" loading="lazy" decoding="async">
           </a>
 
           <address class="footer-address">
@@ -1737,7 +1741,7 @@ Your first visit includes discussion of your concern, clinical examination, trea
       <!-- Modal Header -->
       <div class="bg-brand-surface border-b border-brand-border p-6 flex items-center justify-between booking-modal__header">
         <div class="flex items-center space-x-3">
-          <img src="images/logo-icon-transparent.webp" alt="Icon" class="h-8 w-auto">
+          <img src="images/logo-icon-transparent.webp" alt="THE BRACES & CROWNS" class="h-8 w-auto" width="397" height="457" loading="lazy" decoding="async">
           <div>
             <h3 class="text-xl font-bold font-heading text-brand-dark">Book a Consultation</h3>
             <p class="text-xs text-brand-muted">THE BRACES & CROWNS • Ameerpet, Hyderabad</p>
@@ -1860,7 +1864,7 @@ Your first visit includes discussion of your concern, clinical examination, trea
       </div>
 
       <div class="service-modal__body overflow-y-auto" data-lenis-prevent>
-        <img id="service-modal-img" src="" alt="Service" class="service-modal__image w-full object-cover rounded-xl border border-brand-border">
+        <img id="service-modal-img" src="" alt="Service" class="service-modal__image w-full object-cover rounded-xl border border-brand-border" loading="lazy" decoding="async">
         <div>
           <h4 class="text-sm font-bold uppercase tracking-wider text-brand-muted mb-2">Overview</h4>
           <p id="service-modal-desc" class="text-sm text-brand-dark leading-relaxed"></p>
