@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
       eyebrow: 'Step 01', title: 'Digital Scan', badge: '3D Scanner',
       desc: 'Captures the shape of your teeth and bite without traditional messy impressions in suitable cases. ',
       highlights: ['High Precision', 'Comfortable', 'Fast', 'No Traditional Molds'],
-      image: 'images/digital-scan.png',
+      image: 'images/digital-scan.webp',
       alt: 'Doctor examining 3D dental scan and X-rays on lightboard for digital treatment planning',
       ctaLabel: 'Explore Scanning Technology', ctaService: 'Digital Scan'
     },
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
       eyebrow: 'Step 02', title: 'Smile Analysis', badge: 'AI Simulation',
       desc: 'Helps assess tooth position, spacing, crowding, facial balance, and bite relationship.',
       highlights: ['Facial Analysis', 'Bite Mapping', 'Smile Preview', 'AI Simulation'],
-      image: 'images/smile-analysis.jpg',
+      image: 'images/smile-analysis.webp',
       alt: 'Digital smile analysis grid mapping smile proportions and tooth alignment',
       ctaLabel: 'See Smile Simulation', ctaService: 'Smile Analysis'
     },
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
       eyebrow: 'Step 03', title: 'Treatment Planning', badge: 'Digital Planning',
       desc: 'Dr. Prudhvi reviews your records and explains suitable options with expected timeline. ',
       highlights: ['Digital Treatment Planning ', 'Custom Treatment', 'Better treatment clarity', 'Precision Workflow'],
-      image: 'images/treatment-planning.png',
+      image: 'images/treatment-planning.webp',
       alt: 'Dentist reviewing digital dental X-ray on overhead screen with patient',
       ctaLabel: 'View Treatment Planning', ctaService: 'Treatment Planning'
     },
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
       eyebrow: 'Step 04', title: 'Precision Treatment', badge: 'Precision Care',
       desc: 'Guided by your digital plan, treatment is delivered through gentle, low-friction mechanics and precise appliance fabrication for faster, more comfortable movement.',
       highlights: ['Comfortable', 'Comfort-focused treatment', 'Guided Care', 'Precise Movement'],
-      image: 'images/precision-treatment.png',
+      image: 'images/precision-treatment.webp',
       alt: 'Dentist using precision microscope for dental procedure',
       ctaLabel: 'Explore Treatment Options', ctaService: 'Precision Treatment'
     },
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
       eyebrow: 'Step 05', title: 'Perfect Smile', badge: 'Confident Smile',
       desc: 'Retainers, follow-ups, and oral hygiene guidance help protect your result',
       highlights: ['Healthy Smile', 'Better Confidence', 'Long-term Results', 'Beautiful Finish'],
-      image: 'images/perfect-smile.png',
+      image: 'images/perfect-smile.webp',
       alt: 'Patient showcasing a beautiful, healthy, perfect smile after treatment',
       ctaLabel: 'Book Consultation', ctaService: 'Perfect Smile'
     }

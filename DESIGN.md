@@ -163,7 +163,7 @@ The design system pairs **Manrope** for strong geometric headings and titles wit
 ### 1. Header & Navigation (`.hnav`)
 - **Position:** Sticky top with smooth entrance animation (`translateY(-20px)` to `0`).
 - **Background:** White glassmorphic blur with 1px bottom border (`#D9EAF4`).
-- **Logo:** `images/logo-transparent.png` (height 60px desktop / 36px mobile).
+- **Logo:** `images/logo-transparent.webp` (height 60px desktop / 36px mobile).
 - **Navigation Links:** Pill hover background (`#EEF8FD`), font weight 600, color `#0B1220`.
 - **Primary Header CTA:** Deep navy button with circular white arrow icon.
 

@@ -194,7 +194,7 @@
         var waLink = document.getElementById('ab-whatsapp-link');
         if (waLink) {
           var text = 'Hi Clinic, I would like to book an appointment.\nName: ' + summary.name + '\nTreatment: ' + summary.treatment;
-          waLink.href = 'https://wa.me/+919876543210?text=' + encodeURIComponent(text);
+          waLink.href = 'https://wa.me/+919701004227?text=' + encodeURIComponent(text);
         }
       }
     });
@@ -222,7 +222,7 @@
         if (serviceEl) serviceEl.textContent = summary.treatment || 'Consultation';
         var waLink = document.getElementById('whatsapp-link');
         if (waLink) {
-          waLink.href = 'https://wa.me/+919676328450?text=' + encodeURIComponent('Hi Clinic, I just requested an appointment for ' + summary.name);
+          waLink.href = 'https://wa.me/+919701004227?text=' + encodeURIComponent('Hi Clinic, I just requested an appointment for ' + summary.name);
         }
       }
     });

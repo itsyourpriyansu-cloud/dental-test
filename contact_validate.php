@@ -22,17 +22,17 @@ declare(strict_types=1);
 // 1. CONFIGURATION — edit these values for your mail provider
 // =============================================================================
 define('SMTP_HOST', 'smtp.yourhost.com');
-define('SMTP_USERNAME', 'your-email@yourdomain.com');
+define('SMTP_USERNAME', 'TheBracesandCrowns@gmail.com');
 define('SMTP_PASSWORD', 'your-smtp-password');
 define('SMTP_PORT', 587);
 define('SMTP_SECURE', 'tls');              // 'tls' or 'ssl'
-define('FROM_EMAIL', 'no-reply@yourdomain.com');
+define('FROM_EMAIL', 'TheBracesandCrowns@gmail.com');
 define('FROM_NAME', 'THE BRACES & CROWNS');
-define('DOCTOR_EMAIL', 'doctor@yourdomain.com');
+define('DOCTOR_EMAIL', 'TheBracesandCrowns@gmail.com');
 
 define('CLINIC_NAME', 'THE BRACES & CROWNS');
 define('CLINIC_TAGLINE', 'Ameerpet, Hyderabad');
-define('CLINIC_PHONE', '+91 98765 43210');
+define('CLINIC_PHONE', '+91 97010 04227');
 
 // =============================================================================
 // 2. BOOTSTRAP
@@ -247,7 +247,7 @@ function buildPatientEmail(string $safeName, string $safeEmail, string $safePhon
       </table>
       <p style="margin:0 0 8px;font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#475569;line-height:1.6;">
         If you need immediate assistance, please call us at
-        <a href="tel:+919876543210" style="color:#0B4696;text-decoration:none;font-weight:600;">+91 98765 43210</a>.
+        <a href="tel:+919701004227" style="color:#0B4696;text-decoration:none;font-weight:600;">+91 97010 04227</a>.
       </p>
       <p style="margin:16px 0 0;font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#0B1220;">
         Thank you for choosing THE BRACES &amp; CROWNS.<br>
